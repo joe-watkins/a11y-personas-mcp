@@ -1,6 +1,6 @@
-# Weather MCP Server
+# Accessibility Personas MCP
 
-A simple MCP server that provides weather data for cities using the Open-Meteo API.
+A simple MCP server that provides accessibility personas for different use cases. 
 
 ## Usage
 
@@ -16,7 +16,7 @@ npx tsx main.js
 
 ## Tool
 
-- `get-weather` - Get current weather for any city
+- tbd
 
 ## Links
 
