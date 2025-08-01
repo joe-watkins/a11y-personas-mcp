@@ -31,8 +31,9 @@ npx tsx main.js
 
 - tbd
 
-## Links
+## Resources
 
-- https://github.com/modelcontextprotocol
-- https://github.com/modelcontextprotocol/typescript-sdk
-- https://github.com/modelcontextprotocol/inspector
+### Model Context Protocol (MCP)
+- **[MCP Main Repository](https://github.com/modelcontextprotocol)** - Official Model Context Protocol documentation, specifications, and examples
+- **[TypeScript SDK](https://github.com/modelcontextprotocol/typescript-sdk)** - TypeScript/JavaScript SDK used to build this MCP server, includes APIs for creating tools, resources, and prompts
+- **[MCP Inspector](https://github.com/modelcontextprotocol/inspector)** - Debugging tool for testing and inspecting MCP servers during development
