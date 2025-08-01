@@ -31,6 +31,26 @@ npx tsx main.js
 
 - tbd
 
+## Sample Prompts
+
+Once the MCP server is installed and running, you can use prompts like these in your MCP client:
+
+```
+Use the get-persona tool to get information about deaf-blind
+```
+
+```
+Can you get the "low-vision-taylor" persona for me?
+```
+
+```
+I need the persona data for "motor-impaired-non-speaking"
+```
+
+```
+Please retrieve the "sighted-deaf-hoh-low-tech" persona
+```
+
 ## Resources
 
 ### Model Context Protocol (MCP)
