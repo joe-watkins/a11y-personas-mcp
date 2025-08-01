@@ -24,7 +24,7 @@ server.tool(
             ]
         };
     }
-)
+);
 
 
 const transport = new StdioServerTransport();

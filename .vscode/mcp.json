@@ -1,0 +1,12 @@
+{
+	"servers": {
+		"a11y-personas-mcp": {
+			"type": "stdio",
+			"command": "npm",
+			"args": [
+				"start"
+			]
+		}
+	},
+	"inputs": []
+}
