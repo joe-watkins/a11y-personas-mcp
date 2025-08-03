@@ -77,6 +77,68 @@ server.tool(
     }
 );
 
+// Register list-personas tool
+server.tool(
+    'list-personas',
+    'Tool to list all available accessibility personas',
+    {
+        // No parameters required
+    },
+    async () => {
+        try {
+            const availablePersonas = getAvailablePersonas();
+            
+            if (availablePersonas.length === 0) {
+                return {
+                    content: [
+                        {
+                            type: 'text',
+                            text: 'No personas found in the personas directory.'
+                        }
+                    ]
+                };
+            }
+            
+            // Extract titles from persona files
+            const personaWithTitles = availablePersonas.map(persona => {
+                try {
+                    const personaPath = join(__dirname, 'personas', `${persona}.md`);
+                    const content = readFileSync(personaPath, 'utf8');
+                    
+                    // Simple frontmatter parsing to extract title
+                    const titleMatch = content.match(/^---[\s\S]*?title:\s*(.+?)$/m);
+                    const title = titleMatch ? titleMatch[1].trim() : persona;
+                    
+                    return `- ${title}`;
+                } catch (error) {
+                    // Fallback to filename if can't read file or extract title
+                    return `- ${persona}`;
+                }
+            });
+            
+            const personaList = `Available accessibility personas:\n${personaWithTitles.join('\n')}`;
+            
+            return {
+                content: [
+                    {
+                        type: 'text',
+                        text: personaList
+                    }
+                ]
+            };
+        } catch (error) {
+            return {
+                content: [
+                    {
+                        type: 'text',
+                        text: `Error listing personas: ${error.message}`
+                    }
+                ]
+            };
+        }
+    }
+);
+
 // Create a stdio transport for communication
 // This handles the low-level message passing between client and server
 const transport = new StdioServerTransport();
