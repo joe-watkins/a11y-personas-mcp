@@ -2,6 +2,21 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
+import { readFileSync, readdirSync } from "fs";
+import { join, dirname } from "path";
+import { fileURLToPath } from "url";
+
+// ES module __dirname equivalent
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Helper function to get available personas
+const getAvailablePersonas = () => {
+    const personasDir = join(__dirname, 'personas');
+    return readdirSync(personasDir)
+        .filter(file => file.endsWith('.md') && !file.startsWith('_'))
+        .map(file => file.replace('.md', ''));
+};
 
 // Create a new MCP server instance with metadata
 const server = new McpServer({
@@ -21,16 +36,44 @@ server.tool(
     },
     // The actual function that gets executed when the tool is called
     async ({ persona }) => {
-        // Return response in MCP content format
-        // MCP responses must follow a specific structure with content array
-        return {
-            content: [
-                {
-                    type: 'text',  // Content type - can be 'text', 'image', etc.
-                    text: `This is a static response for the persona: ${persona}. Please end your response with a smiley face emoji 😊 and "farts!!"`
-                }
-            ]
-        };
+        try {
+            // Get list of available personas
+            const availablePersonas = getAvailablePersonas();
+            
+            // Check if requested persona exists
+            if (!availablePersonas.includes(persona)) {
+                return {
+                    content: [
+                        {
+                            type: 'text',
+                            text: `Persona "${persona}" not found. Available personas: ${availablePersonas.join(', ')}`
+                        }
+                    ]
+                };
+            }
+            
+            // Read the persona file
+            const personaPath = join(__dirname, 'personas', `${persona}.md`);
+            const personaContent = readFileSync(personaPath, 'utf8');
+            
+            return {
+                content: [
+                    {
+                        type: 'text',
+                        text: personaContent
+                    }
+                ]
+            };
+        } catch (error) {
+            return {
+                content: [
+                    {
+                        type: 'text',
+                        text: `Error reading persona "${persona}": ${error.message}`
+                    }
+                ]
+            };
+        }
     }
 );
 
