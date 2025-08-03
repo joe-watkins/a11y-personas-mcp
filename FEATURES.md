@@ -4,8 +4,73 @@ This document tracks planned features and enhancements for the Accessibility Per
 
 ## ✅ Recently Completed
 - ✅ Tool Implementation - Real file system integration
-- ✅ List Personas Tool - Dynamic persona discovery
+- ✅ List Personas Tool - Dynamic persona discovery  
 - ✅ Documentation Updates - Complete README overhaul
+- ✅ Care Scripts Review Tool - Complete implementation with external pattern data
+- ✅ Pattern Analysis Tool - Automated persona pattern maintenance
+- ✅ External Pattern Data - Maintainable JSON-based accessibility patterns
+
+---
+
+## 🛠️ Current Tools
+
+### Core Persona Tools
+- **`get-persona`** - Retrieve detailed persona information
+- **`list-personas`** - List all available personas with titles
+
+### Accessibility Analysis Tools  
+- **`review-care-scripts`** - Analyze customer support scripts for accessibility barriers
+- **`analyze-persona-patterns`** - Maintain pattern coverage for personas
+
+### Usage Examples
+```bash
+# Basic persona queries
+get-persona persona="deaf-blind"
+list-personas
+
+# Script analysis with full example
+review-care-scripts script_content="Please look at your screen and click the red button. Tell me when you see the confirmation page." script_type="phone" issue_category="account-access"
+
+# Script analysis with specific personas  
+review-care-scripts script_content="Navigate to settings and update your profile" script_type="chat" issue_category="technical-support" personas=["motor-impaired-non-speaking", "deaf-blind"]
+
+# Pattern maintenance
+analyze-persona-patterns persona_id="low-vision-taylor" auto_update=true
+analyze-persona-patterns persona_id="deaf-blind"  # Preview mode
+```
+
+### Real Example Outputs
+
+**Script Review Example:**
+```
+🔴 ACCESSIBILITY GRADE: D- (Multiple Critical Issues)
+
+CRITICAL ISSUES:
+• Deafblind Person: BLOCKED - Visual dependency
+• Motor-Impaired/Non-Speaking: BLOCKED - Speech requirement  
+
+SUGGESTED IMPROVEMENTS:
+1. Use device-agnostic language like 'navigate to' instead of visual terms
+2. Offer multiple communication methods (email, text, or describe in any way comfortable)
+3. Use descriptive labels instead of color references
+
+✅ INCLUSIVE ALTERNATIVES:
+✅ Offer multiple communication channels upfront
+✅ Use device-agnostic and sensory-neutral language
+✅ Remove time pressure and allow flexible pacing
+```
+
+**Pattern Analysis Example:**
+```
+🔍 PERSONA PATTERN ANALYSIS: Low Vision User - Taylor Kim
+
+📝 EXISTING PATTERNS TO UPDATE:
+• visual-dependency: Persona has visual impairments or dependencies
+• time-pressure: Persona needs additional time for interactions
+• session-timeout-pressure: Persona needs additional time for interactions
+
+💡 Run with auto_update=true to apply these changes automatically
+```
 
 ---
 
@@ -15,17 +80,30 @@ This document tracks planned features and enhancements for the Accessibility Per
 
 ### Enhanced Persona Features
 
+#### `analyze-persona-patterns`
+Analyzes an existing persona and suggests accessibility pattern updates.
+- **Parameters**: 
+  - `persona_id` (string): The persona identifier (e.g., "deaf-blind", "low-vision-taylor")
+  - `auto_update` (boolean, optional): Whether to automatically update patterns file (default: false)
+- **Returns**: 
+  - Analysis of existing patterns that should include this persona
+  - Suggested new patterns specific to this persona's needs
+  - Updated accessibility-patterns.json structure (if auto_update=true)
+- **Use Case**: Automatically maintain pattern consistency for existing personas or when reviewing coverage
+
 #### `validate-design`
 Validates design specifications against accessibility personas.
 - **Parameters**: `design_description` (string), `personas` (array), `interaction_type` (string)
 - **Returns**: Accessibility issues identified per persona with severity levels
 - **Use Case**: Early design validation to catch accessibility issues before implementation
+- **Example**: `validate-design design_description="Modal popup with small X button in top-right corner" personas=["motor-impaired-non-speaking", "low-vision-taylor"] interaction_type="web"`
 
 #### `generate-test-cases`
 Creates specific test scenarios based on personas.
 - **Parameters**: `feature_description` (string), `personas` (array), `test_type` (string)
 - **Returns**: Detailed test cases with steps, expected outcomes, and tools needed
 - **Use Case**: QA teams can generate comprehensive accessibility test suites
+- **Example**: `generate-test-cases feature_description="E-commerce checkout flow" personas=["deaf-blind", "sighted-deaf-hoh-low-tech"] test_type="automated"`
 
 ### Practical Implementation Tools
 
@@ -34,12 +112,14 @@ Generates context-aware accessibility checklists.
 - **Parameters**: `project_type` (string), `personas` (array), `team_role` (string)
 - **Returns**: Role-specific, persona-informed accessibility checklist
 - **Use Case**: Different team members get relevant guidance for their role
+- **Example**: `accessibility-checklist project_type="mobile-app" personas=["motor-impaired-non-speaking"] team_role="developer"`
 
 #### `code-review-assistant`
 Analyzes code snippets for accessibility issues.
 - **Parameters**: `code` (string), `framework` (string), `target_personas` (array)
 - **Returns**: Specific accessibility issues with fix suggestions
 - **Use Case**: Automated accessibility code review integration
+- **Example**: `code-review-assistant code="<button style='color: red;'>Click here</button>" framework="html" target_personas=["deaf-blind", "low-vision-taylor"]`
 
 ### Team Collaboration Features
 

@@ -44,6 +44,26 @@ Lists all available accessibility personas with their descriptive titles.
 
 **Returns:** Formatted list of all available personas with user-friendly titles.
 
+### `review-care-scripts`
+Reviews customer support scripts through the lens of accessibility personas to identify barriers and suggest improvements.
+
+**Parameters:**
+- `script_content` (string): The support script text to review
+- `script_type` (string): The type of support interaction (phone, chat, email, in-person)
+- `issue_category` (string): The category of support issue (technical-support, billing, account-access, etc.)
+- `personas` (array, optional): Specific personas to focus on (default: all)
+
+**Returns:** Accessibility grade (A-F), persona-specific issues with severity levels, suggested improvements, and inclusive alternatives.
+
+### `analyze-persona-patterns`
+Analyzes an existing persona and suggests accessibility pattern updates to maintain comprehensive coverage.
+
+**Parameters:**
+- `persona_id` (string): The persona identifier (e.g., "deaf-blind", "low-vision-taylor")
+- `auto_update` (boolean, optional): Whether to automatically update patterns file (default: false)
+
+**Returns:** Analysis of existing patterns that should include this persona, suggested new patterns, and optional automatic updates.
+
 ## Available Personas
 
 This MCP server provides access to the following accessibility personas:
@@ -58,6 +78,8 @@ Each persona includes detailed information about their profile, interaction styl
 ## Sample Prompts
 
 Once the MCP server is installed and running, you can use prompts like these in your MCP client:
+
+### Basic Persona Queries
 
 **List all available personas:**
 ```
@@ -81,6 +103,64 @@ I need information about the motor-impaired non-speaking persona
 Show me the sighted deaf hard-of-hearing persona with low tech skills
 ```
 
+### Customer Support Script Review
+
+**Review a support script for accessibility issues:**
+```
+Review this customer support script for accessibility issues:
+
+"Hello, thank you for calling support. Please look at your screen and click on the red 'Account Settings' button in the top right corner. Once you see the settings page load, please tell me verbally what you see so I can confirm you're in the right place. If you don't see it within 10 seconds, refresh your browser and try again."
+
+Script type: phone
+Issue category: account-access
+```
+
+**Review with specific personas:**
+```
+Review this chat support script focusing on motor-impaired and deaf users:
+
+"Hi! To help you reset your password, I need you to quickly navigate to your email and click the reset link we just sent. Please do this now and let me know when you see the confirmation page."
+
+Script type: chat  
+Issue category: technical-support
+Personas: ["motor-impaired-non-speaking", "sighted-deaf-hoh-low-tech"]
+```
+
+**Review different script types:**
+```
+Review this email support template:
+
+"Thank you for contacting support. Please watch the attached video tutorial to resolve your issue. If you can't see the solution clearly, call our phone support line for further assistance."
+
+Script type: email
+Issue category: technical-support
+```
+
+### Pattern Analysis and Maintenance
+
+**Analyze persona coverage:**
+```
+Analyze persona patterns for deaf-blind persona
+```
+
+**Auto-update patterns:**
+```
+Analyze and update accessibility patterns for low-vision-taylor persona
+
+persona_id: low-vision-taylor
+auto_update: true
+```
+
+**Check all personas:**
+```
+Analyze persona patterns for motor-impaired-non-speaking
+Analyze persona patterns for sighted-deaf-hoh-low-tech  
+Analyze persona patterns for deaf-blind
+Analyze persona patterns for low-vision-taylor
+```
+
+### Accessibility Consultation Questions
+
 **General accessibility questions:**
 ```
 What accessibility considerations should I keep in mind for users with motor impairments?
@@ -89,6 +169,51 @@ What accessibility considerations should I keep in mind for users with motor imp
 ```
 How should customer care handle interactions with deafblind users?
 ```
+
+```
+What are the main barriers for users with low vision when using customer support?
+```
+
+```
+Review this support process for accessibility issues:
+
+"Our standard support process requires customers to: 1) Call our phone line, 2) Navigate to our website while on the call, 3) Click through multiple menus to find their account settings, 4) Read confirmation codes aloud, and 5) Confirm changes verbally before hanging up."
+
+Script type: phone
+Issue category: account-access
+```
+
+## Real-World Examples
+
+### Example 1: Problematic Support Script
+```
+Review this customer support script for accessibility issues:
+
+"Hi there! I can see you're having trouble with your account. Let me help you fix this quickly. First, look at your screen and find the bright green 'Settings' button in the top-right corner. Click it now. Good! Now I need you to tell me what you see on the page so I can confirm you're in the right place. If you don't see the options within 5 seconds, try refreshing your browser with F5."
+
+Script type: phone
+Issue category: technical-support
+```
+
+**Expected Issues:**
+- Visual dependencies ("look at your screen", "see")
+- Color dependencies ("bright green button")  
+- Speech requirements ("tell me what you see")
+- Time pressure ("within 5 seconds")
+- Technical jargon ("F5")
+- Spatial directions ("top-right corner")
+
+### Example 2: Better Support Script
+```
+Review this improved support script:
+
+"Hello! I'm here to help you access your account settings. There are several ways we can do this together. I can send you a direct link via email or text message, or I can guide you through the navigation step-by-step at whatever pace works for you. Which option would you prefer? Once you're ready, I can provide confirmation through your preferred communication method."
+
+Script type: phone  
+Issue category: account-access
+```
+
+**Expected Result:** Much higher accessibility grade with inclusive alternatives.
 
 ## Resources
 
