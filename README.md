@@ -27,28 +27,67 @@ Or directly with tsx:
 npx tsx main.js
 ```
 
-## Tool
+## Tools
 
-- tbd
+### `get-persona`
+Retrieves the complete accessibility persona documentation for a specific persona.
+
+**Parameters:**
+- `persona` (string): The name of the persona to retrieve (e.g., "deaf-blind", "low-vision-taylor")
+
+**Returns:** Full markdown content including profile, interaction style, key needs, and cross-functional considerations.
+
+### `list-personas`
+Lists all available accessibility personas with their descriptive titles.
+
+**Parameters:** None
+
+**Returns:** Formatted list of all available personas with user-friendly titles.
+
+## Available Personas
+
+This MCP server provides access to the following accessibility personas:
+
+- **Deafblind Person** (`deaf-blind`) - Individual with profound hearing and vision loss
+- **Low Vision User - Taylor Kim** (`low-vision-taylor`) - User with low vision accessibility needs  
+- **Motor-Impaired / Non-Speaking Person** (`motor-impaired-non-speaking`) - Individual with motor impairments and communication needs
+- **Sighted Deaf or Hard-of-Hearing user with limited technical ability** (`sighted-deaf-hoh-low-tech`) - Deaf/HoH user with basic technical skills
+
+Each persona includes detailed information about their profile, interaction style, key accessibility needs, and cross-functional considerations for customer care, development, design/UX, and testing teams.
 
 ## Sample Prompts
 
 Once the MCP server is installed and running, you can use prompts like these in your MCP client:
 
+**List all available personas:**
 ```
-Use the get-persona tool to get information about deaf-blind
+List all available accessibility personas
+```
+
+**Get a specific persona:**
+```
+Get the deaf-blind persona
 ```
 
 ```
-Can you get the "low-vision-taylor" persona for me?
+Tell me about the low vision user persona
 ```
 
 ```
-I need the persona data for "motor-impaired-non-speaking"
+I need information about the motor-impaired non-speaking persona
 ```
 
 ```
-Please retrieve the "sighted-deaf-hoh-low-tech" persona
+Show me the sighted deaf hard-of-hearing persona with low tech skills
+```
+
+**General accessibility questions:**
+```
+What accessibility considerations should I keep in mind for users with motor impairments?
+```
+
+```
+How should customer care handle interactions with deafblind users?
 ```
 
 ## Resources
