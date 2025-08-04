@@ -4,6 +4,7 @@
 			"type": "stdio",
 			"command": "npm",
 			"args": [
+				"--silent",
 				"start"
 			]
 		}
