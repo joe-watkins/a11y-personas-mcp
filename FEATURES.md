@@ -2,15 +2,7 @@
 
 This document tracks planned features and enhancements for the Accessibility Personas MCP Server.
 
-## ✅ Recently Completed
-- ✅ Tool Implementation - Real file system integration
-- ✅ List Personas Tool - Dynamic persona discovery  
-- ✅ Documentation Updates - Complete README overhaul
-- ✅ Care Scripts Review Tool - Complete implementation with external pattern data
-- ✅ Pattern Analysis Tool - Automated persona pattern maintenance
-- ✅ External Pattern Data - Maintainable JSON-based accessibility patterns
 
----
 
 ## 🛠️ Current Tools
 
@@ -35,7 +27,7 @@ review-care-scripts script_content="Please look at your screen and click the red
 review-care-scripts script_content="Navigate to settings and update your profile" script_type="chat" issue_category="technical-support" personas=["motor-impaired-non-speaking", "deaf-blind"]
 
 # Pattern maintenance
-analyze-persona-patterns persona_id="low-vision-taylor" auto_update=true
+analyze-persona-patterns persona_id="low-vision" auto_update=true
 analyze-persona-patterns persona_id="deaf-blind"  # Preview mode
 ```
 
@@ -65,9 +57,20 @@ SUGGESTED IMPROVEMENTS:
 🔍 PERSONA PATTERN ANALYSIS: Low Vision User - Taylor Kim
 
 📝 EXISTING PATTERNS TO UPDATE:
-• visual-dependency: Persona has visual impairments or dependencies
+🔍 PERSONA PATTERN ANALYSIS: Low Vision User
+
 • time-pressure: Persona needs additional time for interactions
 • session-timeout-pressure: Persona needs additional time for interactions
+• speech-requirement: Persona has speech or auditory limitations
+• time-pressure: Persona needs additional time for interactions
+• technical-jargon: Persona has limited technical ability or cognitive considerations
+• session-timeout-pressure: Persona needs additional time for interactions
+• voice-tone-assumption: Persona has speech or auditory limitations
+
+✨ SUGGESTED NEW PATTERNS:
+• cognitive-load-low-vision: Cognitive load assumption (MEDIUM)
+  Pattern: \b(remember|recall|complex|complicated|multiple steps)\b
+  Suggestion: Simplify instructions and provide step-by-step guidance with clear progression
 
 💡 Run with auto_update=true to apply these changes automatically
 ```
@@ -264,7 +267,7 @@ Generates measurable accessibility goals.
 - Template file (`_template.md`) should be excluded from available personas
 - Current personas:
   - `deaf-blind.md`
-  - `low-vision-taylor.md` 
+  - `low-vision.md`
   - `motor-impaired-non-speaking.md`
   - `sighted-deaf-hoh-low-tech.md`
 
