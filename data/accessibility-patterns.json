@@ -162,11 +162,9 @@
         "broken-dominant-arm",
         "concussion-cognitive-fatigue",
         "holding-child-one-handed",
-        "low-bandwidth-connection",
         "temp-broken-dominant-arm",
         "temp-concussion-cognitive-fatigue",
         "temp-holding-child-one-handed",
-        "temp-low-bandwidth-connection",
         "arthritis-rheumatoid"
       ],
       "severity": "MEDIUM",
@@ -230,7 +228,6 @@
         "noisy-environment-limited-audio",
         "holding-child-one-handed",
         "public-place-privacy-concern",
-        "low-bandwidth-connection",
         "temp-broken-dominant-arm",
         "temp-eye-patch-temporary-vision",
         "temp-laryngitis-temporary-voice-loss",
@@ -239,7 +236,6 @@
         "temp-noisy-environment-limited-audio",
         "temp-holding-child-one-handed",
         "temp-public-place-privacy-concern",
-        "temp-low-bandwidth-connection",
         "temp-crisis-situation",
         "aging-multiple-impairments",
         "arthritis-rheumatoid",
@@ -321,13 +317,11 @@
         "migraine-light-sensitivity",
         "concussion-cognitive-fatigue",
         "holding-child-one-handed",
-        "low-bandwidth-connection",
         "temp-broken-dominant-arm",
         "temp-eye-patch-temporary-vision",
         "temp-migraine-light-sensitivity",
         "temp-concussion-cognitive-fatigue",
         "temp-holding-child-one-handed",
-        "temp-low-bandwidth-connection",
         "temp-crisis-situation",
         "aging-multiple-impairments",
         "arthritis-rheumatoid",
@@ -403,7 +397,6 @@
         "noisy-environment-limited-audio",
         "holding-child-one-handed",
         "public-place-privacy-concern",
-        "low-bandwidth-connection",
         "temp-broken-dominant-arm",
         "temp-eye-patch-temporary-vision",
         "temp-laryngitis-temporary-voice-loss",
@@ -442,7 +435,6 @@
         "broken-dominant-arm",
         "concussion-cognitive-fatigue",
         "holding-child-one-handed",
-        "low-bandwidth-connection",
         "temp-broken-dominant-arm",
         "temp-concussion-cognitive-fatigue",
         "temp-holding-child-one-handed",
@@ -492,7 +484,6 @@
         "broken-dominant-arm",
         "concussion-cognitive-fatigue",
         "holding-child-one-handed",
-        "low-bandwidth-connection",
         "temp-broken-dominant-arm",
         "temp-concussion-cognitive-fatigue",
         "temp-holding-child-one-handed",
@@ -532,7 +523,8 @@
         "concussion-cognitive-fatigue",
         "temp-concussion-cognitive-fatigue",
         "aging-multiple-impairments",
-        "deafness-sign-language-first"
+        "deafness-sign-language-first",
+        "deaf-blind"
       ],
       "severity": "MEDIUM",
       "issue": "Technical complexity",
@@ -592,7 +584,6 @@
         "migraine-light-sensitivity",
         "concussion-cognitive-fatigue",
         "holding-child-one-handed",
-        "low-bandwidth-connection",
         "temp-broken-dominant-arm",
         "temp-eye-patch-temporary-vision",
         "temp-migraine-light-sensitivity",
@@ -664,7 +655,6 @@
         "noisy-environment-limited-audio",
         "holding-child-one-handed",
         "public-place-privacy-concern",
-        "low-bandwidth-connection",
         "temp-broken-dominant-arm",
         "temp-eye-patch-temporary-vision",
         "temp-laryngitis-temporary-voice-loss",
@@ -928,6 +918,70 @@
       "flags": "gi",
       "personas": [
         "temp-migraine-light-sensitivity"
+      ],
+      "severity": "MEDIUM",
+      "issue": "Literacy assumption",
+      "suggestion": "Use simple language and provide audio or visual alternatives to text",
+      "examples": [
+        "read carefully through",
+        "as you can see",
+        "it's clearly stated"
+      ]
+    },
+    {
+      "id": "literacy-assumption-deafness-hard-of-hearing",
+      "pattern": "\\b(read carefully|as you can see|obviously|clearly stated)\\b",
+      "flags": "gi",
+      "personas": [
+        "deafness-hard-of-hearing"
+      ],
+      "severity": "MEDIUM",
+      "issue": "Literacy assumption",
+      "suggestion": "Use simple language and provide audio or visual alternatives to text",
+      "examples": [
+        "read carefully through",
+        "as you can see",
+        "it's clearly stated"
+      ]
+    },
+    {
+      "id": "literacy-assumption-deafness-hoh",
+      "pattern": "\\b(read carefully|as you can see|obviously|clearly stated)\\b",
+      "flags": "gi",
+      "personas": [
+        "deafness-hoh"
+      ],
+      "severity": "MEDIUM",
+      "issue": "Literacy assumption",
+      "suggestion": "Use simple language and provide audio or visual alternatives to text",
+      "examples": [
+        "read carefully through",
+        "as you can see",
+        "it's clearly stated"
+      ]
+    },
+    {
+      "id": "literacy-assumption-deafness-late-deafened",
+      "pattern": "\\b(read carefully|as you can see|obviously|clearly stated)\\b",
+      "flags": "gi",
+      "personas": [
+        "deafness-late-deafened"
+      ],
+      "severity": "MEDIUM",
+      "issue": "Literacy assumption",
+      "suggestion": "Use simple language and provide audio or visual alternatives to text",
+      "examples": [
+        "read carefully through",
+        "as you can see",
+        "it's clearly stated"
+      ]
+    },
+    {
+      "id": "literacy-assumption-deafness-oral-communicator",
+      "pattern": "\\b(read carefully|as you can see|obviously|clearly stated)\\b",
+      "flags": "gi",
+      "personas": [
+        "deafness-oral-communicator"
       ],
       "severity": "MEDIUM",
       "issue": "Literacy assumption",
