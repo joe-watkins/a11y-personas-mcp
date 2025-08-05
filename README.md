@@ -17,7 +17,7 @@ A Model Context Protocol (MCP) server designed for AI and LLM-powered accessibil
    - **Type**: Local MCP
 5. Save the configuration
 
-The MCP server will now be available in your VS Code MCP clients list. Ensure you are in Agent mode and run the  `#list-personas` tool in Copilot to list all personas and to start working with them.
+*note:* The MCP server will now be available in your VS Code MCP clients list. Start the server by clicking on the gear icon and choosing "Start Server". Ensure you are in Agent mode and run the  `#list-personas` tool in Copilot to list all personas and to start working with them. The A11y Personas MCP Tools should be listed in your Copilot tools panel.
 
 ## Tools
 ### `list-personas`
