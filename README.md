@@ -1,12 +1,12 @@
-# Accessibility Personas MCP
+# Accessibility Personas MCP (Model Context Protocol Server)
 
-A simple MCP server that provides accessibility personas for different use cases. 
+A simple MCP (Model Context Protocol) server that provides accessibility personas for different use cases. Whether you are wanting to review designs, test code against personas, ask accessibility consulting questions, review customer support scripts, or integrate inclusive practices into your workflow, this server aims to assist.
 
 ## Important note about synthetic users with disabilities
 
 **These synthetic personas are educational tools and starting points for accessibility considerations—they do not replace the need to work directly with real people with disabilities.** Each person's experience with disability is unique, and these generalized personas may not accurately reflect the full spectrum of real-world impacts, adaptive strategies, or individual preferences. For meaningful accessibility improvements, always prioritize user research, usability testing, and direct feedback from people with disabilities in your target audience.
 
-## Installation in VS Code . Copilot
+## Installation in VS Code / Github Copilot
 1. Clone this project
 2. Open VS Code Command Palette (`Cmd+Shift+P` on Mac, `Ctrl+Shift+P` on Windows/Linux)
 3. Search for "MCP install" and select it
