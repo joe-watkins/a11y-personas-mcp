@@ -364,7 +364,7 @@
     },
     {
       "id": "spatial-direction",
-      "pattern": "\\b(top|bottom|left|right)\\s+(corner|side|area|section)\\b",
+      "pattern": "\\b(top|bottom|left|right)(\\s+(corner|side|area|section))?\\b|\\b(top|bottom)\\s+(left|right)\\b",
       "flags": "gi",
       "personas": [
         "deaf-blind",
@@ -380,6 +380,10 @@
       "issue": "Spatial direction",
       "suggestion": "Use semantic descriptions or send direct links instead of spatial directions",
       "examples": [
+        "top right",
+        "top left",
+        "bottom right",
+        "bottom left",
         "top right corner",
         "left side",
         "bottom area"
@@ -1184,7 +1188,7 @@
     },
     {
       "id": "directional-awareness",
-      "pattern": "\\b(above|below|next to|beside|adjacent|nearby|across from|opposite|behind|in front of|upper|lower|leftmost|rightmost|northeast|northwest|southeast|southwest|clockwise|counterclockwise)\\b",
+      "pattern": "\\b(above|below|next to|beside|adjacent|nearby|across from|opposite|behind|in front of|upper|lower|leftmost|rightmost|northeast|northwest|southeast|southwest|clockwise|counterclockwise|top right|top left|bottom right|bottom left|top center|bottom center|middle left|middle right|center|centered|middle|mid left|mid right|upper right|upper left|lower right|lower left|top|bottom|left|right)\\b",
       "flags": "gi",
       "personas": [
         "deaf-blind",
@@ -1210,7 +1214,18 @@
         "menu item below the search",
         "link next to the image",
         "opposite corner",
-        "clockwise from here"
+        "clockwise from here",
+        "top right",
+        "bottom left",
+        "top center",
+        "bottom center",
+        "middle left",
+        "middle right",
+        "center of the screen",
+        "upper right",
+        "lower left",
+        "mid right",
+        "top left corner"
       ]
     }
   ],
