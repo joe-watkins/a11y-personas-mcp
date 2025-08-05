@@ -4,7 +4,7 @@
 
 ### Core Infrastructure Improvements
 
-#### `validate-design`
+#### `validate-design` Tool
 Validates design specifications against accessibility personas.
 - **Parameters**: `design_description` (string), `personas` (array), `interaction_type` (string)
 - **Returns**: Accessibility issues identified per persona with severity levels
