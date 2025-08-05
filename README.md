@@ -65,6 +65,11 @@ Usage in Copilot:
 ### `analyze-persona-patterns`
 When adding a new Persona this analyzes an existing persona or new one and suggests accessibility pattern updates to maintain comprehensive coverage.
 
+Usage in Copilot:
+```
+#analyze-persona-patterns deaf-blind
+```
+
 **Parameters:**
 - `persona_id` (string): The persona identifier (e.g., "deaf-blind", "low-vision-taylor")
 - `auto_update` (boolean, optional): Whether to automatically update patterns file (default: false)
