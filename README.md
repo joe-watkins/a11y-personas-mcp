@@ -19,18 +19,6 @@ A simple MCP server that provides accessibility personas for different use cases
 
 The MCP server will now be available in your VS Code MCP client.
 
-## Usage
-
-```bash
-npm start
-```
-
-Or directly with tsx:
-
-```bash
-npx tsx main.js
-```
-
 ## Tools
 
 ### `get-persona`
