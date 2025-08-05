@@ -17,7 +17,15 @@
         "blindness-screen-reader-voiceover",
         "blindness-screen-reader-nvda",
         "blindness-low-vision-progressive",
-        "blindness-light-perception"
+        "blindness-light-perception",
+        "deafness-sign-language-user",
+        "deafness-oral-communicator",
+        "deafness-hard-of-hearing",
+        "deafness-late-deafened",
+        "deafness-deafblind",
+        "deafness-sign-language",
+        "blindness-braille",
+        "deafness-hoh"
       ],
       "severity": "HIGH",
       "issue": "Visual dependency",
@@ -65,7 +73,15 @@
         "blindness-screen-reader-voiceover",
         "blindness-screen-reader-nvda",
         "blindness-low-vision-progressive",
-        "blindness-light-perception"
+        "blindness-light-perception",
+        "deafness-sign-language-user",
+        "deafness-oral-communicator",
+        "deafness-hard-of-hearing",
+        "deafness-late-deafened",
+        "deafness-deafblind",
+        "deafness-sign-language",
+        "blindness-braille",
+        "deafness-hoh"
       ],
       "severity": "CRITICAL",
       "issue": "Speech requirement",
@@ -112,7 +128,15 @@
         "blindness-screen-reader-voiceover",
         "blindness-screen-reader-nvda",
         "blindness-low-vision-progressive",
-        "blindness-light-perception"
+        "blindness-light-perception",
+        "deafness-sign-language-user",
+        "deafness-oral-communicator",
+        "deafness-hard-of-hearing",
+        "deafness-late-deafened",
+        "deafness-deafblind",
+        "deafness-sign-language",
+        "blindness-braille",
+        "deafness-hoh"
       ],
       "severity": "MEDIUM",
       "issue": "Time pressure",
@@ -153,7 +177,15 @@
         "blindness-screen-reader-voiceover",
         "blindness-screen-reader-nvda",
         "blindness-low-vision-progressive",
-        "blindness-light-perception"
+        "blindness-light-perception",
+        "deafness-sign-language-user",
+        "deafness-oral-communicator",
+        "deafness-hard-of-hearing",
+        "deafness-late-deafened",
+        "deafness-deafblind",
+        "deafness-sign-language",
+        "blindness-braille",
+        "deafness-hoh"
       ],
       "severity": "HIGH",
       "issue": "Audio dependency",
@@ -228,7 +260,10 @@
         "autistic",
         "autistic-executive-function",
         "blindness-braille-user",
-        "blindness-low-vision-progressive"
+        "blindness-low-vision-progressive",
+        "deafness-sign-language-user",
+        "deafness-sign-language",
+        "blindness-braille"
       ],
       "severity": "MEDIUM",
       "issue": "Technical complexity",
@@ -258,7 +293,15 @@
         "blindness-screen-reader-voiceover",
         "blindness-screen-reader-nvda",
         "blindness-low-vision-progressive",
-        "blindness-light-perception"
+        "blindness-light-perception",
+        "deafness-sign-language-user",
+        "deafness-oral-communicator",
+        "deafness-hard-of-hearing",
+        "deafness-late-deafened",
+        "deafness-deafblind",
+        "deafness-sign-language",
+        "blindness-braille",
+        "deafness-hoh"
       ],
       "severity": "HIGH",
       "issue": "Session timeout pressure",
@@ -286,7 +329,15 @@
         "blindness-screen-reader-voiceover",
         "blindness-screen-reader-nvda",
         "blindness-low-vision-progressive",
-        "blindness-light-perception"
+        "blindness-light-perception",
+        "deafness-sign-language-user",
+        "deafness-oral-communicator",
+        "deafness-hard-of-hearing",
+        "deafness-late-deafened",
+        "deafness-deafblind",
+        "deafness-sign-language",
+        "blindness-braille",
+        "deafness-hoh"
       ],
       "severity": "CRITICAL",
       "issue": "Voice/audio assumption",
@@ -327,6 +378,70 @@
         "remember this code",
         "don't forget to",
         "memorize your PIN"
+      ]
+    },
+    {
+      "id": "literacy-assumption-deafness-oral-communicator",
+      "pattern": "\\b(read carefully|as you can see|obviously|clearly stated)\\b",
+      "flags": "gi",
+      "personas": [
+        "deafness-oral-communicator"
+      ],
+      "severity": "MEDIUM",
+      "issue": "Literacy assumption",
+      "suggestion": "Use simple language and provide audio or visual alternatives to text",
+      "examples": [
+        "read carefully through",
+        "as you can see",
+        "it's clearly stated"
+      ]
+    },
+    {
+      "id": "literacy-assumption-deafness-hard-of-hearing",
+      "pattern": "\\b(read carefully|as you can see|obviously|clearly stated)\\b",
+      "flags": "gi",
+      "personas": [
+        "deafness-hard-of-hearing"
+      ],
+      "severity": "MEDIUM",
+      "issue": "Literacy assumption",
+      "suggestion": "Use simple language and provide audio or visual alternatives to text",
+      "examples": [
+        "read carefully through",
+        "as you can see",
+        "it's clearly stated"
+      ]
+    },
+    {
+      "id": "literacy-assumption-deafness-late-deafened",
+      "pattern": "\\b(read carefully|as you can see|obviously|clearly stated)\\b",
+      "flags": "gi",
+      "personas": [
+        "deafness-late-deafened"
+      ],
+      "severity": "MEDIUM",
+      "issue": "Literacy assumption",
+      "suggestion": "Use simple language and provide audio or visual alternatives to text",
+      "examples": [
+        "read carefully through",
+        "as you can see",
+        "it's clearly stated"
+      ]
+    },
+    {
+      "id": "literacy-assumption-deafness-hoh",
+      "pattern": "\\b(read carefully|as you can see|obviously|clearly stated)\\b",
+      "flags": "gi",
+      "personas": [
+        "deafness-hoh"
+      ],
+      "severity": "MEDIUM",
+      "issue": "Literacy assumption",
+      "suggestion": "Use simple language and provide audio or visual alternatives to text",
+      "examples": [
+        "read carefully through",
+        "as you can see",
+        "it's clearly stated"
       ]
     }
   ],
