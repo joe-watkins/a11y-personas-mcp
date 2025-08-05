@@ -97,6 +97,7 @@ This MCP server provides access to 60+ accessibility personas covering permanent
 - **Deafness (Sign Language User, Also Uses Speech)** - Bilingual communication
 - **Deafness (Sign Language User)** - Sign language communication
 - **Major Depression (Low Motivation)** - Depression-related challenges
+- **Dyscalculia (Number Processing)** - Difficulties with numerical concepts
 - **Dyslexia (Reading/Processing)** - Reading and text processing difficulties
 - **Epilepsy (Seizure Risk)** - Seizure sensitivity considerations
 - **Eye Patch (Temporary Monocular Vision)** - Temporary single-eye vision
@@ -121,6 +122,7 @@ This MCP server provides access to 60+ accessibility personas covering permanent
 - **Holding Child (One-Handed)** - Situational one-handed use
 - **Public Place (Privacy Concern)** - Privacy and discretion needs
 - **Tourette's Syndrome (Tics)** - Involuntary movement considerations
+- **Vestibular Balance Disorder** - Sensitivity to motion
 - **Visual Processing Disorder** - Visual information processing difficulties
 
 Each persona includes detailed profile information, interaction preferences, key needs, and cross-functional guidance for customer care, development, design, and testing teams.
