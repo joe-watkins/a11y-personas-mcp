@@ -3,3 +3,5 @@ node_modules/
 .env
 dist/
 scripts/
+prompts.md
+test-regex.js
