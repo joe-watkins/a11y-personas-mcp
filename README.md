@@ -259,6 +259,11 @@ Issue category: account-access
 
 **Expected Result:** Much higher accessibility grade with inclusive alternatives.
 
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for how to get involved.
+
 ## Resources
 
 ### Model Context Protocol (MCP)
