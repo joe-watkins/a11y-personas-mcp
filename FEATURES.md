@@ -136,7 +136,7 @@ Generates measurable accessibility goals.
 - CI/CD pipeline integration for accessibility testing
 - Design system integration for component validation
 
-## #get-persona multiple personas
+## #get-persona Tool multiple personas support
 Add support for retrieving multiple personas at once, allowing users to specify a list of personas they want to retrieve.
 
 Add support for retrieving personas by Title and ID, allowing users to specify either a title or ID to retrieve the corresponding persona.
@@ -148,3 +148,10 @@ Retrieve personas for low vision and deaf-blind users.
 #get-persona "low vision", "deaf-blind"
 Retrieve personas for low vision and deaf-blind users by title.
 ```
+
+## Product Requirements Review Tool
+### `review-product-requirements`
+Reviews product requirements through the lens of accessibility personas to identify barriers and suggest improvements.
+- **Parameters**: `requirements` (string), `personas` (array)
+- **Returns**: Accessibility grade (A-F), persona-specific issues with severity levels, suggested improvements, and inclusive alternatives.
+- **Use Case**: Product managers can ensure requirements are inclusive from the start
