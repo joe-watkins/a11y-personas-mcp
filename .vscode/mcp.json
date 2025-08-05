@@ -1,11 +1,11 @@
 {
 	"servers": {
-		"a11y-personas-mcp": {
+		"A11y Personas MCP": {
 			"type": "stdio",
 			"command": "npm",
 			"args": [
-				"--silent",
-				"start"
+				"start",
+				"--silent"
 			]
 		}
 	},

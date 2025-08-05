@@ -5,3 +5,4 @@ dist/
 scripts/
 prompts.md
 test-regex.js
+.vscode/
