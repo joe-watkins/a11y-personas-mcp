@@ -5,5 +5,5 @@ dist/
 scripts/
 prompts.md
 test-regex.js
-.vscode/
 FEATURES.md
+.vscode/
