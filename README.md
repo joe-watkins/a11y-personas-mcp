@@ -178,19 +178,12 @@ Show me the sighted deaf hard-of-hearing persona with low tech skills
 
 **Review a support script for accessibility issues:**
 ```
-Review this customer support script for accessibility issues:
-
-"Hello, thank you for calling support. Please look at your screen and click on the red 'Account Settings' button in the top right corner. Once you see the settings page load, please tell me verbally what you see so I can confirm you're in the right place. If you don't see it within 10 seconds, refresh your browser and try again."
-
-Script type: phone
-Issue category: account-access
+#review-customer-support-scripts "Hello, thank you for calling support. Please look at your screen and click on the red 'Account Settings' button in the top right corner. Once you see the settings page load, please tell me verbally what you see so I can confirm you're in the right place. If you don't see it within 10 seconds, refresh your browser and try again."
 ```
 
 **Review with specific personas:**
 ```
-Review this chat support script focusing on motor-impaired and deaf users:
-
-"Hi! To help you reset your password, I need you to quickly navigate to your email and click the reset link we just sent. Please do this now and let me know when you see the confirmation page."
+#review-customer-support-scripts "Hi! To help you reset your password, I need you to quickly navigate to your email and click the reset link we just sent. Please do this now and let me know when you see the confirmation page."
 
 Script type: chat  
 Issue category: technical-support
@@ -199,9 +192,7 @@ Personas: ["motor-impaired-non-speaking", "sighted-deaf-hoh-low-tech"]
 
 **Review different script types:**
 ```
-Review this email support template:
-
-"Thank you for contacting support. Please watch the attached video tutorial to resolve your issue. If you can't see the solution clearly, call our phone support line for further assistance."
+#review-customer-support-scripts "Thank you for contacting support. Please watch the attached video tutorial to resolve your issue. If you can't see the solution clearly, call our phone support line for further assistance."
 
 Script type: email
 Issue category: technical-support
