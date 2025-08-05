@@ -2,8 +2,6 @@
 
 A Model Context Protocol (MCP) server designed for AI and LLM-powered accessibility analysis, automation, and inclusive design evaluation. This project provides 60+ structured accessibility personas and tools for use by AI agents, Copilot, and other LLM-based systems. Whether you want to review designs, test code or content against personas, ask accessibility consulting questions, review customer support scripts, or integrate inclusive practices into your workflow, this server enables AI-driven accessibility insights and recommendations.
 
-![Screenshot of list-personas output](https://github.com/joe-watkins/a11y-personas-mcp/blob/main/images/image.png?raw=true)
-
 ## Important note about synthetic users with disabilities
 
 **These synthetic personas are educational tools and starting points for accessibility considerations—they do not replace the need to work directly with real people with disabilities.** Each person's experience with disability is unique, and these generalized personas may not accurately reflect the full spectrum of real-world impacts, adaptive strategies, or individual preferences. For meaningful accessibility improvements, always prioritize user research, usability testing, and direct feedback from people with disabilities in your target audience.
@@ -29,6 +27,7 @@ Usage in Copilot:
 ```
 #list-personas
 ```
+![Screenshot of list-personas output](https://github.com/joe-watkins/a11y-personas-mcp/blob/main/readme-images/list-personas-show-some.png?raw=true)
 
 ### `get-persona`
 Retrieves the complete accessibility persona documentation for a specific persona.
@@ -48,6 +47,9 @@ Usage in Copilot:
 
 **Returns:** Formatted list of all available personas with user-friendly titles.
 
+![Screenshot of list-personas output](https://github.com/joe-watkins/a11y-personas-mcp/blob/main/readme-images/get-persona-single.png?raw=true)
+
+
 ### `review-customer-support-scripts`
 Reviews customer support scripts through the lens of accessibility personas to identify barriers and suggest improvements.
 
@@ -63,6 +65,9 @@ Usage in Copilot:
 - `personas` (array, optional): Specific personas to focus on (default: all)
 
 **Returns:** Accessibility grade (A-F), persona-specific issues with severity levels, suggested improvements, and inclusive alternatives.
+
+![Screenshot of list-personas output](https://github.com/joe-watkins/a11y-personas-mcp/blob/main/readme-images/review-customer-support-script.png?raw=true)
+
 
 ### `analyze-persona-patterns`
 When adding a new Persona this analyzes an existing persona or new one and suggests accessibility pattern updates to maintain comprehensive coverage.
