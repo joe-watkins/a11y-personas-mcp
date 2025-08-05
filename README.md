@@ -6,18 +6,18 @@ A simple MCP server that provides accessibility personas for different use cases
 
 **These synthetic personas are educational tools and starting points for accessibility considerations—they do not replace the need to work directly with real people with disabilities.** Each person's experience with disability is unique, and these generalized personas may not accurately reflect the full spectrum of real-world impacts, adaptive strategies, or individual preferences. For meaningful accessibility improvements, always prioritize user research, usability testing, and direct feedback from people with disabilities in your target audience.
 
-## Installation in VS Code
-
-1. Open VS Code Command Palette (`Cmd+Shift+P` on Mac, `Ctrl+Shift+P` on Windows/Linux)
-2. Search for "MCP install" and select it
-3. Choose "Command (stdio)" as the connection type
-4. Configure the MCP server:
+## Installation in VS Code . Copilot
+1. Clone this project
+2. Open VS Code Command Palette (`Cmd+Shift+P` on Mac, `Ctrl+Shift+P` on Windows/Linux)
+3. Search for "MCP install" and select it
+4. Choose "Command (stdio)" as the connection type
+5. Configure the MCP server:
    - **Command**: `npm start --silent`
    - **Name**: `A11y Personas MCP`
    - **Type**: Local MCP
 5. Save the configuration
 
-The MCP server will now be available in your VS Code MCP client.
+The MCP server will now be available in your VS Code MCP clients list. Ensure you are in Agent mode and run the  `#list-personas` tool in Copilot to list all personas and to start working with them.
 
 ## Tools
 
