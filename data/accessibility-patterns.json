@@ -57,7 +57,9 @@
         "blindness-screen-reader-voiceover",
         "chronic-pain-mobility",
         "one-handed-limb-difference",
-        "multiple-sclerosis-fluctuating"
+        "multiple-sclerosis-fluctuating",
+        "paraplegia-wheelchair",
+        "tourettes-syndrome"
       ],
       "severity": "MEDIUM",
       "issue": "Input method assumption",
@@ -101,7 +103,17 @@
         "speech-impairment-communication",
         "one-handed-limb-difference",
         "multiple-sclerosis-fluctuating",
-        "cognitive-memory-loss"
+        "cognitive-memory-loss",
+        "chronic-fatigue-syndrome",
+        "paraplegia-wheelchair",
+        "tourettes-syndrome",
+        "ptsd-trauma",
+        "intellectual-disability-mild",
+        "parkinson-tremor",
+        "depression-major",
+        "autism-non-speaking",
+        "hearing-loss-age-related",
+        "visual-processing-disorder"
       ],
       "severity": "CRITICAL",
       "issue": "Speech requirement",
@@ -164,7 +176,15 @@
         "anxiety-mental-health",
         "one-handed-limb-difference",
         "multiple-sclerosis-fluctuating",
-        "cognitive-memory-loss"
+        "cognitive-memory-loss",
+        "chronic-fatigue-syndrome",
+        "paraplegia-wheelchair",
+        "tourettes-syndrome",
+        "intellectual-disability-mild",
+        "parkinson-tremor",
+        "depression-major",
+        "autism-non-speaking",
+        "visual-processing-disorder"
       ],
       "severity": "MEDIUM",
       "issue": "Time pressure",
@@ -219,7 +239,16 @@
         "speech-impairment-communication",
         "one-handed-limb-difference",
         "multiple-sclerosis-fluctuating",
-        "cognitive-memory-loss"
+        "cognitive-memory-loss",
+        "chronic-fatigue-syndrome",
+        "paraplegia-wheelchair",
+        "tourettes-syndrome",
+        "ptsd-trauma",
+        "intellectual-disability-mild",
+        "parkinson-tremor",
+        "depression-major",
+        "autism-non-speaking",
+        "hearing-loss-age-related"
       ],
       "severity": "HIGH",
       "issue": "Audio dependency",
@@ -240,7 +269,9 @@
         "blindness-screen-reader-voiceover",
         "chronic-pain-mobility",
         "one-handed-limb-difference",
-        "multiple-sclerosis-fluctuating"
+        "multiple-sclerosis-fluctuating",
+        "paraplegia-wheelchair",
+        "tourettes-syndrome"
       ],
       "severity": "HIGH",
       "issue": "Physical capability assumption",
@@ -279,7 +310,9 @@
         "blindness-screen-reader-voiceover",
         "chronic-pain-mobility",
         "one-handed-limb-difference",
-        "multiple-sclerosis-fluctuating"
+        "multiple-sclerosis-fluctuating",
+        "paraplegia-wheelchair",
+        "tourettes-syndrome"
       ],
       "severity": "HIGH",
       "issue": "Mouse dependency",
@@ -307,7 +340,10 @@
         "adhd-attention",
         "anxiety-mental-health",
         "multiple-sclerosis-fluctuating",
-        "cognitive-memory-loss"
+        "cognitive-memory-loss",
+        "chronic-fatigue-syndrome",
+        "tourettes-syndrome",
+        "intellectual-disability-mild"
       ],
       "severity": "MEDIUM",
       "issue": "Technical complexity",
@@ -353,7 +389,15 @@
         "anxiety-mental-health",
         "one-handed-limb-difference",
         "multiple-sclerosis-fluctuating",
-        "cognitive-memory-loss"
+        "cognitive-memory-loss",
+        "chronic-fatigue-syndrome",
+        "paraplegia-wheelchair",
+        "tourettes-syndrome",
+        "intellectual-disability-mild",
+        "parkinson-tremor",
+        "depression-major",
+        "autism-non-speaking",
+        "visual-processing-disorder"
       ],
       "severity": "HIGH",
       "issue": "Session timeout pressure",
@@ -396,7 +440,17 @@
         "speech-impairment-communication",
         "one-handed-limb-difference",
         "multiple-sclerosis-fluctuating",
-        "cognitive-memory-loss"
+        "cognitive-memory-loss",
+        "chronic-fatigue-syndrome",
+        "paraplegia-wheelchair",
+        "tourettes-syndrome",
+        "ptsd-trauma",
+        "intellectual-disability-mild",
+        "parkinson-tremor",
+        "depression-major",
+        "autism-non-speaking",
+        "hearing-loss-age-related",
+        "visual-processing-disorder"
       ],
       "severity": "CRITICAL",
       "issue": "Voice/audio assumption",
