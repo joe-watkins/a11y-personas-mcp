@@ -25,7 +25,17 @@
         "deafness-deafblind",
         "deafness-sign-language",
         "blindness-braille",
-        "deafness-hoh"
+        "deafness-hoh",
+        "chronic-pain-mobility",
+        "adhd-attention",
+        "dyslexia-reading",
+        "color-vision-deficiency",
+        "speech-impairment-communication",
+        "anxiety-mental-health",
+        "epilepsy-seizure-risk",
+        "one-handed-limb-difference",
+        "multiple-sclerosis-fluctuating",
+        "cognitive-memory-loss"
       ],
       "severity": "HIGH",
       "issue": "Visual dependency",
@@ -44,7 +54,10 @@
         "motor-impaired-non-speaking",
         "deaf-blind",
         "autistic-rule-oriented",
-        "blindness-screen-reader-voiceover"
+        "blindness-screen-reader-voiceover",
+        "chronic-pain-mobility",
+        "one-handed-limb-difference",
+        "multiple-sclerosis-fluctuating"
       ],
       "severity": "MEDIUM",
       "issue": "Input method assumption",
@@ -81,7 +94,14 @@
         "deafness-deafblind",
         "deafness-sign-language",
         "blindness-braille",
-        "deafness-hoh"
+        "deafness-hoh",
+        "chronic-pain-mobility",
+        "adhd-attention",
+        "dyslexia-reading",
+        "speech-impairment-communication",
+        "one-handed-limb-difference",
+        "multiple-sclerosis-fluctuating",
+        "cognitive-memory-loss"
       ],
       "severity": "CRITICAL",
       "issue": "Speech requirement",
@@ -136,7 +156,15 @@
         "deafness-deafblind",
         "deafness-sign-language",
         "blindness-braille",
-        "deafness-hoh"
+        "deafness-hoh",
+        "chronic-pain-mobility",
+        "adhd-attention",
+        "dyslexia-reading",
+        "speech-impairment-communication",
+        "anxiety-mental-health",
+        "one-handed-limb-difference",
+        "multiple-sclerosis-fluctuating",
+        "cognitive-memory-loss"
       ],
       "severity": "MEDIUM",
       "issue": "Time pressure",
@@ -185,7 +213,13 @@
         "deafness-deafblind",
         "deafness-sign-language",
         "blindness-braille",
-        "deafness-hoh"
+        "deafness-hoh",
+        "adhd-attention",
+        "dyslexia-reading",
+        "speech-impairment-communication",
+        "one-handed-limb-difference",
+        "multiple-sclerosis-fluctuating",
+        "cognitive-memory-loss"
       ],
       "severity": "HIGH",
       "issue": "Audio dependency",
@@ -203,7 +237,10 @@
       "personas": [
         "motor-impaired-non-speaking",
         "autistic-rule-oriented",
-        "blindness-screen-reader-voiceover"
+        "blindness-screen-reader-voiceover",
+        "chronic-pain-mobility",
+        "one-handed-limb-difference",
+        "multiple-sclerosis-fluctuating"
       ],
       "severity": "HIGH",
       "issue": "Physical capability assumption",
@@ -239,7 +276,10 @@
         "motor-impaired-non-speaking",
         "deaf-blind",
         "autistic-rule-oriented",
-        "blindness-screen-reader-voiceover"
+        "blindness-screen-reader-voiceover",
+        "chronic-pain-mobility",
+        "one-handed-limb-difference",
+        "multiple-sclerosis-fluctuating"
       ],
       "severity": "HIGH",
       "issue": "Mouse dependency",
@@ -263,7 +303,11 @@
         "blindness-low-vision-progressive",
         "deafness-sign-language-user",
         "deafness-sign-language",
-        "blindness-braille"
+        "blindness-braille",
+        "adhd-attention",
+        "anxiety-mental-health",
+        "multiple-sclerosis-fluctuating",
+        "cognitive-memory-loss"
       ],
       "severity": "MEDIUM",
       "issue": "Technical complexity",
@@ -301,7 +345,15 @@
         "deafness-deafblind",
         "deafness-sign-language",
         "blindness-braille",
-        "deafness-hoh"
+        "deafness-hoh",
+        "chronic-pain-mobility",
+        "adhd-attention",
+        "dyslexia-reading",
+        "speech-impairment-communication",
+        "anxiety-mental-health",
+        "one-handed-limb-difference",
+        "multiple-sclerosis-fluctuating",
+        "cognitive-memory-loss"
       ],
       "severity": "HIGH",
       "issue": "Session timeout pressure",
@@ -337,7 +389,14 @@
         "deafness-deafblind",
         "deafness-sign-language",
         "blindness-braille",
-        "deafness-hoh"
+        "deafness-hoh",
+        "chronic-pain-mobility",
+        "adhd-attention",
+        "dyslexia-reading",
+        "speech-impairment-communication",
+        "one-handed-limb-difference",
+        "multiple-sclerosis-fluctuating",
+        "cognitive-memory-loss"
       ],
       "severity": "CRITICAL",
       "issue": "Voice/audio assumption",
@@ -434,6 +493,22 @@
       "flags": "gi",
       "personas": [
         "deafness-hoh"
+      ],
+      "severity": "MEDIUM",
+      "issue": "Literacy assumption",
+      "suggestion": "Use simple language and provide audio or visual alternatives to text",
+      "examples": [
+        "read carefully through",
+        "as you can see",
+        "it's clearly stated"
+      ]
+    },
+    {
+      "id": "literacy-assumption-dyslexia-reading",
+      "pattern": "\\b(read carefully|as you can see|obviously|clearly stated)\\b",
+      "flags": "gi",
+      "personas": [
+        "dyslexia-reading"
       ],
       "severity": "MEDIUM",
       "issue": "Literacy assumption",
