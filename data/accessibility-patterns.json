@@ -4,138 +4,254 @@
       "id": "visual-dependency",
       "pattern": "\\b(look|see|view|watch|observe)\\b",
       "flags": "gi",
-      "personas": ["deaf-blind", "low-vision-taylor"],
+      "personas": [
+        "deaf-blind",
+        "low-vision-taylor",
+        "low-vision"
+      ],
       "severity": "HIGH",
       "issue": "Visual dependency",
       "suggestion": "Use device-agnostic language like 'navigate to' or 'access' instead of visual terms",
-      "examples": ["look at your screen", "see the button", "watch for the popup"]
+      "examples": [
+        "look at your screen",
+        "see the button",
+        "watch for the popup"
+      ]
     },
     {
       "id": "input-method-assumption",
       "pattern": "\\b(click|tap|touch)\\b",
       "flags": "gi",
-      "personas": ["motor-impaired-non-speaking", "deaf-blind"],
+      "personas": [
+        "motor-impaired-non-speaking",
+        "deaf-blind"
+      ],
       "severity": "MEDIUM",
       "issue": "Input method assumption",
       "suggestion": "Use 'select' or 'choose' instead of specific input methods",
-      "examples": ["click the button", "tap here", "touch the screen"]
+      "examples": [
+        "click the button",
+        "tap here",
+        "touch the screen"
+      ]
     },
     {
       "id": "speech-requirement",
       "pattern": "\\b(tell me|say|speak|verbally)\\b",
       "flags": "gi",
-      "personas": ["deaf-blind", "motor-impaired-non-speaking", "sighted-deaf-hoh-low-tech"],
+      "personas": [
+        "deaf-blind",
+        "motor-impaired-non-speaking",
+        "sighted-deaf-hoh-low-tech",
+        "low-vision"
+      ],
       "severity": "CRITICAL",
       "issue": "Speech requirement",
       "suggestion": "Offer multiple communication methods (email, text, or describe in any way comfortable)",
-      "examples": ["tell me when you see it", "say your account number", "speak clearly"]
+      "examples": [
+        "tell me when you see it",
+        "say your account number",
+        "speak clearly"
+      ]
     },
     {
       "id": "color-dependency",
       "pattern": "\\b(red|green|blue|yellow|orange|purple|pink|black|white)\\s+(button|link|text|icon|area)\\b",
       "flags": "gi",
-      "personas": ["deaf-blind", "low-vision-taylor"],
+      "personas": [
+        "deaf-blind",
+        "low-vision-taylor"
+      ],
       "severity": "HIGH",
       "issue": "Color dependency",
       "suggestion": "Use descriptive labels or positions instead of color references",
-      "examples": ["red button", "green link", "blue text"]
+      "examples": [
+        "red button",
+        "green link",
+        "blue text"
+      ]
     },
     {
       "id": "time-pressure",
       "pattern": "\\b(quickly|fast|within \\d+ seconds?|hurry|immediate|right away)\\b",
       "flags": "gi",
-      "personas": ["motor-impaired-non-speaking", "low-vision-taylor", "deaf-blind"],
+      "personas": [
+        "motor-impaired-non-speaking",
+        "low-vision-taylor",
+        "deaf-blind",
+        "low-vision"
+      ],
       "severity": "MEDIUM",
       "issue": "Time pressure",
       "suggestion": "Remove time constraints and allow users to work at their own pace",
-      "examples": ["quickly click", "within 10 seconds", "hurry up"]
+      "examples": [
+        "quickly click",
+        "within 10 seconds",
+        "hurry up"
+      ]
     },
     {
       "id": "spatial-direction",
       "pattern": "\\b(top|bottom|left|right)\\s+(corner|side|area|section)\\b",
       "flags": "gi",
-      "personas": ["deaf-blind"],
+      "personas": [
+        "deaf-blind"
+      ],
       "severity": "MEDIUM",
       "issue": "Spatial direction",
       "suggestion": "Use semantic descriptions or send direct links instead of spatial directions",
-      "examples": ["top right corner", "left side", "bottom area"]
+      "examples": [
+        "top right corner",
+        "left side",
+        "bottom area"
+      ]
     },
     {
       "id": "audio-dependency",
       "pattern": "\\b(hear|listen|sound|audio|beep|tone)\\b",
       "flags": "gi",
-      "personas": ["sighted-deaf-hoh-low-tech", "deaf-blind"],
+      "personas": [
+        "sighted-deaf-hoh-low-tech",
+        "deaf-blind"
+      ],
       "severity": "HIGH",
       "issue": "Audio dependency",
       "suggestion": "Provide visual alternatives or text-based confirmations",
-      "examples": ["hear the confirmation", "listen for the beep", "sound will play"]
+      "examples": [
+        "hear the confirmation",
+        "listen for the beep",
+        "sound will play"
+      ]
     },
     {
       "id": "physical-capability-assumption",
       "pattern": "\\b(hold down|press and hold|drag|swipe|pinch|zoom)\\b",
       "flags": "gi",
-      "personas": ["motor-impaired-non-speaking"],
+      "personas": [
+        "motor-impaired-non-speaking"
+      ],
       "severity": "HIGH",
       "issue": "Physical capability assumption",
       "suggestion": "Provide alternative interaction methods for complex gestures",
-      "examples": ["hold down the key", "drag the item", "pinch to zoom"]
+      "examples": [
+        "hold down the key",
+        "drag the item",
+        "pinch to zoom"
+      ]
     },
     {
       "id": "reading-speed-assumption",
       "pattern": "\\b(scan|skim|glance|at a glance)\\b",
       "flags": "gi",
-      "personas": ["low-vision-taylor", "deaf-blind"],
+      "personas": [
+        "low-vision-taylor",
+        "deaf-blind"
+      ],
       "severity": "MEDIUM",
       "issue": "Reading speed assumption",
       "suggestion": "Allow time for thorough reading and navigation",
-      "examples": ["scan the page", "glance at the results", "skim through"]
+      "examples": [
+        "scan the page",
+        "glance at the results",
+        "skim through"
+      ]
     },
     {
       "id": "mouse-dependency",
       "pattern": "\\b(right-click|double-click|mouse over|hover|cursor)\\b",
       "flags": "gi",
-      "personas": ["motor-impaired-non-speaking", "deaf-blind"],
+      "personas": [
+        "motor-impaired-non-speaking",
+        "deaf-blind"
+      ],
       "severity": "HIGH",
       "issue": "Mouse dependency",
       "suggestion": "Provide keyboard alternatives and avoid mouse-specific interactions",
-      "examples": ["right-click to open", "hover over the menu", "move your cursor"]
+      "examples": [
+        "right-click to open",
+        "hover over the menu",
+        "move your cursor"
+      ]
     },
     {
       "id": "technical-jargon",
       "pattern": "\\b(URL|API|cache|cookies|browser|refresh|F5|Ctrl\\+)\\b",
       "flags": "gi",
-      "personas": ["sighted-deaf-hoh-low-tech"],
+      "personas": [
+        "sighted-deaf-hoh-low-tech",
+        "low-vision"
+      ],
       "severity": "MEDIUM",
       "issue": "Technical complexity",
       "suggestion": "Use simple, non-technical language and provide clear explanations",
-      "examples": ["clear your cache", "press F5", "enter the URL"]
+      "examples": [
+        "clear your cache",
+        "press F5",
+        "enter the URL"
+      ]
     },
     {
       "id": "session-timeout-pressure",
       "pattern": "\\b(session will expire|timeout|logged out automatically|time remaining)\\b",
       "flags": "gi",
-      "personas": ["motor-impaired-non-speaking", "deaf-blind", "low-vision-taylor"],
+      "personas": [
+        "motor-impaired-non-speaking",
+        "deaf-blind",
+        "low-vision-taylor",
+        "low-vision"
+      ],
       "severity": "HIGH",
       "issue": "Session timeout pressure",
       "suggestion": "Provide warnings and allow session extensions, or remove time limits entirely",
-      "examples": ["session will expire in 5 minutes", "you'll be logged out automatically", "time remaining"]
+      "examples": [
+        "session will expire in 5 minutes",
+        "you'll be logged out automatically",
+        "time remaining"
+      ]
     },
     {
       "id": "voice-tone-assumption",
       "pattern": "\\b(I can hear|you sound|your tone|speak louder|speak slower)\\b",
       "flags": "gi",
-      "personas": ["deaf-blind", "sighted-deaf-hoh-low-tech"],
+      "personas": [
+        "deaf-blind",
+        "sighted-deaf-hoh-low-tech",
+        "low-vision"
+      ],
       "severity": "CRITICAL",
       "issue": "Voice/audio assumption",
       "suggestion": "Avoid references to voice, tone, or audio qualities - use text-based communication",
-      "examples": ["I can hear you're frustrated", "you sound confused", "speak louder please"]
+      "examples": [
+        "I can hear you're frustrated",
+        "you sound confused",
+        "speak louder please"
+      ]
+    },
+    {
+      "id": "cognitive-load-low-vision",
+      "pattern": "\\b(remember|recall|complex|complicated|multiple steps)\\b",
+      "flags": "gi",
+      "personas": [
+        "low-vision"
+      ],
+      "severity": "MEDIUM",
+      "issue": "Cognitive load assumption",
+      "suggestion": "Simplify instructions and provide step-by-step guidance with clear progression",
+      "examples": [
+        "remember your password",
+        "follow these complex steps",
+        "recall the information"
+      ]
     }
   ],
   "contextualChecks": [
     {
       "id": "phone-only-support",
       "condition": "scriptType === 'phone' && !scriptContent.toLowerCase().includes('email') && !scriptContent.toLowerCase().includes('text')",
-      "personas": ["sighted-deaf-hoh-low-tech", "deaf-blind"],
+      "personas": [
+        "sighted-deaf-hoh-low-tech",
+        "deaf-blind"
+      ],
       "severity": "HIGH",
       "issue": "Phone-only support",
       "suggestion": "Offer alternative communication channels (email, chat, text)"
@@ -143,7 +259,9 @@
     {
       "id": "visual-verification-only",
       "condition": "scriptContent.toLowerCase().includes('verification code') && scriptContent.toLowerCase().includes('screen') && !scriptContent.toLowerCase().includes('email')",
-      "personas": ["deaf-blind"],
+      "personas": [
+        "deaf-blind"
+      ],
       "severity": "CRITICAL",
       "issue": "Visual-only verification",
       "suggestion": "Provide email or SMS alternatives for verification codes"
