@@ -8,8 +8,8 @@ A simple MCP server that provides accessibility personas for different use cases
 2. Search for "MCP install" and select it
 3. Choose "Command (stdio)" as the connection type
 4. Configure the MCP server:
-   - **Command**: `npm start`
-   - **Name**: `a11y-personas-mcp`
+   - **Command**: `npm start --silent`
+   - **Name**: `A11y Personas MCP`
    - **Type**: Local MCP
 5. Save the configuration
 
@@ -56,7 +56,7 @@ Reviews customer support scripts through the lens of accessibility personas to i
 **Returns:** Accessibility grade (A-F), persona-specific issues with severity levels, suggested improvements, and inclusive alternatives.
 
 ### `analyze-persona-patterns`
-Analyzes an existing persona and suggests accessibility pattern updates to maintain comprehensive coverage.
+When adding a new Persona this analyzes an existing persona or new one and suggests accessibility pattern updates to maintain comprehensive coverage.
 
 **Parameters:**
 - `persona_id` (string): The persona identifier (e.g., "deaf-blind", "low-vision-taylor")
@@ -66,14 +66,64 @@ Analyzes an existing persona and suggests accessibility pattern updates to maint
 
 ## Available Personas
 
-This MCP server provides access to the following accessibility personas:
+This MCP server provides access to 60+ accessibility personas covering permanent disabilities, temporary impairments, and situational limitations:
 
-- **Deafblind Person** (`deaf-blind`) - Individual with profound hearing and vision loss
-- **Low Vision User - Taylor Kim** (`low-vision-taylor`) - User with low vision accessibility needs  
-- **Motor-Impaired / Non-Speaking Person** (`motor-impaired-non-speaking`) - Individual with motor impairments and communication needs
-- **Sighted Deaf or Hard-of-Hearing user with limited technical ability** (`sighted-deaf-hoh-low-tech`) - Deaf/HoH user with basic technical skills
+- **ADHD (Attention/Executive Function)** - Focus and executive function challenges
+- **Aging (Multiple Mild Impairments)** - Combined age-related accessibility needs
+- **Anxiety (Mental Health)** - Anxiety-related interaction considerations
+- **Arthritis (Rheumatoid)** - Joint pain and mobility limitations
+- **Autistic (Communication Differences)** - Communication and social interaction needs
+- **Autistic (Executive Function Differences)** - Planning and organizational challenges
+- **Autism (Non-Speaking)** - Non-verbal communication needs
+- **Autistic (Rule-Oriented)** - Preference for clear, consistent patterns
+- **Autistic (Sensory Sensitive)** - Sensory processing sensitivities
+- **Autistic (Visual Thinker)** - Visual processing preferences
+- **Autistic** - General autism spectrum considerations
+- **Blindness (Braille User)** - Braille reading and tactile navigation
+- **Blindness (Light Perception Only)** - Minimal light perception
+- **Blindness (Low Vision, Progressive)** - Declining vision over time
+- **Blindness (Screen Reader - NVDA)** - NVDA screen reader user
+- **Blindness (Screen Reader - VoiceOver)** - VoiceOver screen reader user
+- **Broken Dominant Arm (Temporary One-Handed)** - Temporary one-handed use
+- **Cognitive (Age-Related Memory Loss)** - Memory and cognitive decline
+- **Color Vision Deficiency (Colorblindness)** - Color perception limitations
+- **Concussion (Cognitive Fatigue)** - Cognitive processing difficulties
+- **Deafblind Person** - Combined hearing and vision loss
+- **Deafness (Deafblind)** - Profound hearing and vision loss
+- **Deafness (Hard of Hearing)** - Partial hearing loss
+- **Deafness (Late-Deafened)** - Hearing loss later in life
+- **Deafness (Oral Communicator)** - Oral communication preference
+- **Deafness (Sign Language First, No Residual Hearing)** - Primary sign language user
+- **Deafness (Sign Language User, Also Uses Speech)** - Bilingual communication
+- **Deafness (Sign Language User)** - Sign language communication
+- **Major Depression (Low Motivation)** - Depression-related challenges
+- **Dyslexia (Reading/Processing)** - Reading and text processing difficulties
+- **Epilepsy (Seizure Risk)** - Seizure sensitivity considerations
+- **Eye Patch (Temporary Monocular Vision)** - Temporary single-eye vision
+- **Chronic Fatigue Syndrome (Variable Energy)** - Fluctuating energy levels
+- **Hearing Loss (Age-Related)** - Progressive hearing decline
+- **Intellectual Disability (Mild)** - Cognitive processing considerations
+- **Laryngitis (Temporary Voice Loss)** - Temporary speech limitations
+- **Non-Native/Low Literacy Digital** - Limited digital literacy
+- **Low Vision User** - Partial vision impairment
+- **Migraine (Light/Sound Sensitivity)** - Sensory trigger sensitivity
+- **Chronic Pain (Mobility/Energy)** - Pain-related limitations
+- **One-Handed (Limb Difference)** - Single-hand interaction needs
+- **Motor-Impaired / Non-Speaking Person** - Motor and communication challenges
+- **Multiple Sclerosis (Fluctuating Ability)** - Variable symptom presentation
+- **Noisy Environment (Limited Audio)** - Environmental audio challenges
+- **Paraplegia (Wheelchair User)** - Wheelchair mobility needs
+- **Parkinson's Disease (Tremor)** - Movement control difficulties
+- **PTSD (Trauma-Related)** - Trauma-sensitive interaction needs
+- **Sighted Deaf or Hard-of-Hearing user with limited technical ability** - Deaf/HoH with basic tech skills
+- **Speech Impairment (Communication)** - Speech production challenges
+- **Crisis Situation (Acute Stress)** - High-stress emergency scenarios
+- **Holding Child (One-Handed)** - Situational one-handed use
+- **Public Place (Privacy Concern)** - Privacy and discretion needs
+- **Tourette's Syndrome (Tics)** - Involuntary movement considerations
+- **Visual Processing Disorder** - Visual information processing difficulties
 
-Each persona includes detailed information about their profile, interaction style, key accessibility needs, and cross-functional considerations for customer care, development, design/UX, and testing teams.
+Each persona includes detailed profile information, interaction preferences, key needs, and cross-functional guidance for customer care, development, design, and testing teams.
 
 ## Sample Prompts
 
