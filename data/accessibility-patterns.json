@@ -1181,6 +1181,37 @@
         "must complete now",
         "no breaks allowed"
       ]
+    },
+    {
+      "id": "directional-awareness",
+      "pattern": "\\b(above|below|next to|beside|adjacent|nearby|across from|opposite|behind|in front of|upper|lower|leftmost|rightmost|northeast|northwest|southeast|southwest|clockwise|counterclockwise)\\b",
+      "flags": "gi",
+      "personas": [
+        "deaf-blind",
+        "blindness-braille-user",
+        "blindness-screen-reader-voiceover",
+        "blindness-screen-reader-nvda",
+        "blindness-low-vision-progressive",
+        "blindness-light-perception",
+        "blindness-braille",
+        "low-vision",
+        "eye-patch-temporary-vision",
+        "temp-eye-patch-temporary-vision",
+        "visual-processing-disorder",
+        "cognitive-memory-loss",
+        "intellectual-disability-mild",
+        "autistic-visual-thinker"
+      ],
+      "severity": "MEDIUM",
+      "issue": "Directional awareness dependency",
+      "suggestion": "Use semantic labels, element names, or provide direct navigation methods instead of spatial relationships",
+      "examples": [
+        "the button above the form",
+        "menu item below the search",
+        "link next to the image",
+        "opposite corner",
+        "clockwise from here"
+      ]
     }
   ],
   "contextualChecks": [
