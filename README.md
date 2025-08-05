@@ -44,7 +44,7 @@ Lists all available accessibility personas with their descriptive titles.
 
 **Returns:** Formatted list of all available personas with user-friendly titles.
 
-### `review-care-scripts`
+### `review-customer-support-scripts`
 Reviews customer support scripts through the lens of accessibility personas to identify barriers and suggest improvements.
 
 **Parameters:**

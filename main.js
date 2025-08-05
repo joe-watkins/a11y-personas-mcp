@@ -151,9 +151,9 @@ server.tool(
     }
 );
 
-// Register review-care-scripts tool
+// Register review-customer-support-scripts tool
 server.tool(
-    'review-care-scripts',
+    'review-customer-support-scripts',
     'Reviews customer support scripts through the lens of accessibility personas',
     {
         script_content: z.string().describe('The support script text to review'),
