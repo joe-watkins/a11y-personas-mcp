@@ -1,6 +1,6 @@
 # Accessibility Personas MCP (Model Context Protocol Server)
 
-A simple MCP (Model Context Protocol) server that provides accessibility personas for different use cases. Whether you are wanting to review designs, test code against personas, ask accessibility consulting questions, review customer support scripts, or integrate inclusive practices into your workflow, this server aims to assist.
+A Model Context Protocol (MCP) server designed for AI and LLM-powered accessibility analysis, automation, and inclusive design evaluation. This project provides 60+ structured accessibility personas and tools for use by AI agents, Copilot, and other LLM-based systems. Whether you want to review designs, test code or content against personas, ask accessibility consulting questions, review customer support scripts, or integrate inclusive practices into your workflow, this server enables AI-driven accessibility insights and recommendations.
 
 ## Important note about synthetic users with disabilities
 
