@@ -7,7 +7,12 @@
       "personas": [
         "deaf-blind",
         "low-vision-taylor",
-        "low-vision"
+        "low-vision",
+        "autistic-visual-thinker",
+        "autistic-sensory-sensitive",
+        "autistic-rule-oriented",
+        "autistic-communication-differences",
+        "autistic-executive-function"
       ],
       "severity": "HIGH",
       "issue": "Visual dependency",
@@ -24,7 +29,8 @@
       "flags": "gi",
       "personas": [
         "motor-impaired-non-speaking",
-        "deaf-blind"
+        "deaf-blind",
+        "autistic-rule-oriented"
       ],
       "severity": "MEDIUM",
       "issue": "Input method assumption",
@@ -44,7 +50,11 @@
         "motor-impaired-non-speaking",
         "sighted-deaf-hoh-low-tech",
         "low-vision",
-        "autistic"
+        "autistic",
+        "autistic-visual-thinker",
+        "autistic-sensory-sensitive",
+        "autistic-communication-differences",
+        "autistic-executive-function"
       ],
       "severity": "CRITICAL",
       "issue": "Speech requirement",
@@ -81,7 +91,12 @@
         "low-vision-taylor",
         "deaf-blind",
         "low-vision",
-        "autistic"
+        "autistic",
+        "autistic-visual-thinker",
+        "autistic-sensory-sensitive",
+        "autistic-rule-oriented",
+        "autistic-communication-differences",
+        "autistic-executive-function"
       ],
       "severity": "MEDIUM",
       "issue": "Time pressure",
@@ -115,7 +130,9 @@
       "personas": [
         "sighted-deaf-hoh-low-tech",
         "deaf-blind",
-        "autistic"
+        "autistic",
+        "autistic-visual-thinker",
+        "autistic-sensory-sensitive"
       ],
       "severity": "HIGH",
       "issue": "Audio dependency",
@@ -131,7 +148,8 @@
       "pattern": "\\b(hold down|press and hold|drag|swipe|pinch|zoom)\\b",
       "flags": "gi",
       "personas": [
-        "motor-impaired-non-speaking"
+        "motor-impaired-non-speaking",
+        "autistic-rule-oriented"
       ],
       "severity": "HIGH",
       "issue": "Physical capability assumption",
@@ -165,7 +183,8 @@
       "flags": "gi",
       "personas": [
         "motor-impaired-non-speaking",
-        "deaf-blind"
+        "deaf-blind",
+        "autistic-rule-oriented"
       ],
       "severity": "HIGH",
       "issue": "Mouse dependency",
@@ -183,7 +202,8 @@
       "personas": [
         "sighted-deaf-hoh-low-tech",
         "low-vision",
-        "autistic"
+        "autistic",
+        "autistic-executive-function"
       ],
       "severity": "MEDIUM",
       "issue": "Technical complexity",
@@ -203,7 +223,12 @@
         "deaf-blind",
         "low-vision-taylor",
         "low-vision",
-        "autistic"
+        "autistic",
+        "autistic-visual-thinker",
+        "autistic-sensory-sensitive",
+        "autistic-rule-oriented",
+        "autistic-communication-differences",
+        "autistic-executive-function"
       ],
       "severity": "HIGH",
       "issue": "Session timeout pressure",
@@ -222,7 +247,11 @@
         "deaf-blind",
         "sighted-deaf-hoh-low-tech",
         "low-vision",
-        "autistic"
+        "autistic",
+        "autistic-visual-thinker",
+        "autistic-sensory-sensitive",
+        "autistic-communication-differences",
+        "autistic-executive-function"
       ],
       "severity": "CRITICAL",
       "issue": "Voice/audio assumption",
@@ -247,6 +276,22 @@
         "remember your password",
         "follow these complex steps",
         "recall the information"
+      ]
+    },
+    {
+      "id": "memory-requirement-autistic-executive-function",
+      "pattern": "\\b(remember|memorize|recall|don't forget)\\b",
+      "flags": "gi",
+      "personas": [
+        "autistic-executive-function"
+      ],
+      "severity": "HIGH",
+      "issue": "Memory requirement",
+      "suggestion": "Provide persistent visual cues and allow users to save/reference information",
+      "examples": [
+        "remember this code",
+        "don't forget to",
+        "memorize your PIN"
       ]
     }
   ],
