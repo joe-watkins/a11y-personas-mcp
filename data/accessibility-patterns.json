@@ -35,7 +35,11 @@
         "epilepsy-seizure-risk",
         "one-handed-limb-difference",
         "multiple-sclerosis-fluctuating",
-        "cognitive-memory-loss"
+        "cognitive-memory-loss",
+        "eye-patch-temporary-vision",
+        "public-place-privacy-concern",
+        "temp-eye-patch-temporary-vision",
+        "temp-public-place-privacy-concern"
       ],
       "severity": "HIGH",
       "issue": "Visual dependency",
@@ -59,7 +63,15 @@
         "one-handed-limb-difference",
         "multiple-sclerosis-fluctuating",
         "paraplegia-wheelchair",
-        "tourettes-syndrome"
+        "tourettes-syndrome",
+        "broken-dominant-arm",
+        "concussion-cognitive-fatigue",
+        "holding-child-one-handed",
+        "low-bandwidth-connection",
+        "temp-broken-dominant-arm",
+        "temp-concussion-cognitive-fatigue",
+        "temp-holding-child-one-handed",
+        "temp-low-bandwidth-connection"
       ],
       "severity": "MEDIUM",
       "issue": "Input method assumption",
@@ -113,7 +125,26 @@
         "depression-major",
         "autism-non-speaking",
         "hearing-loss-age-related",
-        "visual-processing-disorder"
+        "visual-processing-disorder",
+        "broken-dominant-arm",
+        "eye-patch-temporary-vision",
+        "laryngitis-temporary-voice-loss",
+        "migraine-light-sensitivity",
+        "concussion-cognitive-fatigue",
+        "noisy-environment-limited-audio",
+        "holding-child-one-handed",
+        "public-place-privacy-concern",
+        "low-bandwidth-connection",
+        "temp-broken-dominant-arm",
+        "temp-eye-patch-temporary-vision",
+        "temp-laryngitis-temporary-voice-loss",
+        "temp-migraine-light-sensitivity",
+        "temp-concussion-cognitive-fatigue",
+        "temp-noisy-environment-limited-audio",
+        "temp-holding-child-one-handed",
+        "temp-public-place-privacy-concern",
+        "temp-low-bandwidth-connection",
+        "temp-crisis-situation"
       ],
       "severity": "CRITICAL",
       "issue": "Speech requirement",
@@ -184,7 +215,20 @@
         "parkinson-tremor",
         "depression-major",
         "autism-non-speaking",
-        "visual-processing-disorder"
+        "visual-processing-disorder",
+        "broken-dominant-arm",
+        "eye-patch-temporary-vision",
+        "migraine-light-sensitivity",
+        "concussion-cognitive-fatigue",
+        "holding-child-one-handed",
+        "low-bandwidth-connection",
+        "temp-broken-dominant-arm",
+        "temp-eye-patch-temporary-vision",
+        "temp-migraine-light-sensitivity",
+        "temp-concussion-cognitive-fatigue",
+        "temp-holding-child-one-handed",
+        "temp-low-bandwidth-connection",
+        "temp-crisis-situation"
       ],
       "severity": "MEDIUM",
       "issue": "Time pressure",
@@ -248,7 +292,23 @@
         "parkinson-tremor",
         "depression-major",
         "autism-non-speaking",
-        "hearing-loss-age-related"
+        "hearing-loss-age-related",
+        "broken-dominant-arm",
+        "eye-patch-temporary-vision",
+        "laryngitis-temporary-voice-loss",
+        "migraine-light-sensitivity",
+        "noisy-environment-limited-audio",
+        "holding-child-one-handed",
+        "public-place-privacy-concern",
+        "low-bandwidth-connection",
+        "temp-broken-dominant-arm",
+        "temp-eye-patch-temporary-vision",
+        "temp-laryngitis-temporary-voice-loss",
+        "temp-migraine-light-sensitivity",
+        "temp-noisy-environment-limited-audio",
+        "temp-holding-child-one-handed",
+        "temp-public-place-privacy-concern",
+        "temp-low-bandwidth-connection"
       ],
       "severity": "HIGH",
       "issue": "Audio dependency",
@@ -271,7 +331,15 @@
         "one-handed-limb-difference",
         "multiple-sclerosis-fluctuating",
         "paraplegia-wheelchair",
-        "tourettes-syndrome"
+        "tourettes-syndrome",
+        "broken-dominant-arm",
+        "concussion-cognitive-fatigue",
+        "holding-child-one-handed",
+        "low-bandwidth-connection",
+        "temp-broken-dominant-arm",
+        "temp-concussion-cognitive-fatigue",
+        "temp-holding-child-one-handed",
+        "temp-low-bandwidth-connection"
       ],
       "severity": "HIGH",
       "issue": "Physical capability assumption",
@@ -312,7 +380,15 @@
         "one-handed-limb-difference",
         "multiple-sclerosis-fluctuating",
         "paraplegia-wheelchair",
-        "tourettes-syndrome"
+        "tourettes-syndrome",
+        "broken-dominant-arm",
+        "concussion-cognitive-fatigue",
+        "holding-child-one-handed",
+        "low-bandwidth-connection",
+        "temp-broken-dominant-arm",
+        "temp-concussion-cognitive-fatigue",
+        "temp-holding-child-one-handed",
+        "temp-low-bandwidth-connection"
       ],
       "severity": "HIGH",
       "issue": "Mouse dependency",
@@ -343,7 +419,9 @@
         "cognitive-memory-loss",
         "chronic-fatigue-syndrome",
         "tourettes-syndrome",
-        "intellectual-disability-mild"
+        "intellectual-disability-mild",
+        "concussion-cognitive-fatigue",
+        "temp-concussion-cognitive-fatigue"
       ],
       "severity": "MEDIUM",
       "issue": "Technical complexity",
@@ -397,7 +475,20 @@
         "parkinson-tremor",
         "depression-major",
         "autism-non-speaking",
-        "visual-processing-disorder"
+        "visual-processing-disorder",
+        "broken-dominant-arm",
+        "eye-patch-temporary-vision",
+        "migraine-light-sensitivity",
+        "concussion-cognitive-fatigue",
+        "holding-child-one-handed",
+        "low-bandwidth-connection",
+        "temp-broken-dominant-arm",
+        "temp-eye-patch-temporary-vision",
+        "temp-migraine-light-sensitivity",
+        "temp-concussion-cognitive-fatigue",
+        "temp-holding-child-one-handed",
+        "temp-low-bandwidth-connection",
+        "temp-crisis-situation"
       ],
       "severity": "HIGH",
       "issue": "Session timeout pressure",
@@ -450,7 +541,26 @@
         "depression-major",
         "autism-non-speaking",
         "hearing-loss-age-related",
-        "visual-processing-disorder"
+        "visual-processing-disorder",
+        "broken-dominant-arm",
+        "eye-patch-temporary-vision",
+        "laryngitis-temporary-voice-loss",
+        "migraine-light-sensitivity",
+        "concussion-cognitive-fatigue",
+        "noisy-environment-limited-audio",
+        "holding-child-one-handed",
+        "public-place-privacy-concern",
+        "low-bandwidth-connection",
+        "temp-broken-dominant-arm",
+        "temp-eye-patch-temporary-vision",
+        "temp-laryngitis-temporary-voice-loss",
+        "temp-migraine-light-sensitivity",
+        "temp-concussion-cognitive-fatigue",
+        "temp-noisy-environment-limited-audio",
+        "temp-holding-child-one-handed",
+        "temp-public-place-privacy-concern",
+        "temp-low-bandwidth-connection",
+        "temp-crisis-situation"
       ],
       "severity": "CRITICAL",
       "issue": "Voice/audio assumption",
@@ -572,8 +682,7 @@
         "as you can see",
         "it's clearly stated"
       ]
-    }
-    ,
+    },
     {
       "id": "sensory-overload-trigger-warning",
       "pattern": "\\b(flash|flicker|sudden|unexpected|loud|explosion|pop-up|jump scare)\\b",
@@ -645,6 +754,70 @@
         "no warning provided",
         "no option to skip",
         "forced to view"
+      ]
+    },
+    {
+      "id": "literacy-assumption-eye-patch-temporary-vision",
+      "pattern": "\\b(read carefully|as you can see|obviously|clearly stated)\\b",
+      "flags": "gi",
+      "personas": [
+        "eye-patch-temporary-vision"
+      ],
+      "severity": "MEDIUM",
+      "issue": "Literacy assumption",
+      "suggestion": "Use simple language and provide audio or visual alternatives to text",
+      "examples": [
+        "read carefully through",
+        "as you can see",
+        "it's clearly stated"
+      ]
+    },
+    {
+      "id": "literacy-assumption-migraine-light-sensitivity",
+      "pattern": "\\b(read carefully|as you can see|obviously|clearly stated)\\b",
+      "flags": "gi",
+      "personas": [
+        "migraine-light-sensitivity"
+      ],
+      "severity": "MEDIUM",
+      "issue": "Literacy assumption",
+      "suggestion": "Use simple language and provide audio or visual alternatives to text",
+      "examples": [
+        "read carefully through",
+        "as you can see",
+        "it's clearly stated"
+      ]
+    },
+    {
+      "id": "literacy-assumption-temp-eye-patch-temporary-vision",
+      "pattern": "\\b(read carefully|as you can see|obviously|clearly stated)\\b",
+      "flags": "gi",
+      "personas": [
+        "temp-eye-patch-temporary-vision"
+      ],
+      "severity": "MEDIUM",
+      "issue": "Literacy assumption",
+      "suggestion": "Use simple language and provide audio or visual alternatives to text",
+      "examples": [
+        "read carefully through",
+        "as you can see",
+        "it's clearly stated"
+      ]
+    },
+    {
+      "id": "literacy-assumption-temp-migraine-light-sensitivity",
+      "pattern": "\\b(read carefully|as you can see|obviously|clearly stated)\\b",
+      "flags": "gi",
+      "personas": [
+        "temp-migraine-light-sensitivity"
+      ],
+      "severity": "MEDIUM",
+      "issue": "Literacy assumption",
+      "suggestion": "Use simple language and provide audio or visual alternatives to text",
+      "examples": [
+        "read carefully through",
+        "as you can see",
+        "it's clearly stated"
       ]
     }
   ],
