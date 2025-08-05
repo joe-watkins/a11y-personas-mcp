@@ -39,7 +39,9 @@
         "eye-patch-temporary-vision",
         "public-place-privacy-concern",
         "temp-eye-patch-temporary-vision",
-        "temp-public-place-privacy-concern"
+        "temp-public-place-privacy-concern",
+        "aging-multiple-impairments",
+        "deafness-sign-language-first"
       ],
       "severity": "HIGH",
       "issue": "Visual dependency",
@@ -48,6 +50,99 @@
         "look at your screen",
         "see the button",
         "watch for the popup"
+      ]
+    },
+    {
+      "id": "crisis-emergency-mode",
+      "pattern": "\\b(emergency|urgent|crisis|critical|too many steps|can’t find help fast)\\b",
+      "flags": "gi",
+      "personas": [
+        "temp-crisis-situation"
+      ],
+      "severity": "CRITICAL",
+      "issue": "No emergency mode or simplified flow for urgent needs",
+      "suggestion": "Provide a simplified, direct path for urgent/crisis situations; surface help and critical info quickly",
+      "examples": [
+        "emergency",
+        "urgent",
+        "crisis",
+        "critical",
+        "too many steps",
+        "can’t find help fast"
+      ]
+    },
+    {
+      "id": "multi-factor-aging",
+      "pattern": "\\b(small text and no captions|complex navigation and no audio alternative|tiny buttons and no keyboard support)\\b",
+      "flags": "gi",
+      "personas": [
+        "aging-multiple-impairments"
+      ],
+      "severity": "HIGH",
+      "issue": "Combined mild impairments create unique barriers",
+      "suggestion": "Test for multiple, overlapping barriers and provide redundant alternatives (text, audio, large targets, etc.)",
+      "examples": [
+        "small text and no captions",
+        "complex navigation and no audio alternative",
+        "tiny buttons and no keyboard support"
+      ]
+    },
+    {
+      "id": "privacy-discretion",
+      "pattern": "\\b(audio will play|personal info shown|no private mode)\\b",
+      "flags": "gi",
+      "personas": [
+        "public-place-privacy-concern",
+        "temp-public-place-privacy-concern"
+      ],
+      "severity": "HIGH",
+      "issue": "Lack of privacy/discretion options in public or shared spaces",
+      "suggestion": "Provide private modes, mute options, and avoid displaying sensitive info by default",
+      "examples": [
+        "audio will play",
+        "personal info shown",
+        "no private mode"
+      ]
+    },
+    {
+      "id": "fatigue-task-pacing",
+      "pattern": "\\b(long session required|no save and return|no break reminders|must complete in one session|session will expire)\\b",
+      "flags": "gi",
+      "personas": [
+        "chronic-fatigue-syndrome",
+        "concussion-cognitive-fatigue",
+        "multiple-sclerosis-fluctuating",
+        "temp-concussion-cognitive-fatigue"
+      ],
+      "severity": "MEDIUM",
+      "issue": "Fatigue or cognitive overload from long or unbroken tasks",
+      "suggestion": "Allow users to save progress, take breaks, and return later; provide reminders to rest",
+      "examples": [
+        "long session required",
+        "no save and return",
+        "no break reminders",
+        "must complete in one session",
+        "session will expire"
+      ]
+    },
+    {
+      "id": "touch-target-size",
+      "pattern": "\\b(tiny button|close together|hard to tap)\\b",
+      "flags": "gi",
+      "personas": [
+        "arthritis-rheumatoid",
+        "parkinson-tremor",
+        "one-handed-limb-difference",
+        "broken-dominant-arm",
+        "temp-broken-dominant-arm"
+      ],
+      "severity": "HIGH",
+      "issue": "Small or crowded touch targets are hard to use for people with dexterity issues",
+      "suggestion": "Ensure all interactive elements are large enough and well-spaced for touch or limited dexterity",
+      "examples": [
+        "tiny button",
+        "close together",
+        "hard to tap"
       ]
     },
     {
@@ -71,7 +166,8 @@
         "temp-broken-dominant-arm",
         "temp-concussion-cognitive-fatigue",
         "temp-holding-child-one-handed",
-        "temp-low-bandwidth-connection"
+        "temp-low-bandwidth-connection",
+        "arthritis-rheumatoid"
       ],
       "severity": "MEDIUM",
       "issue": "Input method assumption",
@@ -144,7 +240,11 @@
         "temp-holding-child-one-handed",
         "temp-public-place-privacy-concern",
         "temp-low-bandwidth-connection",
-        "temp-crisis-situation"
+        "temp-crisis-situation",
+        "aging-multiple-impairments",
+        "arthritis-rheumatoid",
+        "deafness-profound",
+        "deafness-sign-language-first"
       ],
       "severity": "CRITICAL",
       "issue": "Speech requirement",
@@ -228,7 +328,10 @@
         "temp-concussion-cognitive-fatigue",
         "temp-holding-child-one-handed",
         "temp-low-bandwidth-connection",
-        "temp-crisis-situation"
+        "temp-crisis-situation",
+        "aging-multiple-impairments",
+        "arthritis-rheumatoid",
+        "deafness-sign-language-first"
       ],
       "severity": "MEDIUM",
       "issue": "Time pressure",
@@ -308,7 +411,11 @@
         "temp-noisy-environment-limited-audio",
         "temp-holding-child-one-handed",
         "temp-public-place-privacy-concern",
-        "temp-low-bandwidth-connection"
+        "temp-low-bandwidth-connection",
+        "aging-multiple-impairments",
+        "arthritis-rheumatoid",
+        "deafness-profound",
+        "deafness-sign-language-first"
       ],
       "severity": "HIGH",
       "issue": "Audio dependency",
@@ -339,7 +446,8 @@
         "temp-broken-dominant-arm",
         "temp-concussion-cognitive-fatigue",
         "temp-holding-child-one-handed",
-        "temp-low-bandwidth-connection"
+        "temp-low-bandwidth-connection",
+        "arthritis-rheumatoid"
       ],
       "severity": "HIGH",
       "issue": "Physical capability assumption",
@@ -388,7 +496,8 @@
         "temp-broken-dominant-arm",
         "temp-concussion-cognitive-fatigue",
         "temp-holding-child-one-handed",
-        "temp-low-bandwidth-connection"
+        "temp-low-bandwidth-connection",
+        "arthritis-rheumatoid"
       ],
       "severity": "HIGH",
       "issue": "Mouse dependency",
@@ -421,7 +530,9 @@
         "tourettes-syndrome",
         "intellectual-disability-mild",
         "concussion-cognitive-fatigue",
-        "temp-concussion-cognitive-fatigue"
+        "temp-concussion-cognitive-fatigue",
+        "aging-multiple-impairments",
+        "deafness-sign-language-first"
       ],
       "severity": "MEDIUM",
       "issue": "Technical complexity",
@@ -488,7 +599,10 @@
         "temp-concussion-cognitive-fatigue",
         "temp-holding-child-one-handed",
         "temp-low-bandwidth-connection",
-        "temp-crisis-situation"
+        "temp-crisis-situation",
+        "aging-multiple-impairments",
+        "arthritis-rheumatoid",
+        "deafness-sign-language-first"
       ],
       "severity": "HIGH",
       "issue": "Session timeout pressure",
@@ -560,7 +674,11 @@
         "temp-holding-child-one-handed",
         "temp-public-place-privacy-concern",
         "temp-low-bandwidth-connection",
-        "temp-crisis-situation"
+        "temp-crisis-situation",
+        "aging-multiple-impairments",
+        "arthritis-rheumatoid",
+        "deafness-profound",
+        "deafness-sign-language-first"
       ],
       "severity": "CRITICAL",
       "issue": "Voice/audio assumption",
