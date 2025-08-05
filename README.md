@@ -20,17 +20,27 @@ A Model Context Protocol (MCP) server designed for AI and LLM-powered accessibil
 The MCP server will now be available in your VS Code MCP clients list. Ensure you are in Agent mode and run the  `#list-personas` tool in Copilot to list all personas and to start working with them.
 
 ## Tools
+### `list-personas`
+Lists all available accessibility personas with their descriptive titles.
+
+Usage in Copilot:
+```
+#list-personas
+```
 
 ### `get-persona`
 Retrieves the complete accessibility persona documentation for a specific persona.
+
+Usage in Copilot:
+```
+#get-persona Blindness (Braille User)
+```
 
 **Parameters:**
 - `persona` (string): The name of the persona to retrieve (e.g., "deaf-blind", "low-vision-taylor")
 
 **Returns:** Full markdown content including profile, interaction style, key needs, and cross-functional considerations.
 
-### `list-personas`
-Lists all available accessibility personas with their descriptive titles.
 
 **Parameters:** None
 
@@ -38,6 +48,11 @@ Lists all available accessibility personas with their descriptive titles.
 
 ### `review-customer-support-scripts`
 Reviews customer support scripts through the lens of accessibility personas to identify barriers and suggest improvements.
+
+Usage in Copilot:
+```
+#review-customer-support-scripts Click the big red button in the top right corner of your screen to access your account settings. If you don't see it, please refresh your browser and try again.
+```
 
 **Parameters:**
 - `script_content` (string): The support script text to review
@@ -180,29 +195,6 @@ Script type: email
 Issue category: technical-support
 ```
 
-### Pattern Analysis and Maintenance
-
-**Analyze persona coverage:**
-```
-Analyze persona patterns for deaf-blind persona
-```
-
-**Auto-update patterns:**
-```
-Analyze and update accessibility patterns for low-vision-taylor persona
-
-persona_id: low-vision-taylor
-auto_update: true
-```
-
-**Check all personas:**
-```
-Analyze persona patterns for motor-impaired-non-speaking
-Analyze persona patterns for sighted-deaf-hoh-low-tech  
-Analyze persona patterns for deaf-blind
-Analyze persona patterns for low-vision-taylor
-```
-
 ### Accessibility Consultation Questions
 
 **General accessibility questions:**
@@ -226,39 +218,6 @@ Review this support process for accessibility issues:
 Script type: phone
 Issue category: account-access
 ```
-
-## Real-World Examples
-
-### Example 1: Problematic Support Script
-```
-Review this customer support script for accessibility issues:
-
-"Hi there! I can see you're having trouble with your account. Let me help you fix this quickly. First, look at your screen and find the bright green 'Settings' button in the top-right corner. Click it now. Good! Now I need you to tell me what you see on the page so I can confirm you're in the right place. If you don't see the options within 5 seconds, try refreshing your browser with F5."
-
-Script type: phone
-Issue category: technical-support
-```
-
-**Expected Issues:**
-- Visual dependencies ("look at your screen", "see")
-- Color dependencies ("bright green button")  
-- Speech requirements ("tell me what you see")
-- Time pressure ("within 5 seconds")
-- Technical jargon ("F5")
-- Spatial directions ("top-right corner")
-
-### Example 2: Better Support Script
-```
-Review this improved support script:
-
-"Hello! I'm here to help you access your account settings. There are several ways we can do this together. I can send you a direct link via email or text message, or I can guide you through the navigation step-by-step at whatever pace works for you. Which option would you prefer? Once you're ready, I can provide confirmation through your preferred communication method."
-
-Script type: phone  
-Issue category: account-access
-```
-
-**Expected Result:** Much higher accessibility grade with inclusive alternatives.
-
 
 ## Contributing
 
