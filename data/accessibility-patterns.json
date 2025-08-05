@@ -43,7 +43,8 @@
         "deaf-blind",
         "motor-impaired-non-speaking",
         "sighted-deaf-hoh-low-tech",
-        "low-vision"
+        "low-vision",
+        "autistic"
       ],
       "severity": "CRITICAL",
       "issue": "Speech requirement",
@@ -79,7 +80,8 @@
         "motor-impaired-non-speaking",
         "low-vision-taylor",
         "deaf-blind",
-        "low-vision"
+        "low-vision",
+        "autistic"
       ],
       "severity": "MEDIUM",
       "issue": "Time pressure",
@@ -112,7 +114,8 @@
       "flags": "gi",
       "personas": [
         "sighted-deaf-hoh-low-tech",
-        "deaf-blind"
+        "deaf-blind",
+        "autistic"
       ],
       "severity": "HIGH",
       "issue": "Audio dependency",
@@ -179,7 +182,8 @@
       "flags": "gi",
       "personas": [
         "sighted-deaf-hoh-low-tech",
-        "low-vision"
+        "low-vision",
+        "autistic"
       ],
       "severity": "MEDIUM",
       "issue": "Technical complexity",
@@ -198,7 +202,8 @@
         "motor-impaired-non-speaking",
         "deaf-blind",
         "low-vision-taylor",
-        "low-vision"
+        "low-vision",
+        "autistic"
       ],
       "severity": "HIGH",
       "issue": "Session timeout pressure",
@@ -216,7 +221,8 @@
       "personas": [
         "deaf-blind",
         "sighted-deaf-hoh-low-tech",
-        "low-vision"
+        "low-vision",
+        "autistic"
       ],
       "severity": "CRITICAL",
       "issue": "Voice/audio assumption",

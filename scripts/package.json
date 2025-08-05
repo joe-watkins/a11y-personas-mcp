@@ -1,0 +1,22 @@
+{
+  "name": "persona-scraper",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Web scraper for creating accessibility personas from web content",
+  "main": "persona-scraper.js",
+  "scripts": {
+    "scrape": "node persona-scraper.js",
+    "test": "node persona-scraper.js --test"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.5"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "author": "Accessibility Personas MCP",
+  "license": "MIT"
+}

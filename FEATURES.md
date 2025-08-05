@@ -1,105 +1,15 @@
-# Features & Enhancements
+# Future Features
 
-This document tracks planned features and enhancements for the Accessibility Personas MCP Server.
-
-
-
-## 🛠️ Current Tools
-
-### Core Persona Tools
-- **`get-persona`** - Retrieve detailed persona information
-- **`list-personas`** - List all available personas with titles
-
-### Accessibility Analysis Tools  
-- **`review-care-scripts`** - Analyze customer support scripts for accessibility barriers
-- **`analyze-persona-patterns`** - Maintain pattern coverage for personas
-
-### Usage Examples
-```bash
-# Basic persona queries
-get-persona persona="deaf-blind"
-list-personas
-
-# Script analysis with full example
-review-care-scripts script_content="Please look at your screen and click the red button. Tell me when you see the confirmation page." script_type="phone" issue_category="account-access"
-
-# Script analysis with specific personas  
-review-care-scripts script_content="Navigate to settings and update your profile" script_type="chat" issue_category="technical-support" personas=["motor-impaired-non-speaking", "deaf-blind"]
-
-# Pattern maintenance
-analyze-persona-patterns persona_id="low-vision" auto_update=true
-analyze-persona-patterns persona_id="deaf-blind"  # Preview mode
-```
-
-### Real Example Outputs
-
-**Script Review Example:**
-```
-🔴 ACCESSIBILITY GRADE: D- (Multiple Critical Issues)
-
-CRITICAL ISSUES:
-• Deafblind Person: BLOCKED - Visual dependency
-• Motor-Impaired/Non-Speaking: BLOCKED - Speech requirement  
-
-SUGGESTED IMPROVEMENTS:
-1. Use device-agnostic language like 'navigate to' instead of visual terms
-2. Offer multiple communication methods (email, text, or describe in any way comfortable)
-3. Use descriptive labels instead of color references
-
-✅ INCLUSIVE ALTERNATIVES:
-✅ Offer multiple communication channels upfront
-✅ Use device-agnostic and sensory-neutral language
-✅ Remove time pressure and allow flexible pacing
-```
-
-**Pattern Analysis Example:**
-```
-🔍 PERSONA PATTERN ANALYSIS: Low Vision User - Taylor Kim
-
-📝 EXISTING PATTERNS TO UPDATE:
-🔍 PERSONA PATTERN ANALYSIS: Low Vision User
-
-• time-pressure: Persona needs additional time for interactions
-• session-timeout-pressure: Persona needs additional time for interactions
-• speech-requirement: Persona has speech or auditory limitations
-• time-pressure: Persona needs additional time for interactions
-• technical-jargon: Persona has limited technical ability or cognitive considerations
-• session-timeout-pressure: Persona needs additional time for interactions
-• voice-tone-assumption: Persona has speech or auditory limitations
-
-✨ SUGGESTED NEW PATTERNS:
-• cognitive-load-low-vision: Cognitive load assumption (MEDIUM)
-  Pattern: \b(remember|recall|complex|complicated|multiple steps)\b
-  Suggestion: Simplify instructions and provide step-by-step guidance with clear progression
-
-💡 Run with auto_update=true to apply these changes automatically
-```
-
----
-
-## 🎯 Future Considerations
+## 🎯 Planned Tools
 
 ### Core Infrastructure Improvements
-
-### Enhanced Persona Features
-
-#### `analyze-persona-patterns`
-Analyzes an existing persona and suggests accessibility pattern updates.
-- **Parameters**: 
-  - `persona_id` (string): The persona identifier (e.g., "deaf-blind", "low-vision-taylor")
-  - `auto_update` (boolean, optional): Whether to automatically update patterns file (default: false)
-- **Returns**: 
-  - Analysis of existing patterns that should include this persona
-  - Suggested new patterns specific to this persona's needs
-  - Updated accessibility-patterns.json structure (if auto_update=true)
-- **Use Case**: Automatically maintain pattern consistency for existing personas or when reviewing coverage
 
 #### `validate-design`
 Validates design specifications against accessibility personas.
 - **Parameters**: `design_description` (string), `personas` (array), `interaction_type` (string)
 - **Returns**: Accessibility issues identified per persona with severity levels
 - **Use Case**: Early design validation to catch accessibility issues before implementation
-- **Example**: `validate-design design_description="Modal popup with small X button in top-right corner" personas=["motor-impaired-non-speaking", "low-vision-taylor"] interaction_type="web"`
+- **Example**: `validate-design design_description="Modal popup with small X button in top-right corner" personas=["motor-impaired-non-speaking", "low-vision"] interaction_type="web"`
 
 #### `generate-test-cases`
 Creates specific test scenarios based on personas.
@@ -122,68 +32,9 @@ Analyzes code snippets for accessibility issues.
 - **Parameters**: `code` (string), `framework` (string), `target_personas` (array)
 - **Returns**: Specific accessibility issues with fix suggestions
 - **Use Case**: Automated accessibility code review integration
-- **Example**: `code-review-assistant code="<button style='color: red;'>Click here</button>" framework="html" target_personas=["deaf-blind", "low-vision-taylor"]`
+- **Example**: `code-review-assistant code="<button style='color: red;'>Click here</button>" framework="html" target_personas=["deaf-blind", "low-vision"]`
 
 ### Team Collaboration Features
-
-#### `review-care-scripts`
-Reviews customer support scripts through the lens of accessibility personas.
-- **Parameters**: 
-  - `script_content` (string): The support script text to review
-  - `script_type` (string): phone, chat, email, in-person
-  - `issue_category` (string): technical-support, billing, account-access, etc.
-  - `personas` (array, optional): Specific personas to focus on (default: all)
-- **Returns**: 
-  - Overall accessibility grade (A-F)
-  - Persona-specific issues and severity levels
-  - Suggested script modifications
-  - Alternative interaction methods to offer
-  - Inclusive language recommendations
-- **Use Case**: Customer care teams can ensure their scripts are accessible and inclusive for all users
-
-**Example Issues Detected:**
-- "Ask customer for verbal confirmation" → Flag for deaf/non-speaking personas
-- "Please look at your screen" → Flag for blind/low-vision personas  
-- "Click the red button" → Flag for colorblind users
-- Time-sensitive instructions → Flag for motor-impaired users who need more time
-- Complex technical jargon → Flag for users with cognitive differences or low tech literacy
-
-**Example Prompt:**
-```
-Review this customer support script for accessibility issues:
-
-"Hello, thank you for calling support. I need you to look at your screen and click on the red 'Account Settings' button in the top right corner. Once you see the settings page load, please tell me verbally what you see so I can confirm you're in the right place. If you don't see it within 10 seconds, refresh your browser and try again. Now, can you quickly navigate to the 'Security' tab and read me the last 4 digits of your recovery phone number?"
-
-Script type: phone
-Issue category: account-access
-```
-
-**Example Response:**
-```
-🔴 ACCESSIBILITY GRADE: D- (Multiple Critical Issues)
-
-CRITICAL ISSUES:
-• Deafblind Person: BLOCKED - Script assumes sight ("look at screen") and speech ("tell me verbally")
-• Motor-Impaired/Non-Speaking: BLOCKED - Requires verbal response, time pressure (10 seconds)
-• Low Vision User: HIGH RISK - Color dependency ("red button"), spatial directions ("top right")
-• Deaf/HoH User: MEDIUM RISK - Phone-only support, verbal confirmation required
-
-SUGGESTED IMPROVEMENTS:
-1. "I can help you access Account Settings. Would you prefer me to send you a direct link via email/text, or would you like me to guide you through the navigation?"
-
-2. "There are multiple ways to verify you're in the right place - I can send a confirmation code to your email, or you can describe what you see in whatever way works for you."
-
-3. "Take as much time as you need. I'll stay on the line while you navigate."
-
-4. Offer alternative verification: "For security, I can verify your identity through email, text message, or by asking you some account questions instead."
-
-INCLUSIVE ALTERNATIVES:
-✅ Provide multiple communication channels upfront
-✅ Offer email/text alternatives to phone
-✅ Remove time pressure and visual dependencies  
-✅ Use device-agnostic language ("select" vs "click")
-✅ Offer multiple verification methods
-```
 
 #### `persona-story-mapping`
 Generates user stories from persona perspective.
@@ -258,19 +109,3 @@ Generates measurable accessibility goals.
 - Slack/Teams bot for accessibility consultations
 - CI/CD pipeline integration for accessibility testing
 - Design system integration for component validation
-
----
-
-## 📝 Implementation Notes
-
-- All personas are stored as markdown files in the `personas/` directory
-- Template file (`_template.md`) should be excluded from available personas
-- Current personas:
-  - `deaf-blind.md`
-  - `low-vision.md`
-  - `motor-impaired-non-speaking.md`
-  - `sighted-deaf-hoh-low-tech.md`
-
-- ES modules require special handling for `__dirname` using `fileURLToPath`
-- Cross-platform path handling is important for Windows/Unix compatibility
-- Error messages should be helpful and guide users to available options
