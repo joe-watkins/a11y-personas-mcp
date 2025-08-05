@@ -12,7 +12,12 @@
         "autistic-sensory-sensitive",
         "autistic-rule-oriented",
         "autistic-communication-differences",
-        "autistic-executive-function"
+        "autistic-executive-function",
+        "blindness-braille-user",
+        "blindness-screen-reader-voiceover",
+        "blindness-screen-reader-nvda",
+        "blindness-low-vision-progressive",
+        "blindness-light-perception"
       ],
       "severity": "HIGH",
       "issue": "Visual dependency",
@@ -30,7 +35,8 @@
       "personas": [
         "motor-impaired-non-speaking",
         "deaf-blind",
-        "autistic-rule-oriented"
+        "autistic-rule-oriented",
+        "blindness-screen-reader-voiceover"
       ],
       "severity": "MEDIUM",
       "issue": "Input method assumption",
@@ -54,7 +60,12 @@
         "autistic-visual-thinker",
         "autistic-sensory-sensitive",
         "autistic-communication-differences",
-        "autistic-executive-function"
+        "autistic-executive-function",
+        "blindness-braille-user",
+        "blindness-screen-reader-voiceover",
+        "blindness-screen-reader-nvda",
+        "blindness-low-vision-progressive",
+        "blindness-light-perception"
       ],
       "severity": "CRITICAL",
       "issue": "Speech requirement",
@@ -96,7 +107,12 @@
         "autistic-sensory-sensitive",
         "autistic-rule-oriented",
         "autistic-communication-differences",
-        "autistic-executive-function"
+        "autistic-executive-function",
+        "blindness-braille-user",
+        "blindness-screen-reader-voiceover",
+        "blindness-screen-reader-nvda",
+        "blindness-low-vision-progressive",
+        "blindness-light-perception"
       ],
       "severity": "MEDIUM",
       "issue": "Time pressure",
@@ -132,7 +148,12 @@
         "deaf-blind",
         "autistic",
         "autistic-visual-thinker",
-        "autistic-sensory-sensitive"
+        "autistic-sensory-sensitive",
+        "blindness-braille-user",
+        "blindness-screen-reader-voiceover",
+        "blindness-screen-reader-nvda",
+        "blindness-low-vision-progressive",
+        "blindness-light-perception"
       ],
       "severity": "HIGH",
       "issue": "Audio dependency",
@@ -149,7 +170,8 @@
       "flags": "gi",
       "personas": [
         "motor-impaired-non-speaking",
-        "autistic-rule-oriented"
+        "autistic-rule-oriented",
+        "blindness-screen-reader-voiceover"
       ],
       "severity": "HIGH",
       "issue": "Physical capability assumption",
@@ -184,7 +206,8 @@
       "personas": [
         "motor-impaired-non-speaking",
         "deaf-blind",
-        "autistic-rule-oriented"
+        "autistic-rule-oriented",
+        "blindness-screen-reader-voiceover"
       ],
       "severity": "HIGH",
       "issue": "Mouse dependency",
@@ -203,7 +226,9 @@
         "sighted-deaf-hoh-low-tech",
         "low-vision",
         "autistic",
-        "autistic-executive-function"
+        "autistic-executive-function",
+        "blindness-braille-user",
+        "blindness-low-vision-progressive"
       ],
       "severity": "MEDIUM",
       "issue": "Technical complexity",
@@ -228,7 +253,12 @@
         "autistic-sensory-sensitive",
         "autistic-rule-oriented",
         "autistic-communication-differences",
-        "autistic-executive-function"
+        "autistic-executive-function",
+        "blindness-braille-user",
+        "blindness-screen-reader-voiceover",
+        "blindness-screen-reader-nvda",
+        "blindness-low-vision-progressive",
+        "blindness-light-perception"
       ],
       "severity": "HIGH",
       "issue": "Session timeout pressure",
@@ -251,7 +281,12 @@
         "autistic-visual-thinker",
         "autistic-sensory-sensitive",
         "autistic-communication-differences",
-        "autistic-executive-function"
+        "autistic-executive-function",
+        "blindness-braille-user",
+        "blindness-screen-reader-voiceover",
+        "blindness-screen-reader-nvda",
+        "blindness-low-vision-progressive",
+        "blindness-light-perception"
       ],
       "severity": "CRITICAL",
       "issue": "Voice/audio assumption",
