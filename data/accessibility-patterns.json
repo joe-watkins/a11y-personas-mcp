@@ -43,7 +43,9 @@
         "aging-multiple-impairments",
         "deafness-sign-language-first",
         "mobility-chronic-pain",
-        "mobility-one-handed-limb-difference"
+        "mobility-one-handed-limb-difference",
+        "literacy-non-native-digital",
+        "deafness-sign-language-plus-speech"
       ],
       "severity": "HIGH",
       "issue": "Visual dependency",
@@ -248,7 +250,9 @@
         "autistic-non-speaking",
         "fatigue-chronic-fatigue-syndrome",
         "mobility-chronic-pain",
-        "mobility-one-handed-limb-difference"
+        "mobility-one-handed-limb-difference",
+        "literacy-non-native-digital",
+        "deafness-sign-language-plus-speech"
       ],
       "severity": "CRITICAL",
       "issue": "Speech requirement",
@@ -265,7 +269,16 @@
       "flags": "gi",
       "personas": [
         "deaf-blind",
-        "low-vision-taylor"
+        "low-vision-taylor",
+        "color-vision-deficiency",
+        "low-vision",
+        "blindness-braille-user",
+        "blindness-screen-reader-voiceover",
+        "blindness-screen-reader-nvda",
+        "blindness-low-vision-progressive",
+        "blindness-light-perception",
+        "eye-patch-temporary-vision",
+        "temp-eye-patch-temporary-vision"
       ],
       "severity": "HIGH",
       "issue": "Color dependency",
@@ -337,7 +350,9 @@
         "autistic-non-speaking",
         "fatigue-chronic-fatigue-syndrome",
         "mobility-chronic-pain",
-        "mobility-one-handed-limb-difference"
+        "mobility-one-handed-limb-difference",
+        "literacy-non-native-digital",
+        "deafness-sign-language-plus-speech"
       ],
       "severity": "MEDIUM",
       "issue": "Time pressure",
@@ -353,7 +368,14 @@
       "pattern": "\\b(top|bottom|left|right)\\s+(corner|side|area|section)\\b",
       "flags": "gi",
       "personas": [
-        "deaf-blind"
+        "deaf-blind",
+        "blindness-braille-user",
+        "blindness-screen-reader-voiceover",
+        "blindness-screen-reader-nvda",
+        "blindness-low-vision-progressive",
+        "blindness-light-perception",
+        "blindness-braille",
+        "low-vision"
       ],
       "severity": "MEDIUM",
       "issue": "Spatial direction",
@@ -423,7 +445,9 @@
         "deafness-sign-language-first",
         "autistic-non-speaking",
         "fatigue-chronic-fatigue-syndrome",
-        "mobility-one-handed-limb-difference"
+        "mobility-one-handed-limb-difference",
+        "literacy-non-native-digital",
+        "deafness-sign-language-plus-speech"
       ],
       "severity": "HIGH",
       "issue": "Audio dependency",
@@ -469,11 +493,19 @@
     },
     {
       "id": "reading-speed-assumption",
-      "pattern": "\\b(scan|skim|glance|at a glance)\\b",
+      "pattern": "\\b(scan|skim|glance|at a glance|quick look)\\b",
       "flags": "gi",
       "personas": [
         "low-vision-taylor",
-        "deaf-blind"
+        "deaf-blind",
+        "low-vision",
+        "dyslexia-reading",
+        "cognitive-memory-loss",
+        "intellectual-disability-mild",
+        "blindness-braille-user",
+        "blindness-screen-reader-voiceover",
+        "blindness-screen-reader-nvda",
+        "literacy-non-native-digital"
       ],
       "severity": "MEDIUM",
       "issue": "Reading speed assumption",
@@ -544,7 +576,9 @@
         "aging-multiple-impairments",
         "deafness-sign-language-first",
         "deaf-blind",
-        "fatigue-chronic-fatigue-syndrome"
+        "fatigue-chronic-fatigue-syndrome",
+        "literacy-non-native-digital",
+        "deafness-sign-language-plus-speech"
       ],
       "severity": "MEDIUM",
       "issue": "Technical complexity",
@@ -617,7 +651,9 @@
         "autistic-non-speaking",
         "fatigue-chronic-fatigue-syndrome",
         "mobility-chronic-pain",
-        "mobility-one-handed-limb-difference"
+        "mobility-one-handed-limb-difference",
+        "literacy-non-native-digital",
+        "deafness-sign-language-plus-speech"
       ],
       "severity": "HIGH",
       "issue": "Session timeout pressure",
@@ -696,7 +732,9 @@
         "autistic-non-speaking",
         "fatigue-chronic-fatigue-syndrome",
         "mobility-chronic-pain",
-        "mobility-one-handed-limb-difference"
+        "mobility-one-handed-limb-difference",
+        "literacy-non-native-digital",
+        "deafness-sign-language-plus-speech"
       ],
       "severity": "CRITICAL",
       "issue": "Voice/audio assumption",
@@ -1050,6 +1088,106 @@
         "read carefully through",
         "as you can see",
         "it's clearly stated"
+      ]
+    },
+    {
+      "id": "literacy-assumption-literacy-non-native-digital",
+      "pattern": "\\b(read carefully|as you can see|obviously|clearly stated)\\b",
+      "flags": "gi",
+      "personas": [
+        "literacy-non-native-digital"
+      ],
+      "severity": "MEDIUM",
+      "issue": "Literacy assumption",
+      "suggestion": "Use simple language and provide audio or visual alternatives to text",
+      "examples": [
+        "read carefully through",
+        "as you can see",
+        "it's clearly stated"
+      ]
+    },
+    {
+      "id": "language-complexity",
+      "pattern": "\\b(jargon|corporate speak|idioms|metaphors|slang|technical terms|lingo|buzzwords)\\b",
+      "flags": "gi",
+      "personas": [
+        "literacy-non-native-digital",
+        "intellectual-disability-mild",
+        "deafness-sign-language-first",
+        "autistic-communication-differences",
+        "cognitive-memory-loss",
+        "aging-multiple-impairments"
+      ],
+      "severity": "MEDIUM",
+      "issue": "Complex language or cultural assumptions",
+      "suggestion": "Use plain language and avoid idioms, metaphors, or cultural references",
+      "examples": [
+        "corporate jargon",
+        "industry buzzwords",
+        "cultural idioms"
+      ]
+    },
+    {
+      "id": "multi-modal-communication",
+      "pattern": "\\b(video call only|audio only|must speak|voice required|phone support only)\\b",
+      "flags": "gi",
+      "personas": [
+        "deafness-sign-language-plus-speech",
+        "autistic-communication-differences",
+        "speech-impairment-communication",
+        "autistic-non-speaking",
+        "sighted-deaf-hoh-low-tech",
+        "deafness-sign-language-user"
+      ],
+      "severity": "HIGH",
+      "issue": "Limited communication modality options",
+      "suggestion": "Provide multiple communication channels including text, video with captions, and sign language interpretation",
+      "examples": [
+        "video call only",
+        "must speak to continue",
+        "phone support required"
+      ]
+    },
+    {
+      "id": "digital-literacy-assumption",
+      "pattern": "\\b(just download|simply install|obviously|everyone knows|basic computer skills|easy to use)\\b",
+      "flags": "gi",
+      "personas": [
+        "literacy-non-native-digital",
+        "aging-multiple-impairments",
+        "sighted-deaf-hoh-low-tech",
+        "intellectual-disability-mild",
+        "cognitive-memory-loss"
+      ],
+      "severity": "MEDIUM",
+      "issue": "Assumes advanced digital literacy",
+      "suggestion": "Provide step-by-step guidance and avoid assumptions about technical knowledge",
+      "examples": [
+        "just download the app",
+        "everyone knows how to",
+        "basic computer skills required"
+      ]
+    },
+    {
+      "id": "fluctuating-abilities",
+      "pattern": "\\b(fixed schedule|must complete now|no breaks allowed|rigid timeline|same time daily)\\b",
+      "flags": "gi",
+      "personas": [
+        "multiple-sclerosis-fluctuating",
+        "fatigue-chronic-fatigue-syndrome",
+        "mobility-chronic-pain",
+        "depression-major",
+        "migraine-light-sensitivity",
+        "temp-migraine-light-sensitivity",
+        "chronic-fatigue-syndrome"
+      ],
+      "severity": "HIGH",
+      "issue": "Doesn't accommodate fluctuating energy/ability levels",
+      "suggestion": "Allow flexible scheduling and the ability to pause/resume tasks",
+      "examples": [
+        "fixed schedule required",
+        "must complete now",
+        "no breaks allowed"
       ]
     }
   ],
