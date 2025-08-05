@@ -573,6 +573,80 @@
         "it's clearly stated"
       ]
     }
+    ,
+    {
+      "id": "sensory-overload-trigger-warning",
+      "pattern": "\\b(flash|flicker|sudden|unexpected|loud|explosion|pop-up|jump scare)\\b",
+      "flags": "gi",
+      "personas": [
+        "ptsd-trauma",
+        "autism-non-speaking",
+        "tourettes-syndrome",
+        "visual-processing-disorder",
+        "epilepsy-seizure-risk"
+      ],
+      "severity": "HIGH",
+      "issue": "Sensory overload or trauma trigger",
+      "suggestion": "Avoid sudden effects; provide warnings and allow customization",
+      "examples": [
+        "sudden flash",
+        "unexpected pop-up",
+        "loud explosion",
+        "jump scare"
+      ]
+    },
+    {
+      "id": "error-tolerance-undo",
+      "pattern": "\\b(can't undo|no undo|no redo|permanent|irreversible)\\b",
+      "flags": "gi",
+      "personas": [
+        "parkinson-tremor",
+        "tourettes-syndrome",
+        "intellectual-disability-mild"
+      ],
+      "severity": "HIGH",
+      "issue": "Lack of error recovery",
+      "suggestion": "Always provide undo/redo or confirmation before permanent actions",
+      "examples": [
+        "can't undo this action",
+        "no undo available",
+        "permanent change"
+      ]
+    },
+    {
+      "id": "motivation-task-initiation",
+      "pattern": "\\b(multiple steps|complex|complicated|overwhelming|too many|all at once)\\b",
+      "flags": "gi",
+      "personas": [
+        "depression-major"
+      ],
+      "severity": "MEDIUM",
+      "issue": "Overwhelming task complexity",
+      "suggestion": "Break tasks into simple, stepwise flows and provide encouragement",
+      "examples": [
+        "multiple steps required",
+        "complex process",
+        "all at once"
+      ]
+    },
+    {
+      "id": "content-warning-customization",
+      "pattern": "\\b(no warning|no option|no customization|forced|must|required)\\b",
+      "flags": "gi",
+      "personas": [
+        "ptsd-trauma",
+        "autism-non-speaking",
+        "visual-processing-disorder"
+      ],
+      "severity": "MEDIUM",
+      "issue": "Lack of content warnings or customization",
+      "suggestion": "Allow users to filter, skip, or customize content and notifications",
+      "examples": [
+        "no warning provided",
+        "no option to skip",
+        "forced to view"
+      ]
+    }
   ],
   "contextualChecks": [
     {
