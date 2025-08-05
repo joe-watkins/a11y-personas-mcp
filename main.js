@@ -508,23 +508,27 @@ const analyzeScriptAccessibility = (scriptContent, scriptType, issueCategory, pe
         const regex = new RegExp(patternData.pattern, patternData.flags);
         const matches = scriptContent.match(regex);
         if (matches) {
-            patternData.personas.forEach(persona => {
-                if (Object.keys(personaData).includes(persona)) {
-                    const personaName = getPersonaDisplayName(persona, personaData[persona]);
-                    foundIssues.push({
-                        persona: personaName,
-                        severity: patternData.severity,
-                        issue: patternData.issue,
-                        matches: matches,
-                        suggestion: patternData.suggestion
-                    });
-                    
-                    // Adjust grade based on severity
-                    if (patternData.severity === 'CRITICAL') gradePoints -= 25;
-                    else if (patternData.severity === 'HIGH') gradePoints -= 15;
-                    else if (patternData.severity === 'MEDIUM') gradePoints -= 10;
-                }
-            });
+            // Check if this pattern affects any of the requested personas
+            const affectedPersonas = patternData.personas.filter(persona => Object.keys(personaData).includes(persona));
+            
+            if (affectedPersonas.length > 0) {
+                const personaNames = affectedPersonas.map(persona => getPersonaDisplayName(persona, personaData[persona]));
+                
+                foundIssues.push({
+                    personas: affectedPersonas,
+                    personaNames: personaNames,
+                    severity: patternData.severity,
+                    issue: patternData.issue,
+                    matches: matches,
+                    suggestion: patternData.suggestion,
+                    patternId: patternData.id
+                });
+                
+                // Adjust grade based on severity (only once per pattern, not per persona)
+                if (patternData.severity === 'CRITICAL') gradePoints -= 25;
+                else if (patternData.severity === 'HIGH') gradePoints -= 15;
+                else if (patternData.severity === 'MEDIUM') gradePoints -= 10;
+            }
         }
     });
 
@@ -537,21 +541,26 @@ const analyzeScriptAccessibility = (scriptContent, scriptType, issueCategory, pe
             const conditionFunction = new Function('scriptType', 'scriptContent', 'issueCategory', `return ${check.condition}`);
             
             if (conditionFunction(scriptType, scriptContent, issueCategory)) {
-                check.personas.forEach(persona => {
-                    if (Object.keys(personaData).includes(persona)) {
-                        const personaName = getPersonaDisplayName(persona, personaData[persona]);
-                        foundIssues.push({
-                            persona: personaName,
-                            severity: check.severity,
-                            issue: check.issue,
-                            suggestion: check.suggestion
-                        });
-                        
-                        if (check.severity === 'CRITICAL') gradePoints -= 25;
-                        else if (check.severity === 'HIGH') gradePoints -= 15;
-                        else if (check.severity === 'MEDIUM') gradePoints -= 10;
-                    }
-                });
+                // Check if this contextual check affects any of the requested personas
+                const affectedPersonas = check.personas.filter(persona => Object.keys(personaData).includes(persona));
+                
+                if (affectedPersonas.length > 0) {
+                    const personaNames = affectedPersonas.map(persona => getPersonaDisplayName(persona, personaData[persona]));
+                    
+                    foundIssues.push({
+                        personas: affectedPersonas,
+                        personaNames: personaNames,
+                        severity: check.severity,
+                        issue: check.issue,
+                        suggestion: check.suggestion,
+                        patternId: check.id
+                    });
+                    
+                    // Adjust grade based on severity (only once per pattern)
+                    if (check.severity === 'CRITICAL') gradePoints -= 25;
+                    else if (check.severity === 'HIGH') gradePoints -= 15;
+                    else if (check.severity === 'MEDIUM') gradePoints -= 10;
+                }
             }
         } catch (error) {
             console.error('Error evaluating contextual check:', error);
@@ -579,21 +588,33 @@ const analyzeScriptAccessibility = (scriptContent, scriptType, issueCategory, pe
         if (criticalIssues.length > 0) {
             response += `\nCRITICAL ISSUES:\n`;
             criticalIssues.forEach(issue => {
-                response += `• ${issue.persona}: BLOCKED - ${issue.issue}\n`;
+                const personaList = issue.personaNames.slice(0, 3).join(', ') + (issue.personaNames.length > 3 ? ` (+${issue.personaNames.length - 3} more)` : '');
+                response += `• ${personaList}: BLOCKED - ${issue.issue}\n`;
+                if (issue.matches) {
+                    response += `  Found: "${issue.matches.slice(0, 2).join('", "')}"\n`;
+                }
             });
         }
 
         if (highIssues.length > 0) {
             response += `\nHIGH RISK:\n`;
             highIssues.forEach(issue => {
-                response += `• ${issue.persona}: ${issue.issue}\n`;
+                const personaList = issue.personaNames.slice(0, 3).join(', ') + (issue.personaNames.length > 3 ? ` (+${issue.personaNames.length - 3} more)` : '');
+                response += `• ${personaList}: ${issue.issue}\n`;
+                if (issue.matches) {
+                    response += `  Found: "${issue.matches.slice(0, 2).join('", "')}"\n`;
+                }
             });
         }
 
         if (mediumIssues.length > 0) {
             response += `\nMEDIUM RISK:\n`;
             mediumIssues.forEach(issue => {
-                response += `• ${issue.persona}: ${issue.issue}\n`;
+                const personaList = issue.personaNames.slice(0, 3).join(', ') + (issue.personaNames.length > 3 ? ` (+${issue.personaNames.length - 3} more)` : '');
+                response += `• ${personaList}: ${issue.issue}\n`;
+                if (issue.matches) {
+                    response += `  Found: "${issue.matches.slice(0, 2).join('", "')}"\n`;
+                }
             });
         }
 

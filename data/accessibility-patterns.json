@@ -43,7 +43,7 @@
         "aging-multiple-impairments",
         "deafness-sign-language-first",
         "mobility-chronic-pain",
-        "mobility-one-handed-limb-difference",
+        "mobility-one-handed-limb-difference"
       ],
       "severity": "HIGH",
       "issue": "Visual dependency",
@@ -248,7 +248,7 @@
         "autistic-non-speaking",
         "fatigue-chronic-fatigue-syndrome",
         "mobility-chronic-pain",
-        "mobility-one-handed-limb-difference",
+        "mobility-one-handed-limb-difference"
       ],
       "severity": "CRITICAL",
       "issue": "Speech requirement",
@@ -337,7 +337,7 @@
         "autistic-non-speaking",
         "fatigue-chronic-fatigue-syndrome",
         "mobility-chronic-pain",
-        "mobility-one-handed-limb-difference",
+        "mobility-one-handed-limb-difference"
       ],
       "severity": "MEDIUM",
       "issue": "Time pressure",
@@ -423,7 +423,7 @@
         "deafness-sign-language-first",
         "autistic-non-speaking",
         "fatigue-chronic-fatigue-syndrome",
-        "mobility-one-handed-limb-difference",
+        "mobility-one-handed-limb-difference"
       ],
       "severity": "HIGH",
       "issue": "Audio dependency",
@@ -544,7 +544,7 @@
         "aging-multiple-impairments",
         "deafness-sign-language-first",
         "deaf-blind",
-        "fatigue-chronic-fatigue-syndrome",
+        "fatigue-chronic-fatigue-syndrome"
       ],
       "severity": "MEDIUM",
       "issue": "Technical complexity",
@@ -617,7 +617,7 @@
         "autistic-non-speaking",
         "fatigue-chronic-fatigue-syndrome",
         "mobility-chronic-pain",
-        "mobility-one-handed-limb-difference",
+        "mobility-one-handed-limb-difference"
       ],
       "severity": "HIGH",
       "issue": "Session timeout pressure",
@@ -696,7 +696,7 @@
         "autistic-non-speaking",
         "fatigue-chronic-fatigue-syndrome",
         "mobility-chronic-pain",
-        "mobility-one-handed-limb-difference",
+        "mobility-one-handed-limb-difference"
       ],
       "severity": "CRITICAL",
       "issue": "Voice/audio assumption",
