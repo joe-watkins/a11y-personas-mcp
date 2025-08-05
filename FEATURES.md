@@ -135,3 +135,16 @@ Generates measurable accessibility goals.
 - Slack/Teams bot for accessibility consultations
 - CI/CD pipeline integration for accessibility testing
 - Design system integration for component validation
+
+## #get-persona multiple personas
+Add support for retrieving multiple personas at once, allowing users to specify a list of personas they want to retrieve.
+
+Add support for retrieving personas by Title and ID, allowing users to specify either a title or ID to retrieve the corresponding persona.
+
+### Example Usage   
+```bash
+#get-persona low-vision, deaf-blind
+Retrieve personas for low vision and deaf-blind users.
+#get-persona "low vision", "deaf-blind"
+Retrieve personas for low vision and deaf-blind users by title.
+```

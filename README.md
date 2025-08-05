@@ -210,7 +210,7 @@ How should customer care handle interactions with deafblind users?
 ```
 
 ```
-What are the main barriers for users with low vision when using customer support?
+#get-persona low-vision What are the main barriers for users with low vision when using customer support?
 ```
 
 ```
