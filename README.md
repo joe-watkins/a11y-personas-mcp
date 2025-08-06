@@ -34,6 +34,9 @@ Usage in Copilot:
 #list-personas
 ```
 
+![Screenshot of list-persons output](https://github.com/joe-watkins/a11y-personas-mcp/blob/main/images/list-personas-show-some.png?raw=true)
+
+
 ### `get-personas`
 Retrieves the complete accessibility persona documentation for one or more personas. Supports both persona IDs (filename without .md) and titles from frontmatter.
 
@@ -44,8 +47,6 @@ Usage in Copilot:
 #get-personas ["low-vision", "deaf-blind"]
 #get-personas "Low Vision User", "Deafblind Person"
 ```
-
-![Screenshot of list-persons output](https://github.com/joe-watkins/a11y-personas-mcp/blob/main/images/list-personas-show-some.png?raw=true)
 
 **Parameters:**
 - `personas` (string | array): Single persona or array of persona identifiers. Can be:
@@ -58,6 +59,7 @@ Usage in Copilot:
 **Returns:** Full markdown content including profile, interaction style, key needs, and cross-functional considerations. For multiple personas, returns formatted sections with separators.
 
 ![Screenshot of get-persona output](https://github.com/joe-watkins/a11y-personas-mcp/blob/main/images/get-persona-single.png?raw=true)
+
 
 ## Available Personas
 
