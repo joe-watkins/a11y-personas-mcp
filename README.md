@@ -198,20 +198,20 @@ Once the MCP server is installed and running, you can use prompts like these in 
 
 **Get a specific persona:**
 ```
-#get-persona "deaf-blind"
+#get-personas "deaf-blind"
 ```
 
 ```
-#get-persona "Low Vision User"
+#get-personas "Low Vision User"
 ```
 
 ```
-#get-persona "Motor-Impaired / Non-Speaking Person"
+#get-personas "Motor-Impaired / Non-Speaking Person"
 ```
 
 **Get multiple personas:**
 ```
-#get-persona ["low-vision", "deaf-blind", "motor-impaired-non-speaking"]
+#get-personas ["low-vision", "deaf-blind", "motor-impaired-non-speaking"]
 ```
 
 **List all available personas:**
@@ -238,9 +238,9 @@ Show me the sighted deaf hard-of-hearing persona with low tech skills
 
 **Get multiple personas:**
 ```
-#get-persona ["low-vision", "deaf-blind", "motor-impaired-non-speaking"]
+#get-personas ["low-vision", "deaf-blind", "motor-impaired-non-speaking"]
 ```
 
 ```
-#get-persona "Low Vision User", "Deaf-Blind"
+#get-personas "Low Vision User", "Deaf-Blind"
 ```
