@@ -40,48 +40,107 @@ const server = new McpServer({
 // Tools are functions that clients can call to perform specific actions
 server.tool(
     'get-persona',                // Tool identifier - used by clients to invoke this tool
-    'Tool to get a static persona', // Human-readable description of what this tool does
+    'Get one or more accessibility personas by ID or title', // Human-readable description of what this tool does
     {
         // Define the tool's input schema using Zod
-        // This validates parameters passed from the client
-        persona: z.string().describe('The name of the persona to get'),
+        // This validates parameters passed from the client - supports both single persona and arrays
+        personas: z.union([
+            z.string().describe('Single persona ID or title'),
+            z.array(z.string()).describe('Array of persona IDs or titles')
+        ]).describe('Persona identifier(s) - can be ID (filename without .md) or title from frontmatter')
     },
     // The actual function that gets executed when the tool is called
-    async ({ persona }) => {
+    async ({ personas }) => {
         try {
-            // Get list of available personas
+            const personaInputs = Array.isArray(personas) ? personas : [personas];
+            const results = [];
+            const notFound = [];
+            
+            // Get all available personas for title matching
             const availablePersonas = getAvailablePersonas();
             
-            // Check if requested persona exists
-            if (!availablePersonas.includes(persona)) {
-                return {
-                    content: [
-                        {
-                            type: 'text',
-                            text: `Persona "${persona}" not found. Available personas: ${availablePersonas.join(', ')}`
+            for (const input of personaInputs) {
+                const trimmedInput = input.trim();
+                let personaId = null;
+                
+                // First try exact ID match
+                if (availablePersonas.includes(trimmedInput)) {
+                    personaId = trimmedInput;
+                } else {
+                    // Try to find by title (case-insensitive)
+                    for (const id of availablePersonas) {
+                        try {
+                            const personaPath = join(__dirname, 'personas', `${id}.md`);
+                            const content = readFileSync(personaPath, 'utf-8');
+                            
+                            // Extract title from frontmatter
+                            const titleMatch = content.match(/^---[\s\S]*?title:\s*(.+?)$/m);
+                            if (titleMatch) {
+                                const title = titleMatch[1].trim();
+                                if (title.toLowerCase() === trimmedInput.toLowerCase()) {
+                                    personaId = id;
+                                    break;
+                                }
+                            }
+                        } catch (error) {
+                            // Skip if file can't be read
+                            continue;
                         }
-                    ]
-                };
+                    }
+                }
+                
+                if (personaId) {
+                    try {
+                        const personaPath = join(__dirname, 'personas', `${personaId}.md`);
+                        const content = readFileSync(personaPath, 'utf-8');
+                        results.push({
+                            id: personaId,
+                            content: content
+                        });
+                    } catch (error) {
+                        notFound.push(trimmedInput);
+                    }
+                } else {
+                    notFound.push(trimmedInput);
+                }
             }
             
-            // Read the persona file
-            const personaPath = join(__dirname, 'personas', `${persona}.md`);
-            const personaContent = readFileSync(personaPath, 'utf8');
+            // Build response
+            let responseText = '';
+            
+            if (results.length > 0) {
+                if (results.length === 1) {
+                    responseText = `# Persona: ${results[0].id}\n\n${results[0].content}`;
+                } else {
+                    responseText = `# Retrieved ${results.length} Personas\n\n`;
+                    results.forEach((result, index) => {
+                        responseText += `## ${index + 1}. Persona: ${result.id}\n\n${result.content}`;
+                        if (index < results.length - 1) {
+                            responseText += '\n\n---\n\n';
+                        }
+                    });
+                }
+            }
+            
+            if (notFound.length > 0) {
+                if (responseText) responseText += '\n\n';
+                responseText += `## Not Found\n\nThe following personas could not be found: ${notFound.join(', ')}\n\n`;
+                responseText += `Available personas: ${availablePersonas.join(', ')}`;
+            }
+            
+            if (!responseText) {
+                responseText = `No personas found. Available personas: ${availablePersonas.join(', ')}`;
+            }
             
             return {
-                content: [
-                    {
-                        type: 'text',
-                        text: personaContent
-                    }
-                ]
+                content: [{ type: 'text', text: responseText }]
             };
         } catch (error) {
             return {
                 content: [
                     {
                         type: 'text',
-                        text: `Error reading persona "${persona}": ${error.message}`
+                        text: `Error retrieving personas: ${error.message}\n\nAvailable personas: ${getAvailablePersonas().join(', ')}`
                     }
                 ]
             };

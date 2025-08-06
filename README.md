@@ -30,17 +30,26 @@ Usage in Copilot:
 ![Screenshot of list-personas output](https://github.com/joe-watkins/a11y-personas-mcp/blob/main/readme-images/list-personas-show-some.png?raw=true)
 
 ### `get-persona`
-Retrieves the complete accessibility persona documentation for a specific persona.
+Retrieves the complete accessibility persona documentation for one or more personas. Supports both persona IDs (filename without .md) and titles from frontmatter.
 
 Usage in Copilot:
 ```
 #get-persona Blindness (Braille User)
+#get-persona low-vision
+#get-persona "ADHD (Attention/Executive Function)"
+#get-persona "Motor-Impaired / Non-Speaking Person"
+#get-persona ["low-vision", "deaf-blind"]
+#get-persona "Low Vision User", "Deafblind Person"
+#get-persona "Autistic (Sensory Sensitive)", "Migraine (Light/Sound Sensitivity)"
 ```
 
 **Parameters:**
-- `persona` (string): The name of the persona to retrieve (e.g., "deaf-blind", "low-vision-taylor")
+- `personas` (string | array): Single persona or array of persona identifiers. Can be:
+  - Persona ID: filename without .md (e.g., "deaf-blind", "low-vision") 
+  - Persona Title: title from frontmatter (e.g., "Blindness (Braille User)", "Low Vision User")
+  - Array of IDs/titles: multiple personas in one request
 
-**Returns:** Full markdown content including profile, interaction style, key needs, and cross-functional considerations.
+**Returns:** Full markdown content including profile, interaction style, key needs, and cross-functional considerations. For multiple personas, returns formatted sections with separators.
 
 
 **Parameters:** None
@@ -172,6 +181,19 @@ I need information about the motor-impaired non-speaking persona
 
 ```
 Show me the sighted deaf hard-of-hearing persona with low tech skills
+```
+
+**Get multiple personas:**
+```
+#get-persona ["low-vision", "deaf-blind", "motor-impaired-non-speaking"]
+```
+
+```
+#get-persona "Low Vision User", "Deaf-Blind"
+```
+
+```
+Compare the needs of users with visual and motor impairments by getting both low-vision and motor-impaired-non-speaking personas
 ```
 
 ### Customer Support Script Review
