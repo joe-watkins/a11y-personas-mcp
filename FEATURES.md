@@ -1,4 +1,45 @@
-# Future Features
+# Features
+
+## ✅ Implemented Tools
+
+### Core MCP Tools
+
+#### `get-persona`
+Retrieves one or more accessibility personas by ID or title.
+- **Parameters**: `personas` (string|array) - Single persona ID/title or array of IDs/titles
+- **Returns**: Persona content with metadata
+- **Use Case**: Get detailed persona information for analysis and reference
+- **Example**: `get-persona personas=["deaf-blind", "low-vision"]`
+
+#### `list-personas`
+Lists all available accessibility personas with titles.
+- **Parameters**: None
+- **Returns**: Complete list of personas with human-readable titles
+- **Use Case**: Discover available personas for selection
+- **Example**: `list-personas`
+
+#### `review-customer-support-scripts`
+Reviews customer support scripts through the lens of accessibility personas.
+- **Parameters**: `script_content` (string), `script_type` (string), `issue_category` (string), `personas` (array, optional)
+- **Returns**: Accessibility grade (A-F), persona-specific issues with severity levels, suggested improvements, and inclusive alternatives
+- **Use Case**: Ensure customer support interactions are accessible and inclusive
+- **Example**: `review-customer-support-scripts script_content="Please click the blue button to continue" script_type="chat" issue_category="technical-support"`
+
+#### `analyze-persona-patterns`
+Analyzes an existing persona and suggests accessibility pattern updates.
+- **Parameters**: `persona_id` (string), `auto_update` (boolean, optional)
+- **Returns**: Pattern analysis with suggested updates to improve detection accuracy
+- **Use Case**: Maintain and improve the accessibility pattern detection system
+- **Example**: `analyze-persona-patterns persona_id="deaf-blind" auto_update=false`
+
+#### `review-product-requirements`
+Reviews product requirements through the lens of accessibility personas to identify barriers and suggest improvements.
+- **Parameters**: `requirements` (string), `personas` (array, optional)
+- **Returns**: Accessibility grade (A-F), persona-specific issues with severity levels, suggested improvements, and inclusive alternatives
+- **Use Case**: Product managers can ensure requirements are inclusive from the start
+- **Example**: `review-product-requirements requirements="Users must be able to see the visual indicators and click precisely on small targets" personas=["deaf-blind", "motor-impaired-non-speaking"]`
+
+---
 
 ## 🎯 Planned Tools
 
@@ -135,10 +176,3 @@ Generates measurable accessibility goals.
 - Slack/Teams bot for accessibility consultations
 - CI/CD pipeline integration for accessibility testing
 - Design system integration for component validation
-
-## Product Requirements Review Tool
-### `review-product-requirements`
-Reviews product requirements through the lens of accessibility personas to identify barriers and suggest improvements.
-- **Parameters**: `requirements` (string), `personas` (array)
-- **Returns**: Accessibility grade (A-F), persona-specific issues with severity levels, suggested improvements, and inclusive alternatives.
-- **Use Case**: Product managers can ensure requirements are inclusive from the start

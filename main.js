@@ -275,6 +275,69 @@ server.tool(
     }
 );
 
+// Register review-product-requirements tool
+server.tool(
+    'review-product-requirements',
+    'Reviews product requirements through the lens of accessibility personas to identify barriers and suggest improvements',
+    {
+        requirements: z.string().describe('The product requirements text to review'),
+        personas: z.array(z.string()).optional().describe('Specific personas to focus on (default: all)')
+    },
+    async ({ requirements, personas }) => {
+        try {
+            // Get available personas or use specified ones
+            const availablePersonas = getAvailablePersonas();
+            const targetPersonas = personas && personas.length > 0 ? personas : availablePersonas;
+            
+            // Validate that specified personas exist
+            const invalidPersonas = targetPersonas.filter(p => !availablePersonas.includes(p));
+            if (invalidPersonas.length > 0) {
+                return {
+                    content: [
+                        {
+                            type: 'text',
+                            text: `Invalid personas specified: ${invalidPersonas.join(', ')}. Available personas: ${availablePersonas.join(', ')}`
+                        }
+                    ]
+                };
+            }
+
+            // Load persona data for analysis
+            const personaData = {};
+            for (const persona of targetPersonas) {
+                try {
+                    const personaPath = join(__dirname, 'personas', `${persona}.md`);
+                    const content = readFileSync(personaPath, 'utf8');
+                    personaData[persona] = content;
+                } catch (error) {
+                    console.error(`Error loading persona ${persona}:`, error);
+                }
+            }
+
+            // Analyze requirements for accessibility issues
+            const analysis = analyzeProductRequirements(requirements, personaData);
+            
+            return {
+                content: [
+                    {
+                        type: 'text',
+                        text: analysis
+                    }
+                ]
+            };
+        } catch (error) {
+            return {
+                content: [
+                    {
+                        type: 'text',
+                        text: `Error analyzing product requirements: ${error.message}`
+                    }
+                ]
+            };
+        }
+    }
+);
+
 // Register analyze-persona-patterns tool
 server.tool(
     'analyze-persona-patterns',
@@ -548,6 +611,313 @@ const updatePatternsFile = async (updatedPatterns, contextualChecks) => {
     } catch (error) {
         throw new Error(`Failed to update patterns file: ${error.message}`);
     }
+};
+
+// Helper function to analyze product requirements accessibility
+const analyzeProductRequirements = (requirements, personaData) => {
+    let grade = 'A';
+    let gradePoints = 100;
+
+    // Load accessibility patterns from external file
+    const { patterns: accessibilityPatterns, contextualChecks } = loadAccessibilityPatterns();
+
+    // Analyze requirements content against patterns
+    const foundIssues = [];
+    
+    accessibilityPatterns.forEach(patternData => {
+        const regex = new RegExp(patternData.pattern, patternData.flags);
+        const matches = requirements.match(regex);
+        if (matches) {
+            // Check if this pattern affects any of the requested personas
+            const affectedPersonas = patternData.personas.filter(persona => Object.keys(personaData).includes(persona));
+            
+            if (affectedPersonas.length > 0) {
+                const personaNames = affectedPersonas.map(persona => getPersonaDisplayName(persona, personaData[persona]));
+                
+                foundIssues.push({
+                    personas: affectedPersonas,
+                    personaNames: personaNames,
+                    severity: patternData.severity,
+                    issue: patternData.issue,
+                    matches: matches,
+                    suggestion: patternData.suggestion,
+                    patternId: patternData.id
+                });
+                
+                // Adjust grade based on severity (only once per pattern, not per persona)
+                if (patternData.severity === 'CRITICAL') {
+                    gradePoints -= 25;
+                } else if (patternData.severity === 'HIGH') {
+                    gradePoints -= 15;
+                } else if (patternData.severity === 'MEDIUM') {
+                    gradePoints -= 10;
+                }
+            }
+        }
+    });
+
+    // Additional product requirements specific checks
+    const productSpecificIssues = analyzeProductSpecificPatterns(requirements, personaData);
+    foundIssues.push(...productSpecificIssues);
+    
+    // Adjust grade for product-specific issues
+    productSpecificIssues.forEach(issue => {
+        if (issue.severity === 'CRITICAL') {
+            gradePoints -= 25;
+        } else if (issue.severity === 'HIGH') {
+            gradePoints -= 15;
+        } else if (issue.severity === 'MEDIUM') {
+            gradePoints -= 10;
+        }
+    });
+
+    // Calculate final grade
+    if (gradePoints >= 90) grade = 'A';
+    else if (gradePoints >= 80) grade = 'B';
+    else if (gradePoints >= 70) grade = 'C';
+    else if (gradePoints >= 60) grade = 'D';
+    else grade = 'F';
+
+    // Format the response
+    let response = `📋 PRODUCT REQUIREMENTS ACCESSIBILITY REVIEW\n\n`;
+    response += `🎯 ACCESSIBILITY GRADE: ${grade}${gradePoints < 70 ? '- (Multiple Critical Issues)' : gradePoints < 90 ? ' (Some Issues Found)' : ' (Excellent Accessibility)'}\n\n`;
+
+    if (foundIssues.length > 0) {
+        response += `⚠️ ACCESSIBILITY BARRIERS IDENTIFIED:\n`;
+        
+        // Group by severity
+        const criticalIssues = foundIssues.filter(i => i.severity === 'CRITICAL');
+        const highIssues = foundIssues.filter(i => i.severity === 'HIGH');
+        const mediumIssues = foundIssues.filter(i => i.severity === 'MEDIUM');
+
+        if (criticalIssues.length > 0) {
+            response += `\n🚫 CRITICAL BARRIERS (Excludes Users):\n`;
+            criticalIssues.forEach(issue => {
+                const personaList = issue.personaNames.slice(0, 3).join(', ') + (issue.personaNames.length > 3 ? ` (+${issue.personaNames.length - 3} more)` : '');
+                response += `• ${personaList}: BLOCKED - ${issue.issue}\n`;
+                if (issue.matches && issue.matches.length <= 3) {
+                    response += `  Examples: "${issue.matches.slice(0, 3).join('", "')}"\n`;
+                }
+            });
+        }
+
+        if (highIssues.length > 0) {
+            response += `\n⚡ HIGH RISK (Significant Barriers):\n`;
+            highIssues.forEach(issue => {
+                const personaList = issue.personaNames.slice(0, 3).join(', ') + (issue.personaNames.length > 3 ? ` (+${issue.personaNames.length - 3} more)` : '');
+                response += `• ${personaList}: ${issue.issue}\n`;
+                if (issue.matches && issue.matches.length <= 3) {
+                    response += `  Examples: "${issue.matches.slice(0, 3).join('", "')}"\n`;
+                }
+            });
+        }
+
+        if (mediumIssues.length > 0) {
+            response += `\n⚠️ MEDIUM RISK (Usability Concerns):\n`;
+            mediumIssues.forEach(issue => {
+                const personaList = issue.personaNames.slice(0, 3).join(', ') + (issue.personaNames.length > 3 ? ` (+${issue.personaNames.length - 3} more)` : '');
+                response += `• ${personaList}: ${issue.issue}\n`;
+                if (issue.matches && issue.matches.length <= 3) {
+                    response += `  Examples: "${issue.matches.slice(0, 3).join('", "')}"\n`;
+                }
+            });
+        }
+
+        response += `\n💡 RECOMMENDED IMPROVEMENTS:\n`;
+        const uniqueSuggestions = [...new Set(foundIssues.map(i => i.suggestion))];
+        uniqueSuggestions.forEach((suggestion, index) => {
+            response += `${index + 1}. ${suggestion}\n`;
+        });
+
+        response += `\n✅ INCLUSIVE PRODUCT REQUIREMENTS:\n`;
+        response += `• Specify multiple input modalities (touch, voice, keyboard, eye-tracking)\n`;
+        response += `• Include alternative content formats (audio, visual, haptic)\n`;
+        response += `• Define flexible timing and pacing requirements\n`;
+        response += `• Require customizable interface elements (font size, contrast, layout)\n`;
+        response += `• Specify clear error handling and recovery processes\n`;
+        response += `• Include progressive disclosure and complexity management\n`;
+        response += `• Define offline and low-bandwidth functionality\n`;
+        response += `• Require multi-language and plain language support\n`;
+    } else {
+        response += `✅ EXCELLENT ACCESSIBILITY FOUNDATION!\n\n`;
+        response += `Your product requirements demonstrate strong accessibility awareness. Consider these enhancement opportunities:\n\n`;
+        response += `🌟 ACCESSIBILITY EXCELLENCE CHECKLIST:\n`;
+        response += `• Define specific WCAG compliance levels and testing protocols\n`;
+        response += `• Include persona-based acceptance criteria\n`;
+        response += `• Specify assistive technology compatibility requirements\n`;
+        response += `• Define accessibility performance metrics and KPIs\n`;
+        response += `• Include inclusive design review processes\n`;
+        response += `• Specify user testing requirements with diverse abilities\n`;
+    }
+
+    // Add persona impact summary
+    const personaImpactSummary = generatePersonaImpactSummary(foundIssues, personaData);
+    if (personaImpactSummary) {
+        response += `\n${personaImpactSummary}`;
+    }
+
+    return response;
+};
+
+// Helper function to analyze product-specific accessibility patterns
+const analyzeProductSpecificPatterns = (requirements, personaData) => {
+    const issues = [];
+    const requirementsLower = requirements.toLowerCase();
+    
+    // Check for missing accessibility considerations
+    const accessibilityKeywords = [
+        'accessibility', 'a11y', 'wcag', 'screen reader', 'keyboard', 
+        'contrast', 'alternative text', 'alt text', 'disability', 'inclusive'
+    ];
+    const hasAccessibilityMentions = accessibilityKeywords.some(keyword => 
+        requirementsLower.includes(keyword)
+    );
+    
+    if (!hasAccessibilityMentions && Object.keys(personaData).length > 0) {
+        issues.push({
+            personas: Object.keys(personaData),
+            personaNames: Object.keys(personaData).map(id => getPersonaDisplayName(id, personaData[id])),
+            severity: 'HIGH',
+            issue: 'No explicit accessibility requirements mentioned',
+            matches: [],
+            suggestion: 'Include specific accessibility requirements, WCAG compliance levels, and assistive technology support',
+            patternId: 'missing-accessibility-requirements'
+        });
+    }
+    
+    // Check for visual-only requirements
+    const visualOnlyPatterns = [
+        /\b(must see|visual(?:ly)? (?:appealing|stunning|beautiful))\b/gi,
+        /\b(?:only|exclusively) (?:visual|graphical)\b/gi,
+        /\brequires? (?:seeing|vision|sight)\b/gi
+    ];
+    
+    visualOnlyPatterns.forEach(pattern => {
+        const matches = requirements.match(pattern);
+        if (matches) {
+            const visuallyImpairedPersonas = Object.keys(personaData).filter(id => {
+                const content = personaData[id].toLowerCase();
+                return content.includes('blind') || content.includes('vision') || content.includes('sight');
+            });
+            
+            if (visuallyImpairedPersonas.length > 0) {
+                issues.push({
+                    personas: visuallyImpairedPersonas,
+                    personaNames: visuallyImpairedPersonas.map(id => getPersonaDisplayName(id, personaData[id])),
+                    severity: 'CRITICAL',
+                    issue: 'Requirements assume visual capabilities',
+                    matches: matches,
+                    suggestion: 'Specify alternative non-visual interaction methods and content formats',
+                    patternId: 'visual-only-requirements'
+                });
+            }
+        }
+    });
+    
+    // Check for motor ability assumptions
+    const motorPatterns = [
+        /\b(?:must|requires?) (?:precise|fine|accurate) (?:mouse|pointer|touch|gesture)\b/gi,
+        /\b(?:drag.?and.?drop|pinch|swipe|multi.?touch) (?:required|mandatory|essential)\b/gi,
+        /\b(?:only|exclusively) (?:mouse|touch|gesture) (?:input|interaction)\b/gi
+    ];
+    
+    motorPatterns.forEach(pattern => {
+        const matches = requirements.match(pattern);
+        if (matches) {
+            const motorImpairedPersonas = Object.keys(personaData).filter(id => {
+                const content = personaData[id].toLowerCase();
+                return content.includes('motor') || content.includes('mobility') || content.includes('hand') || 
+                       content.includes('arm') || content.includes('dexterity') || content.includes('tremor');
+            });
+            
+            if (motorImpairedPersonas.length > 0) {
+                issues.push({
+                    personas: motorImpairedPersonas,
+                    personaNames: motorImpairedPersonas.map(id => getPersonaDisplayName(id, personaData[id])),
+                    severity: 'CRITICAL',
+                    issue: 'Requirements assume fine motor control abilities',
+                    matches: matches,
+                    suggestion: 'Provide alternative input methods including keyboard navigation, voice control, and switch access',
+                    patternId: 'motor-assumptions'
+                });
+            }
+        }
+    });
+    
+    // Check for cognitive load assumptions
+    const cognitivePatterns = [
+        /\b(?:complex|complicated|advanced|sophisticated) (?:workflow|process|interaction)\b/gi,
+        /\b(?:must|requires?) (?:remembering|memorizing|recalling) (?:multiple|complex|numerous)\b/gi,
+        /\b(?:simultaneous|concurrent|parallel) (?:tasks|activities|processes)\b/gi
+    ];
+    
+    cognitivePatterns.forEach(pattern => {
+        const matches = requirements.match(pattern);
+        if (matches) {
+            const cognitivePersonas = Object.keys(personaData).filter(id => {
+                const content = personaData[id].toLowerCase();
+                return content.includes('cognitive') || content.includes('memory') || content.includes('attention') ||
+                       content.includes('autism') || content.includes('adhd') || content.includes('dementia');
+            });
+            
+            if (cognitivePersonas.length > 0) {
+                issues.push({
+                    personas: cognitivePersonas,
+                    personaNames: cognitivePersonas.map(id => getPersonaDisplayName(id, personaData[id])),
+                    severity: 'HIGH',
+                    issue: 'Requirements may create high cognitive load',
+                    matches: matches,
+                    suggestion: 'Design for progressive disclosure, provide clear guidance, and allow task saving/resumption',
+                    patternId: 'cognitive-load-requirements'
+                });
+            }
+        }
+    });
+    
+    return issues;
+};
+
+// Helper function to generate persona impact summary
+const generatePersonaImpactSummary = (foundIssues, personaData) => {
+    if (foundIssues.length === 0) return '';
+    
+    // Count issues per persona
+    const personaImpacts = {};
+    foundIssues.forEach(issue => {
+        issue.personas.forEach(personaId => {
+            if (!personaImpacts[personaId]) {
+                personaImpacts[personaId] = {
+                    name: getPersonaDisplayName(personaId, personaData[personaId]),
+                    critical: 0,
+                    high: 0,
+                    medium: 0
+                };
+            }
+            personaImpacts[personaId][issue.severity.toLowerCase()]++;
+        });
+    });
+    
+    let summary = `\n📊 PERSONA IMPACT SUMMARY:\n`;
+    
+    // Sort by total impact (critical weighted more heavily)
+    const sortedPersonas = Object.entries(personaImpacts)
+        .sort(([,a], [,b]) => {
+            const aWeight = a.critical * 3 + a.high * 2 + a.medium;
+            const bWeight = b.critical * 3 + b.high * 2 + b.medium;
+            return bWeight - aWeight;
+        })
+        .slice(0, 10); // Show top 10 most impacted personas
+    
+    sortedPersonas.forEach(([personaId, impact]) => {
+        const issues = [];
+        if (impact.critical > 0) issues.push(`${impact.critical} CRITICAL`);
+        if (impact.high > 0) issues.push(`${impact.high} HIGH`);
+        if (impact.medium > 0) issues.push(`${impact.medium} MEDIUM`);
+        
+        summary += `• ${impact.name}: ${issues.join(', ')}\n`;
+    });
+    
+    return summary;
 };
 
 // Helper function to analyze script accessibility
