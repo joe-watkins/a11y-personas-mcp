@@ -124,63 +124,6 @@ This MCP server provides access to 60+ accessibility personas covering permanent
 - **Vision (Contrast Sensitivity)** - Difficulty with low-contrast visual elements
 - **Visual Processing Disorder** - Visual information processing difficulties
 
-## Sample Prompts
-
-Once the MCP server is installed and running, you can use prompts like these in your MCP client:
-
-**List all available personas:**
-```
-#list-personas
-```
-
-**Get a specific persona:**
-```
-#get-persona "deaf-blind"
-```
-
-```
-#get-persona "Low Vision User"
-```
-
-```
-#get-persona "Motor-Impaired / Non-Speaking Person"
-```
-
-**Get multiple personas:**
-```
-#get-persona ["low-vision", "deaf-blind", "motor-impaired-non-speaking"]
-```
-
-**List all available personas:**
-```
-List all available accessibility personas
-```
-
-**Get a specific persona:**
-```
-Get the deaf-blind persona
-```
-
-```
-Tell me about the low vision user persona
-```
-
-```
-I need information about the motor-impaired non-speaking persona
-```
-
-```
-Show me the sighted deaf hard-of-hearing persona with low tech skills
-```
-
-**Get multiple personas:**
-```
-#get-persona ["low-vision", "deaf-blind", "motor-impaired-non-speaking"]
-```
-
-```
-#get-persona "Low Vision User", "Deaf-Blind"
-```
 
 ## Example Persona
 
@@ -243,3 +186,61 @@ Show me the sighted deaf hard-of-hearing persona with low tech skills
 - Test edge cases involving slow, sequential input
 
 This persona represents the most comprehensive accessibility requirements, as it combines the needs of both blind and deaf users, requiring purely tactile interaction methods.
+
+## Sample Prompts
+
+Once the MCP server is installed and running, you can use prompts like these in your MCP client:
+
+**List all available personas:**
+```
+#list-personas
+```
+
+**Get a specific persona:**
+```
+#get-persona "deaf-blind"
+```
+
+```
+#get-persona "Low Vision User"
+```
+
+```
+#get-persona "Motor-Impaired / Non-Speaking Person"
+```
+
+**Get multiple personas:**
+```
+#get-persona ["low-vision", "deaf-blind", "motor-impaired-non-speaking"]
+```
+
+**List all available personas:**
+```
+List all available accessibility personas
+```
+
+**Get a specific persona:**
+```
+Get the deaf-blind persona
+```
+
+```
+Tell me about the low vision user persona
+```
+
+```
+I need information about the motor-impaired non-speaking persona
+```
+
+```
+Show me the sighted deaf hard-of-hearing persona with low tech skills
+```
+
+**Get multiple personas:**
+```
+#get-persona ["low-vision", "deaf-blind", "motor-impaired-non-speaking"]
+```
+
+```
+#get-persona "Low Vision User", "Deaf-Blind"
+```
