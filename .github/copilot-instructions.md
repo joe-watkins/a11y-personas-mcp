@@ -1,12 +1,12 @@
 # GitHub Copilot Instructions for Accessibility Personas MCP
 
 ## Project Overview
-This is a Model Context Protocol (MCP) server providing 60+ accessibility personas for inclusive design evaluation. The server exposes personas through structured tools that analyze customer support scripts and suggest accessibility improvements.
+This is a simplified Model Context Protocol (MCP) server providing 60+ accessibility personas for inclusive design evaluation. The server exposes personas through two core tools that bring accessibility personas into LLM context for analysis and design guidance.
 
 ## Architecture & Key Components
 
 ### Core MCP Server (`main.js`)
-- **Entry point**: Creates McpServer instance with three main tools
+- **Entry point**: Creates McpServer instance with two main tools
 - **Tool pattern**: Each tool follows `server.tool(id, description, schema, handler)` structure using Zod validation
 - **Transport**: Uses StdioServerTransport for VS Code integration
 - **ES Modules**: Uses `import` syntax with `__dirname` workaround for file paths
@@ -14,8 +14,6 @@ This is a Model Context Protocol (MCP) server providing 60+ accessibility person
 ### Data Architecture
 ```
 personas/           # 60+ markdown files with YAML frontmatter
-data/
-  accessibility-patterns.json  # Regex patterns for script analysis
 ```
 
 ### Persona Structure (`personas/*.md`)
@@ -24,29 +22,12 @@ All personas follow the `_template.md` pattern:
 - **Biography section**: Narrative description with user quotes
 - Filename = persona ID (e.g., `deaf-blind.md` → `deaf-blind` persona)
 
-### Pattern-Based Analysis (`data/accessibility-patterns.json`)
-```json
-{
-  "patterns": [
-    {
-      "id": "visual-dependency",
-      "pattern": "\\b(look|see|view)\\b",
-      "personas": ["deaf-blind", "low-vision", ...],
-      "severity": "HIGH|MEDIUM|CRITICAL",
-      "issue": "Description",
-      "suggestion": "Improvement"
-    }
-  ]
-}
-```
-
 ## Key Development Patterns
 
 ### Adding New Personas
 1. Create `personas/new-persona.md` following `_template.md` structure
 2. Use kebab-case filenames (maps to persona IDs)
 3. Include YAML frontmatter with all required fields
-4. Run `analyze-persona-patterns` tool to update pattern associations
 
 ### Tool Implementation Pattern
 ```javascript
@@ -56,12 +37,6 @@ server.tool('tool-name', 'description', {
   // Always return { content: [{ type: 'text', text: 'result' }] }
 });
 ```
-
-### Pattern Analysis Engine
-- **Script analysis**: Regex matching against `accessibility-patterns.json`
-- **Grading system**: A-F based on severity scoring (CRITICAL: -25, HIGH: -15, MEDIUM: -10)
-- **Persona filtering**: Only show issues for personas that match the pattern
-- **Contextual checks**: Dynamic evaluation using `new Function()` for script type conditions
 
 ## Essential Commands
 
@@ -83,14 +58,28 @@ tsx main.js         # Direct execution
 
 ## Critical Integration Points
 - **Persona loading**: `getAvailablePersonas()` scans `personas/` directory
-- **Pattern matching**: Regex execution against script content with persona filtering
 - **Frontmatter parsing**: Simple regex for extracting YAML `title:` field
 - **Error handling**: Always return MCP-compliant response objects, never throw
 
-## Testing Customer Support Scripts
-Use `review-customer-support-scripts` with these parameters:
-- `script_type`: "phone", "chat", "email", "in-person"
-- `issue_category`: "technical-support", "billing", "account-access"
-- `personas`: Optional array to filter analysis
+## Available Tools
 
-The tool identifies barriers like visual dependencies, color assumptions, spatial directions, time pressure, and input method assumptions across different disability contexts.
+### `list-personas`
+Lists all available accessibility personas with their descriptive titles.
+- **Parameters**: None
+- **Returns**: Formatted list of all personas
+
+### `get-persona`
+Retrieves one or more accessibility personas by ID or title.
+- **Parameters**: `personas` (string | array) - persona ID(s) or title(s)
+- **Returns**: Full persona content including profile, interaction style, key needs, and cross-functional considerations
+
+## Usage Patterns
+
+Users should use these tools to bring personas into their conversation context, then work with the LLM to:
+- Analyze designs for accessibility issues
+- Review code for inclusive practices
+- Evaluate content for readability and comprehension
+- Plan testing scenarios with diverse user needs
+- Generate accessible design requirements
+
+The personas provide the foundational knowledge that enables the LLM to give accessibility-informed recommendations and analysis.

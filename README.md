@@ -1,13 +1,13 @@
 # Accessibility Personas MCP (Model Context Protocol Server)
 
-A Model Context Protocol (MCP) server designed for AI and LLM-powered accessibility analysis, automation, and inclusive design evaluation for digital experiences. This project provides 60+ structured accessibility personas focused on websites, native mobile apps (iOS/Android), web applications, and digital interfaces, with tools for use by AI agents, Copilot, and other LLM-based systems. Whether you want to review designs, test code or content against personas, ask accessibility consulting questions, review customer support scripts, or integrate inclusive practices into your digital workflow, this server enables AI-driven accessibility insights and recommendations.
+A Model Context Protocol (MCP) server providing 60+ accessibility personas for inclusive design evaluation. This server enables AI agents, Copilot, and LLMs to access detailed accessibility personas that can be used for design reviews, testing, and inclusive development workflows.
 
 ## Important note about synthetic users with disabilities
 
 **These synthetic personas are educational tools and starting points for accessibility considerations—they do not replace the need to work directly with real people with disabilities.** Each person's experience with disability is unique, and these generalized personas may not accurately reflect the full spectrum of real-world impacts, adaptive strategies, or individual preferences. For meaningful accessibility improvements, always prioritize user research, usability testing, and direct feedback from people with disabilities in your target audience.
 
 ## Installation in VSCode / Github Copilot
-You can use this MCP server to enhance your accessibility workflows in Visual Studio Code and Github Copilot. Follow these steps to set it up:
+
 1. Clone this project
 2. Open the project in Visual Studio Code
 3. Run `npm install` to install dependencies
@@ -20,9 +20,10 @@ You can use this MCP server to enhance your accessibility workflows in Visual St
    - **Name**: `A11y Personas MCP`
    - **Type**: Local MCP
 
-*note:* The MCP server will now be available in your VS Code MCP clients list. Start the server by clicking on the gear icon and choosing "Start Server". Ensure you are in Agent mode and run the  `#list-personas` tool in Copilot to list all personas and to start working with them. The A11y Personas MCP Tools should be listed in your Copilot tools panel.
+The MCP server will now be available in your VS Code MCP clients list. Start the server by clicking on the gear icon and choosing "Start Server". Ensure you are in Agent mode and run the `#list-personas` tool in Copilot to start working with the personas.
 
 ## Tools
+
 ### `list-personas`
 Lists all available accessibility personas with their descriptive titles.
 
@@ -30,125 +31,31 @@ Usage in Copilot:
 ```
 #list-personas
 ```
-![Screenshot of list-personas output](https://github.com/joe-watkins/a11y-personas-mcp/blob/main/readme-images/list-personas-show-some.png?raw=true)
 
-### `get-persona`
+![Screenshot of list-persons output](https://github.com/joe-watkins/a11y-personas-mcp/blob/main/readme-images/list-personas-show-some?raw=true)
+
+### `get-personas`
 Retrieves the complete accessibility persona documentation for one or more personas. Supports both persona IDs (filename without .md) and titles from frontmatter.
 
 Usage in Copilot:
 ```
-#get-persona Blindness (Braille User)
+#get-persona "Blindness (Braille User)"
 #get-persona low-vision
-#get-persona "ADHD (Attention/Executive Function)"
-#get-persona "Motor-Impaired / Non-Speaking Person"
 #get-persona ["low-vision", "deaf-blind"]
 #get-persona "Low Vision User", "Deafblind Person"
-#get-persona "Autistic (Sensory Sensitive)", "Migraine (Light/Sound Sensitivity)"
 ```
 
 **Parameters:**
 - `personas` (string | array): Single persona or array of persona identifiers. Can be:
   - Persona ID: filename without .md (e.g., "deaf-blind", "low-vision") 
   - Persona Title: title from frontmatter (e.g., "Blindness (Braille User)", "Low Vision User")
+  - Persona ID (filename): e.g., "low-vision", "deaf-blind"  
+  - Persona title: e.g., "Low Vision User", "Deafblind Person"
   - Array of IDs/titles: multiple personas in one request
 
 **Returns:** Full markdown content including profile, interaction style, key needs, and cross-functional considerations. For multiple personas, returns formatted sections with separators.
 
-
-**Parameters:** None
-
-**Returns:** Formatted list of all available personas with user-friendly titles.
-
-![Screenshot of list-personas output](https://github.com/joe-watkins/a11y-personas-mcp/blob/main/readme-images/get-persona-single.png?raw=true)
-
-
-### `review-customer-support-scripts`
-Reviews customer support scripts through the lens of accessibility personas to identify barriers and suggest improvements.
-
-Usage in Copilot:
-```
-#review-customer-support-scripts Click the big red button in the top right corner of your screen to access your account settings. If you don't see it, please refresh your browser and try again.
-```
-
-**Parameters:**
-- `script_content` (string): The support script text to review
-- `script_type` (string): The type of support interaction (phone, chat, email, in-person)
-- `issue_category` (string): The category of support issue (technical-support, billing, account-access, etc.)
-- `personas` (array, optional): Specific personas to focus on (default: all)
-
-**Returns:** Accessibility grade (A-F), persona-specific issues with severity levels, suggested improvements, and inclusive alternatives.
-
-![Screenshot of list-personas output](https://github.com/joe-watkins/a11y-personas-mcp/blob/main/readme-images/review-customer-support-script.png?raw=true)
-
-
-### `review-product-requirements`
-Reviews product requirements or design documents for accessibility issues based on selected personas.
-
-![Screenshot of review-product-requirements output](https://github.com/joe-watkins/a11y-personas-mcp/blob/main/readme-images/review-product-requirements.png?raw=true)
-
-Usage in Copilot:
-```
-#review-product-requirements A modal dialog with a disabled close button. There is no close button on the modal and focus is trapped inside of it to keep users there. The user must agree.
-```
-
-**Parameters:**
-- `requirements` (string): The product requirements or design text to review
-- `personas` (array, optional): Specific personas to focus on (default: all)
-
-**Returns:** Accessibility grade (A-F), persona-specific issues with severity levels, recommended improvements, inclusive product requirements checklist, and a persona impact summary.
-
-### `validate-design-image`
-Validates design from static image using AI vision analysis against accessibility personas for early design validation.
-
-Usage in Copilot:
-```
-#validate-design-image Modal popup with small X button in top-right corner, red error text without icons, blue submit button with white text
-```
-
-```
-#validate-design-image Mobile form with small touch targets, color-coded required fields using only red asterisks, time limit countdown showing 2 minutes remaining
-```
-
-```
-#validate-design-image Public kiosk interface with complex multi-step process, small font sizes, drag-and-drop file upload, technical jargon in instructions
-```
-
-**Parameters:**
-- `image_description` (string): Description of the design image based on visual analysis
-- `personas` (string | array, optional): Specific persona(s) to test against (default: all personas)
-- `interaction_type` (enum): Platform context - `web`, `mobile`, `desktop`, `kiosk`
-- `focus_areas` (array, optional): Specific areas to focus on - `navigation`, `forms`, `content`, `visual-hierarchy`
-
-**Returns:** Accessibility grade (A-F), persona-specific issues with severity levels, design recommendations, implementation next steps, and comprehensive validation report organized by severity.
-
-**Example Usage Patterns:**
-```
-# Test against all personas
-#validate-design-image E-commerce checkout form with multiple steps, small text, and color-coded error messages
-
-# Test specific personas  
-#validate-design-image Login screen with touch targets and visual feedback personas=["motor-impaired-non-speaking"] interaction_type="mobile"
-
-# Focus on specific areas
-#validate-design-image Dashboard with complex navigation personas=["deaf-blind", "low-vision"] interaction_type="desktop" focus_areas=["navigation"]
-
-# Kiosk-specific analysis
-#validate-design-image Public information kiosk with time-limited session interaction_type="kiosk" focus_areas=["navigation", "content"]
-```
-
-### `analyze-persona-patterns`
-When adding a new Persona this analyzes an existing persona or new one and suggests accessibility pattern updates to maintain comprehensive coverage.
-
-Usage in Copilot:
-```
-#analyze-persona-patterns deaf-blind
-```
-
-**Parameters:**
-- `persona_id` (string): The persona identifier (e.g., "deaf-blind", "low-vision-taylor")
-- `auto_update` (boolean, optional): Whether to automatically update patterns file (default: false)
-
-**Returns:** Analysis of existing patterns that should include this persona, suggested new patterns, and optional automatic updates.
+![Screenshot of get-persona output](https://github.com/joe-watkins/a11y-personas-mcp/blob/main/readme-images/get-persona-single.png?raw=true)
 
 ## Available Personas
 
@@ -215,13 +122,32 @@ This MCP server provides access to 60+ accessibility personas covering permanent
 - **Vision (Contrast Sensitivity)** - Difficulty with low-contrast visual elements
 - **Visual Processing Disorder** - Visual information processing difficulties
 
-Each persona includes detailed profile information, interaction preferences, key needs, and cross-functional guidance for customer care, development, design, and testing teams.
-
 ## Sample Prompts
 
 Once the MCP server is installed and running, you can use prompts like these in your MCP client:
 
-### Basic Persona Queries
+**List all available personas:**
+```
+#list-personas
+```
+
+**Get a specific persona:**
+```
+#get-persona "deaf-blind"
+```
+
+```
+#get-persona "Low Vision User"
+```
+
+```
+#get-persona "Motor-Impaired / Non-Speaking Person"
+```
+
+**Get multiple personas:**
+```
+#get-persona ["low-vision", "deaf-blind", "motor-impaired-non-speaking"]
+```
 
 **List all available personas:**
 ```
@@ -253,98 +179,3 @@ Show me the sighted deaf hard-of-hearing persona with low tech skills
 ```
 #get-persona "Low Vision User", "Deaf-Blind"
 ```
-
-```
-Compare the needs of users with visual and motor impairments by getting both low-vision and motor-impaired-non-speaking personas
-```
-
-### Customer Support Script Review
-
-**Review a support script for accessibility issues:**
-```
-#review-customer-support-scripts "Hello, thank you for calling support. Please look at your screen and click on the red 'Account Settings' button in the top right corner. Once you see the settings page load, please tell me verbally what you see so I can confirm you're in the right place. If you don't see it within 10 seconds, refresh your browser and try again."
-```
-
-**Review with specific personas:**
-```
-#review-customer-support-scripts "Hi! To help you reset your password, I need you to quickly navigate to your email and click the reset link we just sent. Please do this now and let me know when you see the confirmation page."
-
-Script type: chat  
-Issue category: technical-support
-Personas: ["motor-impaired-non-speaking", "sighted-deaf-hoh-low-tech"]
-```
-
-**Review different script types:**
-```
-#review-customer-support-scripts "Thank you for contacting support. Please watch the attached video tutorial to resolve your issue. If you can't see the solution clearly, call our phone support line for further assistance."
-
-Script type: email
-Issue category: technical-support
-```
-
-### Design Validation
-
-**Validate a design against all personas:**
-```
-#validate-design-image Modal dialog with a small X close button in the corner, red error text, and blue submit button interaction_type="web"
-```
-
-**Test specific personas for mobile design:**
-```
-#validate-design-image Mobile form interface with small touch targets and color-coded validation messages personas=["motor-impaired-non-speaking", "low-vision"] interaction_type="mobile" focus_areas=["forms"]
-```
-
-**Kiosk interface validation:**
-```
-#validate-design-image Public information kiosk with time-limited session, complex navigation menu, and small font sizes interaction_type="kiosk" focus_areas=["navigation", "content"]
-```
-
-**Focus on specific design areas:**
-```
-#validate-design-image E-commerce checkout flow with multi-step process, progress indicators, and payment forms interaction_type="web" focus_areas=["forms", "navigation"]
-```
-
-**Single persona analysis:**
-```
-#validate-design-image Dashboard interface with data visualizations, interactive charts, and complex filtering options personas="deaf-blind" interaction_type="desktop" focus_areas=["visual-hierarchy", "navigation"]
-```
-
-**Complex interface validation:**
-```
-#validate-design-image Banking application with multiple tabs, drag-and-drop functionality, time-sensitive session warnings, and technical financial terminology personas=["cognitive-memory-loss", "motor-impaired-non-speaking", "sighted-deaf-hoh-low-tech"] interaction_type="web"
-```
-
-### Accessibility Consultation Questions
-
-**General accessibility questions:**
-```
-What accessibility considerations should I keep in mind for users with motor impairments?
-```
-
-```
-How should customer care handle interactions with deafblind users?
-```
-
-```
-#get-persona low-vision What are the main barriers for users with low vision when using customer support?
-```
-
-```
-Review this support process for accessibility issues:
-
-"Our standard support process requires customers to: 1) Call our phone line, 2) Navigate to our website while on the call, 3) Click through multiple menus to find their account settings, 4) Read confirmation codes aloud, and 5) Confirm changes verbally before hanging up."
-
-Script type: phone
-Issue category: account-access
-```
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for how to get involved.
-
-## Resources
-
-### Model Context Protocol (MCP)
-- **[MCP Main Repository](https://github.com/modelcontextprotocol)** - Official Model Context Protocol documentation, specifications, and examples
-- **[TypeScript SDK](https://github.com/modelcontextprotocol/typescript-sdk)** - TypeScript/JavaScript SDK used to build this MCP server, includes APIs for creating tools, resources, and prompts
-- **[MCP Inspector](https://github.com/modelcontextprotocol/inspector)** - Debugging tool for testing and inspecting MCP servers during development
