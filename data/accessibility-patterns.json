@@ -45,7 +45,8 @@
         "mobility-one-handed-limb-difference",
         "literacy-non-native-digital",
         "deafness-sign-language-plus-speech",
-        "dyscalculia-number-processing"
+        "dyscalculia-number-processing",
+        "mobility-repetitive-stress-injury"
       ],
       "severity": "HIGH",
       "issue": "Visual dependency",
@@ -253,7 +254,8 @@
         "literacy-non-native-digital",
         "deafness-sign-language-plus-speech",
         "vestibular-balance-disorder",
-        "tinnitus-audio-sensitivity"
+        "tinnitus-audio-sensitivity",
+        "mobility-repetitive-stress-injury"
       ],
       "severity": "CRITICAL",
       "issue": "Speech requirement",
@@ -353,7 +355,8 @@
         "literacy-non-native-digital",
         "deafness-sign-language-plus-speech",
         "dyscalculia-number-processing",
-        "tinnitus-audio-sensitivity"
+        "tinnitus-audio-sensitivity",
+        "mobility-repetitive-stress-injury"
       ],
       "severity": "MEDIUM",
       "issue": "Time pressure",
@@ -451,7 +454,8 @@
         "mobility-one-handed-limb-difference",
         "literacy-non-native-digital",
         "deafness-sign-language-plus-speech",
-        "tinnitus-audio-sensitivity"
+        "tinnitus-audio-sensitivity",
+        "mobility-repetitive-stress-injury"
       ],
       "severity": "HIGH",
       "issue": "Audio dependency",
@@ -580,7 +584,8 @@
         "fatigue-chronic-fatigue-syndrome",
         "literacy-non-native-digital",
         "deafness-sign-language-plus-speech",
-        "tinnitus-audio-sensitivity"
+        "tinnitus-audio-sensitivity",
+        "mobility-repetitive-stress-injury"
       ],
       "severity": "MEDIUM",
       "issue": "Technical complexity",
@@ -655,7 +660,8 @@
         "literacy-non-native-digital",
         "deafness-sign-language-plus-speech",
         "dyscalculia-number-processing",
-        "tinnitus-audio-sensitivity"
+        "tinnitus-audio-sensitivity",
+        "mobility-repetitive-stress-injury"
       ],
       "severity": "HIGH",
       "issue": "Session timeout pressure",
@@ -736,7 +742,8 @@
         "literacy-non-native-digital",
         "deafness-sign-language-plus-speech",
         "vestibular-balance-disorder",
-        "tinnitus-audio-sensitivity"
+        "tinnitus-audio-sensitivity",
+        "mobility-repetitive-stress-injury"
       ],
       "severity": "CRITICAL",
       "issue": "Voice/audio assumption",

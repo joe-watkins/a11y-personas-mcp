@@ -153,6 +153,7 @@ This MCP server provides access to 60+ accessibility personas covering permanent
 - **Low Vision User** - Partial vision impairment
 - **Migraine (Light/Sound Sensitivity)** - Sensory trigger sensitivity
 - **Chronic Pain (Mobility/Energy)** - Pain-related limitations
+- **Repetitive Stress Injury (Mobility/RSI)** - Computer-related strain and ergonomic needs
 - **One-Handed (Limb Difference)** - Single-hand interaction needs
 - **Motor-Impaired / Non-Speaking Person** - Motor and communication challenges
 - **Multiple Sclerosis (Fluctuating Ability)** - Variable symptom presentation
