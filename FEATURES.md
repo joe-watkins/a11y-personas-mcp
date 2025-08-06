@@ -39,18 +39,25 @@ Reviews product requirements through the lens of accessibility personas to ident
 - **Use Case**: Product managers can ensure requirements are inclusive from the start
 - **Example**: `review-product-requirements requirements="Users must be able to see the visual indicators and click precisely on small targets" personas=["deaf-blind", "motor-impaired-non-speaking"]`
 
+#### `validate-design-image`
+Validates design from static image using AI vision analysis against accessibility personas.
+- **Parameters**: `image_description` (string), `personas` (string|array, optional), `interaction_type` (enum: web/mobile/desktop/kiosk), `focus_areas` (array, optional)
+- **Returns**: Accessibility grade (A-F), persona-specific issues with severity levels, design recommendations, and next steps
+- **Use Case**: Early design validation to catch accessibility issues before implementation using static images or screenshots
+- **Example**: `validate-design-image image_description="Modal popup with small X button in top-right corner, red error text, and submit button" interaction_type="web" focus_areas=["navigation", "forms"]`
+
 ---
 
 ## 🎯 Planned Tools
 
 ### Core Infrastructure Improvements
 
-#### `validate-design` Tool
-Validates design specifications against accessibility personas.
-- **Parameters**: `design_description` (string), `personas` (array), `interaction_type` (string)
+#### `validate-design-figma` Tool
+Validates Figma design specifications against accessibility personas.
+- **Parameters**: `figma_url` (string), `personas` (array), `interaction_type` (string), `analysis_depth` (enum)
 - **Returns**: Accessibility issues identified per persona with severity levels
-- **Use Case**: Early design validation to catch accessibility issues before implementation
-- **Example**: `validate-design design_description="Modal popup with small X button in top-right corner" personas=["motor-impaired-non-speaking", "low-vision"] interaction_type="web"`
+- **Use Case**: Early design validation integrated with Figma workflow
+- **Example**: `validate-design-figma figma_url="https://figma.com/file/..." personas=["motor-impaired-non-speaking", "low-vision"] interaction_type="web"`
 
 #### `generate-test-cases`
 Creates specific test scenarios based on personas.

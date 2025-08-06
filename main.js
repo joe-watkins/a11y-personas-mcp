@@ -429,6 +429,163 @@ server.tool(
     }
 );
 
+// Register validate-design-image tool
+server.tool(
+    'validate-design-image',
+    'Validates design from static image using AI vision analysis against accessibility personas',
+    {
+        image_description: z.string().describe('Description of the design image based on visual analysis'),
+        personas: z.union([
+            z.string().describe('Single persona ID'),
+            z.array(z.string()).describe('Array of persona IDs')
+        ]).optional().describe('Specific personas to test against (default: all personas)'),
+        interaction_type: z.enum(['web', 'mobile', 'desktop', 'kiosk']).describe('Platform/interaction context'),
+        focus_areas: z.array(z.string()).optional().describe('Specific areas to focus on (e.g., navigation, forms, content, visual-hierarchy)')
+    },
+    async ({ image_description, personas, interaction_type, focus_areas }) => {
+        try {
+            // Get available personas and normalize persona input
+            const availablePersonas = getAvailablePersonas();
+            let targetPersonas = [];
+            
+            if (!personas) {
+                // Default: use all available personas
+                targetPersonas = availablePersonas;
+            } else {
+                // Normalize to array and validate personas exist
+                const personaInputs = Array.isArray(personas) ? personas : [personas];
+                const invalidPersonas = personaInputs.filter(p => !availablePersonas.includes(p));
+                
+                if (invalidPersonas.length > 0) {
+                    return {
+                        content: [{
+                            type: 'text',
+                            text: `Invalid personas specified: ${invalidPersonas.join(', ')}. Available personas: ${availablePersonas.join(', ')}`
+                        }]
+                    };
+                }
+                
+                targetPersonas = personaInputs;
+            }
+
+            // Load persona data for analysis context
+            const personaData = {};
+            for (const personaId of targetPersonas) {
+                try {
+                    const personaPath = join(__dirname, 'personas', `${personaId}.md`);
+                    const content = readFileSync(personaPath, 'utf8');
+                    personaData[personaId] = content;
+                } catch (error) {
+                    console.error(`Error loading persona ${personaId}:`, error);
+                }
+            }
+
+            // Generate comprehensive analysis context for pattern matching
+            const analysisContext = generateDesignAnalysisContext(image_description, interaction_type, focus_areas, targetPersonas);
+            
+            // Load accessibility patterns
+            const { patterns: accessibilityPatterns } = loadAccessibilityPatterns();
+            
+            // Analyze design against accessibility patterns
+            const issues = [];
+            let totalSeverityScore = 0;
+
+            // Pattern matching against enhanced description
+            for (const pattern of accessibilityPatterns) {
+                const regex = new RegExp(pattern.pattern, 'gi');
+                const matches = analysisContext.match(regex);
+                
+                if (matches) {
+                    const relevantPersonas = pattern.personas.filter(p => targetPersonas.includes(p));
+                    if (relevantPersonas.length > 0) {
+                        // Check contextual conditions for design validation
+                        let contextualMatch = true;
+                        if (pattern.contextual_check) {
+                            try {
+                                const checkFunction = new Function('context', 'type', 'areas', pattern.contextual_check);
+                                contextualMatch = checkFunction(interaction_type, 'design', focus_areas || []);
+                            } catch (e) {
+                                console.warn(`Contextual check failed for pattern ${pattern.id}:`, e.message);
+                            }
+                        }
+
+                        if (contextualMatch) {
+                            const severityValue = pattern.severity === 'CRITICAL' ? -25 : 
+                                              pattern.severity === 'HIGH' ? -15 : -10;
+                            totalSeverityScore += severityValue;
+                            
+                            issues.push({
+                                pattern_id: pattern.id,
+                                issue: pattern.issue,
+                                suggestion: pattern.suggestion,
+                                severity: pattern.severity,
+                                affected_personas: relevantPersonas,
+                                affected_persona_names: relevantPersonas.map(id => getPersonaDisplayName(id, personaData[id])),
+                                matches: matches.length,
+                                design_context: interaction_type,
+                                focus_areas: focus_areas?.filter(area => 
+                                    matches.some(match => match.toLowerCase().includes(area.toLowerCase()))
+                                ) || []
+                            });
+                        }
+                    }
+                }
+            }
+
+            // Design-specific severity adjustments based on platform
+            if (interaction_type === 'mobile' && issues.some(i => i.pattern_id.includes('touch') || i.pattern_id.includes('size'))) {
+                totalSeverityScore -= 5; // Mobile touch targets are more critical
+            }
+            if (interaction_type === 'kiosk' && issues.some(i => i.pattern_id.includes('time') || i.pattern_id.includes('pressure'))) {
+                totalSeverityScore -= 10; // Time pressure in public spaces is more severe
+            }
+
+            // Calculate accessibility grade
+            const grade = totalSeverityScore >= -10 ? 'A' :
+                          totalSeverityScore >= -25 ? 'B' :
+                          totalSeverityScore >= -50 ? 'C' :
+                          totalSeverityScore >= -75 ? 'D' : 'F';
+
+            // Generate persona-specific design insights
+            const personaInsights = generateDesignPersonaInsights(issues, targetPersonas, personaData);
+            
+            // Generate design recommendations
+            const designRecommendations = generateDesignRecommendations(issues, grade);
+
+            const result = {
+                accessibility_grade: grade,
+                total_severity_score: totalSeverityScore,
+                issues_found: issues.length,
+                design_context: {
+                    interaction_type,
+                    focus_areas: focus_areas || [],
+                    analyzed_personas: targetPersonas.length,
+                    persona_scope: targetPersonas.length === availablePersonas.length ? 'all' : 'filtered'
+                },
+                persona_insights: personaInsights,
+                design_issues: issues,
+                recommendations: designRecommendations,
+                next_steps: generateDesignNextSteps(issues, interaction_type, focus_areas)
+            };
+
+            return {
+                content: [{
+                    type: 'text',
+                    text: formatDesignValidationResponse(result, targetPersonas)
+                }]
+            };
+
+        } catch (error) {
+            return {
+                content: [{
+                    type: 'text',
+                    text: `Error validating design image: ${error.message}`
+                }]
+            };
+        }
+    }
+);
+
 // Helper function to analyze persona content for pattern relevance
 const analyzePersonaForPatterns = (personaContent, personaId) => {
     // Extract key information from persona content
@@ -1075,6 +1232,215 @@ const getPersonaDisplayName = (personaId, personaContent) => {
     } catch (error) {
         return personaId;
     }
+};
+
+// Helper function to generate design analysis context for pattern matching
+const generateDesignAnalysisContext = (imageDescription, interactionType, focusAreas, targetPersonas) => {
+    return `
+Design Analysis Context:
+Platform: ${interactionType}
+${focusAreas?.length ? `Focus Areas: ${focusAreas.join(', ')}` : ''}
+Target Personas: ${targetPersonas.join(', ')}
+
+Design Description:
+${imageDescription}
+
+Accessibility Analysis Framework:
+- Visual dependencies and color-only information
+- Interactive element size and spacing requirements
+- Text readability and contrast considerations
+- Navigation clarity and consistency patterns
+- Error handling and feedback mechanisms
+- Input method requirements and alternatives
+- Time-sensitive interactions and processes
+- Spatial orientation dependencies
+- Cognitive load and complexity factors
+- Assistive technology compatibility needs
+
+Enhanced Context for Pattern Matching:
+${imageDescription.toLowerCase().includes('button') ? 'Contains interactive buttons requiring size and contrast analysis' : ''}
+${imageDescription.toLowerCase().includes('text') ? 'Contains text elements requiring readability evaluation' : ''}
+${imageDescription.toLowerCase().includes('color') ? 'Uses color coding requiring alternative indicators' : ''}
+${imageDescription.toLowerCase().includes('small') ? 'Contains small elements requiring touch target evaluation' : ''}
+${imageDescription.toLowerCase().includes('modal') || imageDescription.toLowerCase().includes('popup') ? 'Modal/popup interface requiring focus management' : ''}
+${imageDescription.toLowerCase().includes('form') ? 'Form interface requiring input method and error handling analysis' : ''}
+${imageDescription.toLowerCase().includes('time') ? 'Time-sensitive interface requiring timeout considerations' : ''}
+`;
+};
+
+// Helper function to generate persona-specific design insights
+const generateDesignPersonaInsights = (issues, targetPersonas, personaData) => {
+    const insights = {};
+    
+    for (const personaId of targetPersonas.slice(0, 8)) { // Limit to prevent overwhelming output
+        const personaIssues = issues.filter(i => i.affected_personas.includes(personaId));
+        if (personaIssues.length > 0 || targetPersonas.length <= 5) { // Show all if small set, or only problematic ones
+            const persona = personaData[personaId];
+            const displayName = getPersonaDisplayName(personaId, persona);
+            
+            insights[personaId] = {
+                title: displayName,
+                issue_count: personaIssues.length,
+                severity_breakdown: {
+                    critical: personaIssues.filter(i => i.severity === 'CRITICAL').length,
+                    high: personaIssues.filter(i => i.severity === 'HIGH').length,
+                    medium: personaIssues.filter(i => i.severity === 'MEDIUM').length
+                },
+                primary_concerns: personaIssues.slice(0, 3).map(i => i.issue),
+                design_impact: personaIssues.some(i => i.severity === 'CRITICAL') ? 'Blocks usage entirely' :
+                              personaIssues.some(i => i.severity === 'HIGH') ? 'Creates significant barriers' : 
+                              personaIssues.length > 0 ? 'Minor accessibility friction' : 'Design appears accessible'
+            };
+        }
+    }
+    
+    return insights;
+};
+
+// Helper function to generate design recommendations
+const generateDesignRecommendations = (issues, grade) => {
+    const recommendations = [];
+    const criticalIssues = issues.filter(i => i.severity === 'CRITICAL');
+    const highIssues = issues.filter(i => i.severity === 'HIGH');
+
+    if (criticalIssues.length > 0) {
+        recommendations.push(`🚨 CRITICAL: Fix ${criticalIssues.length} accessibility blockers before implementation`);
+    }
+    if (highIssues.length > 0) {
+        recommendations.push(`⚠️ HIGH PRIORITY: Address ${highIssues.length} significant barriers affecting multiple user groups`);
+    }
+    if (grade === 'A') {
+        recommendations.push(`✅ EXCELLENT: Design demonstrates strong accessibility foundation`);
+    } else if (grade === 'F') {
+        recommendations.push(`🔴 URGENT: Multiple critical issues require immediate design revision`);
+    }
+
+    return recommendations;
+};
+
+// Helper function to generate next steps for design validation
+const generateDesignNextSteps = (issues, interactionType, focusAreas) => {
+    const steps = [];
+    
+    if (issues.length > 0) {
+        steps.push("Review identified accessibility barriers with design and development teams");
+        steps.push("Prioritize fixes based on severity and user impact");
+        steps.push("Consider usability testing with users from affected personas");
+    } else {
+        steps.push("Proceed with implementation - strong accessibility foundation detected");
+    }
+    
+    steps.push(`Validate against ${interactionType} platform-specific accessibility guidelines`);
+    
+    if (focusAreas?.length) {
+        steps.push(`Conduct detailed review of: ${focusAreas.join(', ')}`);
+    } else {
+        steps.push("Consider comprehensive accessibility audit covering all interface areas");
+    }
+    
+    steps.push("Plan for assistive technology testing and validation");
+    
+    return steps;
+};
+
+// Helper function to format the complete design validation response
+const formatDesignValidationResponse = (result, targetPersonas) => {
+    let response = `# 🎨 Design Accessibility Validation Results\n\n`;
+    
+    // Overall assessment
+    response += `## 📊 Overall Assessment\n`;
+    response += `**Grade:** ${result.accessibility_grade} | **Issues Found:** ${result.issues_found} | **Severity Score:** ${result.total_severity_score}\n`;
+    response += `**Platform:** ${result.design_context.interaction_type.charAt(0).toUpperCase() + result.design_context.interaction_type.slice(1)} | `;
+    response += `**Personas Analyzed:** ${result.design_context.analyzed_personas}${result.design_context.persona_scope === 'all' ? ' (all available)' : ' (filtered selection)'}\n\n`;
+
+    // Recommendations
+    if (result.recommendations.length > 0) {
+        response += `## 🎯 Key Recommendations\n`;
+        result.recommendations.forEach(rec => {
+            response += `${rec}\n`;
+        });
+        response += `\n`;
+    }
+
+    // Persona impact analysis
+    if (Object.keys(result.persona_insights).length > 0) {
+        response += `## 👥 Persona Impact Analysis\n`;
+        Object.entries(result.persona_insights).forEach(([id, insights]) => {
+            response += `### ${insights.title}\n`;
+            response += `- **Impact Level:** ${insights.design_impact}\n`;
+            response += `- **Issues Found:** ${insights.issue_count}`;
+            if (insights.issue_count > 0) {
+                const breakdown = [];
+                if (insights.severity_breakdown.critical > 0) breakdown.push(`${insights.severity_breakdown.critical} Critical`);
+                if (insights.severity_breakdown.high > 0) breakdown.push(`${insights.severity_breakdown.high} High`);
+                if (insights.severity_breakdown.medium > 0) breakdown.push(`${insights.severity_breakdown.medium} Medium`);
+                if (breakdown.length > 0) response += ` (${breakdown.join(', ')})`;
+            }
+            response += `\n`;
+            if (insights.primary_concerns.length > 0) {
+                response += `- **Key Concerns:** ${insights.primary_concerns.join(', ')}\n`;
+            }
+            response += `\n`;
+        });
+    }
+
+    // Detailed issues
+    if (result.design_issues.length > 0) {
+        response += `## 🔍 Detailed Accessibility Issues\n`;
+        
+        const criticalIssues = result.design_issues.filter(i => i.severity === 'CRITICAL');
+        const highIssues = result.design_issues.filter(i => i.severity === 'HIGH');
+        const mediumIssues = result.design_issues.filter(i => i.severity === 'MEDIUM');
+
+        if (criticalIssues.length > 0) {
+            response += `### 🚫 Critical Issues (Block Usage)\n`;
+            criticalIssues.forEach((issue, index) => {
+                response += `${index + 1}. **${issue.issue}**\n`;
+                response += `   - **Affects:** ${issue.affected_persona_names.join(', ')}\n`;
+                response += `   - **Solution:** ${issue.suggestion}\n`;
+                if (issue.focus_areas.length > 0) {
+                    response += `   - **Focus Areas:** ${issue.focus_areas.join(', ')}\n`;
+                }
+                response += `\n`;
+            });
+        }
+
+        if (highIssues.length > 0) {
+            response += `### ⚠️ High Priority Issues (Significant Barriers)\n`;
+            highIssues.forEach((issue, index) => {
+                response += `${index + 1}. **${issue.issue}**\n`;
+                response += `   - **Affects:** ${issue.affected_persona_names.join(', ')}\n`;
+                response += `   - **Solution:** ${issue.suggestion}\n`;
+                response += `\n`;
+            });
+        }
+
+        if (mediumIssues.length > 0) {
+            response += `### 📝 Medium Priority Issues (Usability Concerns)\n`;
+            mediumIssues.forEach((issue, index) => {
+                response += `${index + 1}. **${issue.issue}**\n`;
+                response += `   - **Affects:** ${issue.affected_persona_names.join(', ')}\n`;
+                response += `   - **Solution:** ${issue.suggestion}\n`;
+                response += `\n`;
+            });
+        }
+    }
+
+    // Next steps
+    response += `## 🚀 Next Steps\n`;
+    result.next_steps.forEach(step => {
+        response += `- ${step}\n`;
+    });
+    response += `\n`;
+
+    // Footer
+    response += `---\n`;
+    response += `*Analysis based on ${targetPersonas.length} accessibility personas for ${result.design_context.interaction_type} platform design validation.*`;
+    if (result.design_context.focus_areas.length > 0) {
+        response += ` *Focused analysis on: ${result.design_context.focus_areas.join(', ')}.*`;
+    }
+
+    return response;
 };
 
 // Create a stdio transport for communication

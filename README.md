@@ -97,6 +97,45 @@ Usage in Copilot:
 
 **Returns:** Accessibility grade (A-F), persona-specific issues with severity levels, recommended improvements, inclusive product requirements checklist, and a persona impact summary.
 
+### `validate-design-image`
+Validates design from static image using AI vision analysis against accessibility personas for early design validation.
+
+Usage in Copilot:
+```
+#validate-design-image Modal popup with small X button in top-right corner, red error text without icons, blue submit button with white text
+```
+
+```
+#validate-design-image Mobile form with small touch targets, color-coded required fields using only red asterisks, time limit countdown showing 2 minutes remaining
+```
+
+```
+#validate-design-image Public kiosk interface with complex multi-step process, small font sizes, drag-and-drop file upload, technical jargon in instructions
+```
+
+**Parameters:**
+- `image_description` (string): Description of the design image based on visual analysis
+- `personas` (string | array, optional): Specific persona(s) to test against (default: all personas)
+- `interaction_type` (enum): Platform context - `web`, `mobile`, `desktop`, `kiosk`
+- `focus_areas` (array, optional): Specific areas to focus on - `navigation`, `forms`, `content`, `visual-hierarchy`
+
+**Returns:** Accessibility grade (A-F), persona-specific issues with severity levels, design recommendations, implementation next steps, and comprehensive validation report organized by severity.
+
+**Example Usage Patterns:**
+```
+# Test against all personas
+#validate-design-image E-commerce checkout form with multiple steps, small text, and color-coded error messages
+
+# Test specific personas  
+#validate-design-image Login screen with touch targets and visual feedback personas=["motor-impaired-non-speaking"] interaction_type="mobile"
+
+# Focus on specific areas
+#validate-design-image Dashboard with complex navigation personas=["deaf-blind", "low-vision"] interaction_type="desktop" focus_areas=["navigation"]
+
+# Kiosk-specific analysis
+#validate-design-image Public information kiosk with time-limited session interaction_type="kiosk" focus_areas=["navigation", "content"]
+```
+
 ### `analyze-persona-patterns`
 When adding a new Persona this analyzes an existing persona or new one and suggests accessibility pattern updates to maintain comprehensive coverage.
 
@@ -241,6 +280,38 @@ Personas: ["motor-impaired-non-speaking", "sighted-deaf-hoh-low-tech"]
 
 Script type: email
 Issue category: technical-support
+```
+
+### Design Validation
+
+**Validate a design against all personas:**
+```
+#validate-design-image Modal dialog with a small X close button in the corner, red error text, and blue submit button interaction_type="web"
+```
+
+**Test specific personas for mobile design:**
+```
+#validate-design-image Mobile form interface with small touch targets and color-coded validation messages personas=["motor-impaired-non-speaking", "low-vision"] interaction_type="mobile" focus_areas=["forms"]
+```
+
+**Kiosk interface validation:**
+```
+#validate-design-image Public information kiosk with time-limited session, complex navigation menu, and small font sizes interaction_type="kiosk" focus_areas=["navigation", "content"]
+```
+
+**Focus on specific design areas:**
+```
+#validate-design-image E-commerce checkout flow with multi-step process, progress indicators, and payment forms interaction_type="web" focus_areas=["forms", "navigation"]
+```
+
+**Single persona analysis:**
+```
+#validate-design-image Dashboard interface with data visualizations, interactive charts, and complex filtering options personas="deaf-blind" interaction_type="desktop" focus_areas=["visual-hierarchy", "navigation"]
+```
+
+**Complex interface validation:**
+```
+#validate-design-image Banking application with multiple tabs, drag-and-drop functionality, time-sensitive session warnings, and technical financial terminology personas=["cognitive-memory-loss", "motor-impaired-non-speaking", "sighted-deaf-hoh-low-tech"] interaction_type="web"
 ```
 
 ### Accessibility Consultation Questions
