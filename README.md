@@ -8,14 +8,16 @@ A Model Context Protocol (MCP) server designed for AI and LLM-powered accessibil
 
 ## Installation in VS Code / Github Copilot
 1. Clone this project
-2. Open VS Code Command Palette (`Cmd+Shift+P` on Mac, `Ctrl+Shift+P` on Windows/Linux)
-3. Search for "MCP install" and select it
-4. Choose "Command (stdio)" as the connection type
-5. Configure the MCP server:
+2. Open the project in Visual Studio Code
+3. Run `npm install` to install dependencies
+4. Open VS Code Command Palette (`Cmd+Shift+P` on Mac, `Ctrl+Shift+P` on Windows/Linux)
+5. Search for "MCP install" and select it
+6. Choose "Command (stdio)" as the connection type
+7. Choose "Global or Workspace" for the installation scope
+8. Configure the MCP server:
    - **Command**: `npm start --silent`
    - **Name**: `A11y Personas MCP`
    - **Type**: Local MCP
-5. Save the configuration
 
 *note:* The MCP server will now be available in your VS Code MCP clients list. Start the server by clicking on the gear icon and choosing "Start Server". Ensure you are in Agent mode and run the  `#list-personas` tool in Copilot to list all personas and to start working with them. The A11y Personas MCP Tools should be listed in your Copilot tools panel.
 
