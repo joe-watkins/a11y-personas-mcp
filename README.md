@@ -129,6 +129,7 @@ This MCP server provides access to 60+ accessibility personas covering permanent
 - **Blindness (Screen Reader - NVDA)** - NVDA screen reader user
 - **Blindness (Screen Reader - VoiceOver)** - VoiceOver screen reader user
 - **Broken Dominant Arm (Temporary One-Handed)** - Temporary one-handed use
+- **Cognitive (Aphasia - Language Processing)** - Language processing difficulties from brain injury
 - **Cognitive (Age-Related Memory Loss)** - Memory and cognitive decline
 - **Color Vision Deficiency (Colorblindness)** - Color perception limitations
 - **Concussion (Cognitive Fatigue)** - Cognitive processing difficulties
@@ -169,6 +170,7 @@ This MCP server provides access to 60+ accessibility personas covering permanent
 - **Public Place (Privacy Concern)** - Privacy and discretion needs
 - **Tourette's Syndrome (Tics)** - Involuntary movement considerations
 - **Vestibular Balance Disorder** - Sensitivity to motion
+- **Vision (Contrast Sensitivity)** - Difficulty with low-contrast visual elements
 - **Visual Processing Disorder** - Visual information processing difficulties
 
 Each persona includes detailed profile information, interaction preferences, key needs, and cross-functional guidance for customer care, development, design, and testing teams.

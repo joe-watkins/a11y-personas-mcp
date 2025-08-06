@@ -46,7 +46,9 @@
         "literacy-non-native-digital",
         "deafness-sign-language-plus-speech",
         "dyscalculia-number-processing",
-        "mobility-repetitive-stress-injury"
+        "mobility-repetitive-stress-injury",
+        "vision-contrast-sensitivity",
+        "cognitive-aphasia-language"
       ],
       "severity": "HIGH",
       "issue": "Visual dependency",
@@ -172,7 +174,8 @@
         "temp-holding-child-one-handed",
         "arthritis-rheumatoid",
         "mobility-chronic-pain",
-        "mobility-one-handed-limb-difference"
+        "mobility-one-handed-limb-difference",
+        "cognitive-aphasia-language"
       ],
       "severity": "MEDIUM",
       "issue": "Input method assumption",
@@ -255,7 +258,8 @@
         "deafness-sign-language-plus-speech",
         "vestibular-balance-disorder",
         "tinnitus-audio-sensitivity",
-        "mobility-repetitive-stress-injury"
+        "mobility-repetitive-stress-injury",
+        "cognitive-aphasia-language"
       ],
       "severity": "CRITICAL",
       "issue": "Speech requirement",
@@ -356,7 +360,8 @@
         "deafness-sign-language-plus-speech",
         "dyscalculia-number-processing",
         "tinnitus-audio-sensitivity",
-        "mobility-repetitive-stress-injury"
+        "mobility-repetitive-stress-injury",
+        "cognitive-aphasia-language"
       ],
       "severity": "MEDIUM",
       "issue": "Time pressure",
@@ -455,7 +460,8 @@
         "literacy-non-native-digital",
         "deafness-sign-language-plus-speech",
         "tinnitus-audio-sensitivity",
-        "mobility-repetitive-stress-injury"
+        "mobility-repetitive-stress-injury",
+        "cognitive-aphasia-language"
       ],
       "severity": "HIGH",
       "issue": "Audio dependency",
@@ -487,7 +493,8 @@
         "temp-holding-child-one-handed",
         "arthritis-rheumatoid",
         "mobility-chronic-pain",
-        "mobility-one-handed-limb-difference"
+        "mobility-one-handed-limb-difference",
+        "cognitive-aphasia-language"
       ],
       "severity": "HIGH",
       "issue": "Physical capability assumption",
@@ -544,7 +551,8 @@
         "temp-holding-child-one-handed",
         "arthritis-rheumatoid",
         "mobility-chronic-pain",
-        "mobility-one-handed-limb-difference"
+        "mobility-one-handed-limb-difference",
+        "cognitive-aphasia-language"
       ],
       "severity": "HIGH",
       "issue": "Mouse dependency",
@@ -585,7 +593,8 @@
         "literacy-non-native-digital",
         "deafness-sign-language-plus-speech",
         "tinnitus-audio-sensitivity",
-        "mobility-repetitive-stress-injury"
+        "mobility-repetitive-stress-injury",
+        "cognitive-aphasia-language"
       ],
       "severity": "MEDIUM",
       "issue": "Technical complexity",
@@ -661,7 +670,8 @@
         "deafness-sign-language-plus-speech",
         "dyscalculia-number-processing",
         "tinnitus-audio-sensitivity",
-        "mobility-repetitive-stress-injury"
+        "mobility-repetitive-stress-injury",
+        "cognitive-aphasia-language"
       ],
       "severity": "HIGH",
       "issue": "Session timeout pressure",
@@ -743,7 +753,8 @@
         "deafness-sign-language-plus-speech",
         "vestibular-balance-disorder",
         "tinnitus-audio-sensitivity",
-        "mobility-repetitive-stress-injury"
+        "mobility-repetitive-stress-injury",
+        "cognitive-aphasia-language"
       ],
       "severity": "CRITICAL",
       "issue": "Voice/audio assumption",
@@ -1239,6 +1250,22 @@
         "lower left",
         "mid right",
         "top left corner"
+      ]
+    },
+    {
+      "id": "literacy-assumption-cognitive-aphasia-language",
+      "pattern": "\\b(read carefully|as you can see|obviously|clearly stated)\\b",
+      "flags": "gi",
+      "personas": [
+        "cognitive-aphasia-language"
+      ],
+      "severity": "MEDIUM",
+      "issue": "Literacy assumption",
+      "suggestion": "Use simple language and provide audio or visual alternatives to text",
+      "examples": [
+        "read carefully through",
+        "as you can see",
+        "it's clearly stated"
       ]
     }
   ],
