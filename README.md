@@ -32,17 +32,17 @@ Usage in Copilot:
 #list-personas
 ```
 
-![Screenshot of list-persons output](https://github.com/joe-watkins/a11y-personas-mcp/blob/main/readme-images/list-personas-show-some?raw=true)
+![Screenshot of list-persons output](https://github.com/joe-watkins/a11y-personas-mcp/blob/main/readme-images/list-personas-show-some.png?raw=true)
 
 ### `get-personas`
 Retrieves the complete accessibility persona documentation for one or more personas. Supports both persona IDs (filename without .md) and titles from frontmatter.
 
 Usage in Copilot:
 ```
-#get-persona "Blindness (Braille User)"
-#get-persona low-vision
-#get-persona ["low-vision", "deaf-blind"]
-#get-persona "Low Vision User", "Deafblind Person"
+#get-personas "Blindness (Braille User)"
+#get-personas low-vision
+#get-personas ["low-vision", "deaf-blind"]
+#get-personas "Low Vision User", "Deafblind Person"
 ```
 
 **Parameters:**
