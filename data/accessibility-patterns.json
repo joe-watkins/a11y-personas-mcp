@@ -252,7 +252,8 @@
         "mobility-one-handed-limb-difference",
         "literacy-non-native-digital",
         "deafness-sign-language-plus-speech",
-        "vestibular-balance-disorder"
+        "vestibular-balance-disorder",
+        "tinnitus-audio-sensitivity"
       ],
       "severity": "CRITICAL",
       "issue": "Speech requirement",
@@ -351,7 +352,8 @@
         "mobility-one-handed-limb-difference",
         "literacy-non-native-digital",
         "deafness-sign-language-plus-speech",
-        "dyscalculia-number-processing"
+        "dyscalculia-number-processing",
+        "tinnitus-audio-sensitivity"
       ],
       "severity": "MEDIUM",
       "issue": "Time pressure",
@@ -448,7 +450,8 @@
         "fatigue-chronic-fatigue-syndrome",
         "mobility-one-handed-limb-difference",
         "literacy-non-native-digital",
-        "deafness-sign-language-plus-speech"
+        "deafness-sign-language-plus-speech",
+        "tinnitus-audio-sensitivity"
       ],
       "severity": "HIGH",
       "issue": "Audio dependency",
@@ -576,7 +579,8 @@
         "deaf-blind",
         "fatigue-chronic-fatigue-syndrome",
         "literacy-non-native-digital",
-        "deafness-sign-language-plus-speech"
+        "deafness-sign-language-plus-speech",
+        "tinnitus-audio-sensitivity"
       ],
       "severity": "MEDIUM",
       "issue": "Technical complexity",
@@ -650,7 +654,8 @@
         "mobility-one-handed-limb-difference",
         "literacy-non-native-digital",
         "deafness-sign-language-plus-speech",
-        "dyscalculia-number-processing"
+        "dyscalculia-number-processing",
+        "tinnitus-audio-sensitivity"
       ],
       "severity": "HIGH",
       "issue": "Session timeout pressure",
@@ -730,7 +735,8 @@
         "mobility-one-handed-limb-difference",
         "literacy-non-native-digital",
         "deafness-sign-language-plus-speech",
-        "vestibular-balance-disorder"
+        "vestibular-balance-disorder",
+        "tinnitus-audio-sensitivity"
       ],
       "severity": "CRITICAL",
       "issue": "Voice/audio assumption",

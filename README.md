@@ -162,6 +162,7 @@ This MCP server provides access to 60+ accessibility personas covering permanent
 - **PTSD (Trauma-Related)** - Trauma-sensitive interaction needs
 - **Sighted Deaf or Hard-of-Hearing user with limited technical ability** - Deaf/HoH with basic tech skills
 - **Speech Impairment (Communication)** - Speech production challenges
+- **Tinnitus (Audio Sensitivity)** - Phantom sound sensitivity and audio control needs
 - **Crisis Situation (Acute Stress)** - High-stress emergency scenarios
 - **Holding Child (One-Handed)** - Situational one-handed use
 - **Public Place (Privacy Concern)** - Privacy and discretion needs
