@@ -179,3 +179,65 @@ Show me the sighted deaf hard-of-hearing persona with low tech skills
 ```
 #get-persona "Low Vision User", "Deaf-Blind"
 ```
+
+## Example Persona
+
+### Deafblind Person
+
+**Profile:**
+- Profound hearing and vision loss
+- Uses a screen reader with a braille display
+- Cannot perceive audio or visual content
+- Non-speaking individual
+
+**Interaction Style:**
+- **Input:** Braille keyboard, switch input, or other tactile methods
+- **Output:** Braille display only
+- **Cannot rely on:** Voice input/output, visual interface, audio content
+
+**Key Needs:**
+- Real-time text output (captions) for communication
+- Fully functional text input paths
+- Screen reader and braille compatibility
+- Support for keyboard/switch navigation
+- Long timeouts to accommodate slower interaction
+- Text-based confirmation of actions
+- Text transcripts available after chat sessions
+- Non-visual, non-audio interaction path for all tasks
+- Haptics for interaction cues
+
+**Cross-Functional Considerations:**
+
+*Customer Care:*
+- Do not assume the customer can hear, speak, or see
+- Offer chat, text, or RTT as default communication channels
+- Avoid references to voice tone, visual cues, or spoken confirmation
+- Allow longer response times for braille input
+- Always provide written confirmation of actions or outcomes
+
+*Development:*
+- Ensure full keyboard access for all functionality
+- Use semantic HTML and ARIA for UI components
+- Allow adjustable timeout settings
+- Include accessible text equivalents for visual or auditory outputs
+- Maintain proper focus management and live region announcements
+- Leverage onboard haptic support when applicable
+- Ensure multimedia supports captions and text transcripts
+
+*Design/UX:*
+- Ensure fully linear, text-based interaction paths
+- Use semantic headings and landmarks for navigation
+- Do not rely on color, sound, or animation for feedback
+- Prioritize consistent, descriptive labeling
+- Avoid modal or focus traps; ensure logical tab order
+
+*Testing:*
+- Perform manual QA with keyboard and screen reader
+- Emulate braille display outputs
+- Verify live region outputs work correctly with screen readers
+- Validate tasks using only keyboard
+- Test for reliance on visual or audio cues during task completion
+- Ensure text feedback is immediate and programmatically accessible
+- Test edge cases involving slow, sequential input
+
+This persona represents the most comprehensive accessibility requirements, as it combines the needs of both blind and deaf users, requiring purely tactile interaction methods.
