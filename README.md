@@ -6,7 +6,8 @@ A Model Context Protocol (MCP) server designed for AI and LLM-powered accessibil
 
 **These synthetic personas are educational tools and starting points for accessibility considerations—they do not replace the need to work directly with real people with disabilities.** Each person's experience with disability is unique, and these generalized personas may not accurately reflect the full spectrum of real-world impacts, adaptive strategies, or individual preferences. For meaningful accessibility improvements, always prioritize user research, usability testing, and direct feedback from people with disabilities in your target audience.
 
-## Installation in VS Code / Github Copilot
+## Installation in VSCode / Github Copilot
+You can use this MCP server to enhance your accessibility workflows in Visual Studio Code and Github Copilot. Follow these steps to set it up:
 1. Clone this project
 2. Open the project in Visual Studio Code
 3. Run `npm install` to install dependencies
