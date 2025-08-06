@@ -78,6 +78,22 @@ Usage in Copilot:
 ![Screenshot of list-personas output](https://github.com/joe-watkins/a11y-personas-mcp/blob/main/readme-images/review-customer-support-script.png?raw=true)
 
 
+### `review-product-requirements`
+Reviews product requirements or design documents for accessibility issues based on selected personas.
+
+![Screenshot of review-product-requirements output](https://github.com/joe-watkins/a11y-personas-mcp/blob/main/readme-images/review-product-requirements.png?raw=true)
+
+Usage in Copilot:
+```
+#review-product-requirements A modal dialog with a disabled close button. There is no close button on the modal and focus is trapped inside of it to keep users there. The user must agree.
+```
+
+**Parameters:**
+- `requirements` (string): The product requirements or design text to review
+- `personas` (array, optional): Specific personas to focus on (default: all)
+
+**Returns:** Accessibility grade (A-F), persona-specific issues with severity levels, recommended improvements, inclusive product requirements checklist, and a persona impact summary.
+
 ### `analyze-persona-patterns`
 When adding a new Persona this analyzes an existing persona or new one and suggests accessibility pattern updates to maintain comprehensive coverage.
 
