@@ -1,4 +1,4 @@
-// Import MCP server components and validation library
+// Import dependencies
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
@@ -10,7 +10,7 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// Helper function to get available personas
+// Get persona files from personas directory
 const getAvailablePersonas = () => {
     const personasDir = join(__dirname, 'personas');
     return readdirSync(personasDir)
@@ -18,17 +18,16 @@ const getAvailablePersonas = () => {
         .map(file => file.replace('.md', ''));
 };
 
-// Create a new MCP server instance with metadata
+// Create MCP server instance
 const server = new McpServer({
     name: "A11y Personas MCP",
     version: "1.0.0",
 });
 
-// Register a tool that MCP clients can invoke
-// Tools are functions that clients can call to perform specific actions
+// Register get-personas tool
 server.tool(
-    'get-personas',                // Tool identifier - used by clients to invoke this tool
-    'Get one or more accessibility personas by ID or title', // Human-readable description of what this tool does
+    'get-personas',
+    'Get accessibility personas by ID or title',
     {
         // Define the tool's input schema using Zod
         // This validates parameters passed from the client - supports both single persona and arrays
@@ -139,7 +138,7 @@ server.tool(
 // Register list-personas tool
 server.tool(
     'list-personas',
-    'Tool to list all available accessibility personas',
+    'List all available personas',
     {
         // No parameters required
     },
@@ -199,10 +198,6 @@ server.tool(
 );
 
 
-// Create a stdio transport for communication
-// This handles the low-level message passing between client and server
+// Setup stdio transport
 const transport = new StdioServerTransport();
-
-// Connect the server to the transport to start listening for client requests
-// This establishes the communication channel and makes the server ready to receive calls
 server.connect(transport);
