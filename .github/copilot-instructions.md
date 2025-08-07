@@ -37,6 +37,7 @@ This project provides a Model Context Protocol (MCP) server that exposes a large
   1. Copy `_template.md` in `personas/` and fill in all required YAML fields and biography.
   2. Use kebab-case for filenames (e.g., `deaf-blind.md`).
   3. For temporary/conditional personas, use `temp-` prefix.
+  4. Always include an `id` field in the YAML frontmatter matching the filename (e.g., `id: deaf-blind`).
 - **Tool Implementation:**
   - Follow the pattern: `server.tool('tool-id', 'description', schema, handler)`.
   - Always validate input and return `{ content: [{ type: 'text', text: 'result' }] }`.
@@ -50,6 +51,10 @@ This project provides a Model Context Protocol (MCP) server that exposes a large
 ## Available Tools
 - `list-personas`: Returns all available personas with titles.
 - `get-persona`: Returns full persona(s) by ID or title.
+
+## HTTP API Endpoints
+- `/list-personas`: Returns all personas (JSON)
+- `/get-personas?personas=id1,id2`: Returns persona(s) by ID or title (JSON)
 
 ## Usage & Integration
 - **VS Code:**
@@ -67,5 +72,5 @@ This project provides a Model Context Protocol (MCP) server that exposes a large
 3. Use persona content to inform design reviews, code analysis, or accessibility testing scenarios.
 
 ## Notes
-- The project is now focused on robust persona delivery and MCP tool integration. Legacy details and patterns have been removed.
-- For any new features or changes, follow the current tool and persona patterns as described above.
+- The project is now focused on robust persona delivery, MCP tool integration, and HTTP API support. Legacy details and patterns have been removed.
+- For any new features or changes, follow the current tool, persona, and API patterns as described above.

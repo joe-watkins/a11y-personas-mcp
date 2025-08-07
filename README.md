@@ -247,6 +247,49 @@ Show me the sighted deaf hard-of-hearing persona with low tech skills
 #get-personas "Low Vision User", "Deaf-Blind"
 ```
 
+## HTTP API Server (Express)
+
+This project includes a lean Express.js server (`server.js`) that exposes the accessibility personas via industry-standard JSON endpoints. This makes it easy to integrate with web apps, tools, and cloud platforms like Vercel.
+
+### Endpoints
+- `GET /list-personas` — Returns all available personas with their IDs and titles
+- `GET /get-personas?personas=id1,id2` — Returns full persona content for one or more IDs or titles
+- `GET /health` — Health check endpoint
+
+### Usage
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Start the server locally:
+   ```bash
+   npm run server
+   ```
+3. Access endpoints in your browser or via curl:
+   - [http://localhost:3000/list-personas](http://localhost:3000/list-personas)
+   - [http://localhost:3000/get-personas?personas=adhd-attention](http://localhost:3000/get-personas?personas=adhd-attention)
+   - [http://localhost:3000/health](http://localhost:3000/health)
+
+### Vercel Deployment
+
+The project is pre-configured for Vercel deployment. Just connect your repo and deploy—no extra setup required. See `vercel.json` for build and routing config.
+
+### Example Response
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": "adhd-attention",
+      "title": "ADHD (Attention/Executive Function)",
+      "content": "...markdown..."
+    }
+  ],
+  "count": 1
+}
+```
+
 ## Contributing
 
 We welcome contributions! Please open an issue or pull request with your proposed changes. For major changes, discuss them with the maintainers first.
