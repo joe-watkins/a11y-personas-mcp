@@ -1,4 +1,5 @@
 ---
+id: paraplegia-wheelchair 
 title: Paraplegia (Wheelchair User)
 profile:
   - Has paralysis of the lower body and uses a wheelchair
@@ -38,3 +39,4 @@ cross_functional_considerations:
     - Use large, well-spaced controls
     - Avoid complex gestures or rapid sequences
     - Provide clear, consistent navigation
+---

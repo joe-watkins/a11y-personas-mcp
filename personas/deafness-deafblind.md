@@ -1,4 +1,5 @@
 ---
+id: deafness-deafblind 
 title: Deafness (Deafblind)
 profile:
   - Has combined hearing and vision loss (deafblind)

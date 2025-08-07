@@ -1,4 +1,5 @@
 ---
+id: ptsd-trauma 
 title: PTSD (Trauma-Related)
 profile:
   - Has a history of trauma and may experience PTSD symptoms
@@ -37,3 +38,4 @@ cross_functional_considerations:
     - Use calm, consistent layouts
     - Provide content warnings where appropriate
     - Allow customization of notifications
+---

@@ -1,4 +1,5 @@
 ---
+id: temp-laryngitis-temporary-voice-loss 
 title: Laryngitis (Temporary Voice Loss)
 profile:
   - Has temporary loss of voice due to illness or surgery

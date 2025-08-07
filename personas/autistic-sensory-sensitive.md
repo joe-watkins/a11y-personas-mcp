@@ -1,4 +1,5 @@
 ---
+id: autistic-sensory-sensitive 
 title: Autistic (Sensory Sensitive)
 profile:
   - Is autistic and experiences heightened sensitivity to sensory input (sound, light, touch, etc.)

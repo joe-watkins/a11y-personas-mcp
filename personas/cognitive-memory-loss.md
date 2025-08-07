@@ -1,4 +1,5 @@
 ---
+id: cognitive-memory-loss 
 title: Cognitive (Age-Related Memory Loss)
 profile:
   - Experiences age-related memory loss or mild cognitive impairment

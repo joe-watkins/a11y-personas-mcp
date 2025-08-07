@@ -1,4 +1,5 @@
 ---
+id: motor-impaired-non-speaking 
 title: Motor-Impaired / Non-Speaking Person
 profile:
     - Cannot speak or use hands. 

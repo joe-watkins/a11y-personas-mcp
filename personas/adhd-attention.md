@@ -1,4 +1,5 @@
 ---
+id: adhd-attention
 title: ADHD (Attention/Executive Function)
 profile:
   - Has attention deficit hyperactivity disorder (ADHD) affecting focus, organization, and task completion

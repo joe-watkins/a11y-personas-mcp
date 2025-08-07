@@ -1,4 +1,5 @@
 ---
+id: depression-major 
 title: Major Depression (Low Motivation)
 profile:
   - Experiences persistent low mood and motivation
@@ -37,3 +38,4 @@ cross_functional_considerations:
     - Use simple layouts and large controls
     - Provide encouragement and positive feedback
     - Support stepwise progression
+---

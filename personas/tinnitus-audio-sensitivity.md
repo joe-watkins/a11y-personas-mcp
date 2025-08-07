@@ -1,4 +1,5 @@
 ---
+id: tinnitus-audio-sensitivity 
 title: Tinnitus (Audio Sensitivity)
 profile:
   - Has tinnitus with constant or intermittent phantom sounds (ringing, buzzing, hissing)

@@ -1,4 +1,5 @@
 ---
+id: broken-dominant-arm 
 title: Broken Dominant Arm (Temporary One-Handed)
 profile:
   - Has dominant arm in a cast or sling due to injury

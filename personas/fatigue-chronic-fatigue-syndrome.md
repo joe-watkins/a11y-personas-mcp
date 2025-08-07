@@ -1,4 +1,5 @@
 ---
+id: fatigue-chronic-fatigue-syndrome 
 title: Chronic Fatigue Syndrome (Variable Energy)
 profile:
   - Experiences persistent fatigue not relieved by rest
@@ -38,3 +39,4 @@ cross_functional_considerations:
     - Use clear, simple layouts
     - Avoid unnecessary animation or visual clutter
     - Provide options for text size and contrast
+---

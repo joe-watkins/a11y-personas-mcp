@@ -1,4 +1,5 @@
 ---
+id: parkinson-tremor 
 title: Parkinson's Disease (Tremor)
 profile:
   - Experiences tremor, rigidity, and slowness of movement
@@ -38,3 +39,4 @@ cross_functional_considerations:
     - Use large, well-spaced controls
     - Minimize need for rapid or precise input
     - Support customization of input methods
+---

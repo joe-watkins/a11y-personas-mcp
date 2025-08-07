@@ -1,4 +1,5 @@
 ---
+id: deafness-oral-communicator 
 title: Deafness (Oral Communicator)
 profile:
   - Is deaf or hard of hearing and uses spoken language as primary mode of communication

@@ -1,4 +1,5 @@
 ---
+id: dyslexia-reading 
 title: Dyslexia (Reading/Processing)
 profile:
   - Has dyslexia, affecting reading speed, accuracy, and comprehension

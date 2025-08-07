@@ -1,4 +1,5 @@
 ---
+id: temp-concussion-cognitive-fatigue 
 title: Concussion (Cognitive Fatigue)
 profile:
   - Recovering from a concussion, experiences cognitive fatigue and difficulty concentrating

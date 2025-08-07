@@ -1,4 +1,5 @@
 ---
+id: speech-impairment-communication 
 title: Speech Impairment (Communication)
 profile:
   - Has a speech impairment affecting verbal communication (may be non-speaking or have limited speech)

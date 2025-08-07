@@ -1,4 +1,5 @@
 ---
+id: autistic-visual-thinker 
 title: Autistic (Visual Thinker)
 profile:
   - Is autistic and processes information primarily through visual thinking and imagery

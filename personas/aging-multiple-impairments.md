@@ -1,4 +1,5 @@
 ---
+id: aging-multiple-impairments
 title: Aging (Multiple Mild Impairments)
 profile:
   - Is an older adult experiencing mild vision, hearing, dexterity, and cognitive changes

@@ -1,4 +1,5 @@
 ---
+id: epilepsy-seizure-risk 
 title: Epilepsy (Seizure Risk)
 profile:
   - Has epilepsy or a seizure disorder triggered by flashing lights, patterns, or certain visual effects

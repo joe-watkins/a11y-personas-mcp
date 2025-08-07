@@ -1,4 +1,5 @@
 ---
+id: tourettes-syndrome 
 title: Tourette's Syndrome (Tics)
 profile:
   - Experiences involuntary motor and vocal tics
@@ -37,3 +38,4 @@ cross_functional_considerations:
     - Avoid sudden sounds or animations
     - Use calm, consistent layouts
     - Support error recovery and tolerance
+---

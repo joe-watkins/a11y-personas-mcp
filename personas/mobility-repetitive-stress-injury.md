@@ -1,4 +1,5 @@
 ---
+id: mobility-repetitive-stress-injury 
 title: Mobility (Repetitive Stress Injury - RSI)
 profile:
   - Has repetitive stress injury from prolonged computer use affecting wrists, arms, or neck

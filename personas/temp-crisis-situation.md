@@ -1,4 +1,5 @@
 ---
+id: temp-crisis-situation 
 title: Crisis Situation (Acute Stress)
 profile:
   - Is experiencing an acute crisis or emergency (e.g., medical, family, disaster)

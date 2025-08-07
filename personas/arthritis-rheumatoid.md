@@ -1,4 +1,5 @@
 ---
+id: arthritis-rheumatoid
 title: Arthritis (Rheumatoid)
 profile:
   - Has rheumatoid arthritis causing pain, swelling, and fluctuating hand function

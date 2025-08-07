@@ -1,4 +1,5 @@
 ---
+id: cognitive-aphasia-language 
 title: Cognitive (Aphasia - Language Processing)
 profile:
   - Has aphasia from stroke, brain injury, or neurological condition affecting language processing

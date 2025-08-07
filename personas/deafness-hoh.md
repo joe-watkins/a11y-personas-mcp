@@ -1,4 +1,5 @@
 ---
+id: deafness-hoh 
 title: Deafness (Hard of Hearing)
 profile:
   - Is hard of hearing and may use hearing aids, cochlear implants, or assistive listening devices

@@ -1,4 +1,5 @@
 ---
+id: low-vision 
 title: Low Vision User
 profile:
   - Has low vision; primary challenge is visual clarity and detail

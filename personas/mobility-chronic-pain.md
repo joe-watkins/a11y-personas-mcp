@@ -1,4 +1,5 @@
 ---
+id: mobility-chronic-pain 
 title: Chronic Pain (Mobility/Energy)
 profile:
   - Experiences chronic pain and fatigue that impact mobility and energy levels

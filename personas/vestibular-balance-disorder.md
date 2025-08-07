@@ -1,4 +1,5 @@
 ---
+id: vestibular-balance-disorder 
 title: Vestibular Balance Disorder
 profile:
   - Experiences dizziness, vertigo, and nausea triggered by on-screen motion.

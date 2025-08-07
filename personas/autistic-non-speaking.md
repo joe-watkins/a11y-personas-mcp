@@ -1,4 +1,5 @@
 ---
+id: autistic-non-speaking 
 title: Autism (Non-Speaking)
 profile:
   - Is autistic and does not use speech for communication
@@ -37,3 +38,4 @@ cross_functional_considerations:
     - Use clear, visual layouts
     - Minimize audio and sensory overload
     - Support flexible navigation
+---

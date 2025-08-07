@@ -1,4 +1,5 @@
 ---
+id: autistic-rule-oriented 
 title: Autistic (Rule-Oriented)
 profile:
   - Is autistic and prefers clear, explicit rules and structure in digital environments

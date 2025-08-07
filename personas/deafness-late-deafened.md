@@ -1,4 +1,5 @@
 ---
+id: deafness-late-deafened 
 title: Deafness (Late-Deafened)
 profile:
   - Became deaf later in life after acquiring spoken language

@@ -1,4 +1,5 @@
 ---
+id: deafness-sign-language-first 
 title: Deafness (Sign Language First, No Residual Hearing)
 profile:
   - Is profoundly deaf with no residual hearing

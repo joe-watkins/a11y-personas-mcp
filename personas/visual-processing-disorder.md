@@ -1,4 +1,5 @@
 ---
+id: visual-processing-disorder 
 title: Visual Processing Disorder
 profile:
   - Has difficulty processing complex visual information
@@ -36,3 +37,4 @@ cross_functional_considerations:
     - Use icons and symbols for navigation
     - Provide clear, stepwise task flows
     - Support customization for visual needs
+---

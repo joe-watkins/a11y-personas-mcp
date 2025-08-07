@@ -1,4 +1,5 @@
 ---
+id: deaf-blind 
 title: Deafblind Person
 profile:
     - Profound hearing and vision loss. 

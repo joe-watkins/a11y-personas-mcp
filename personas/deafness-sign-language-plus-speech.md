@@ -1,4 +1,5 @@
 ---
+id: deafness-sign-language-plus-speech 
 title: Deafness (Sign Language User, Also Uses Speech)
 profile:
   - Is deaf and uses sign language (ASL, BSL, etc.) as a primary mode of communication

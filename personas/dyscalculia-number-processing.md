@@ -1,4 +1,5 @@
 ---
+id: dyscalculia-number-processing 
 title: Dyscalculia (Number Processing)
 profile:
   - Has difficulty processing, understanding, and manipulating numerical information.

@@ -1,4 +1,5 @@
 ---
+id: intellectual-disability-mild 
 title: Intellectual Disability (Mild)
 profile:
   - Has mild intellectual disability
@@ -37,3 +38,4 @@ cross_functional_considerations:
     - Use simple layouts and large controls
     - Minimize distractions and visual clutter
     - Support stepwise progression
+---

@@ -1,4 +1,5 @@
 ---
+id: null # Unique identifier for the persona (kebab-case, e.g., adhd-attention)
 title: null # Title of the persona
 profile: [] # Key characteristics of the persona
 interaction_style:

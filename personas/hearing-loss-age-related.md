@@ -1,4 +1,5 @@
 ---
+id: hearing-loss-age-related 
 title: Hearing Loss (Age-Related)
 profile:
   - Experiences gradual, age-related hearing loss
@@ -36,3 +37,4 @@ cross_functional_considerations:
     - Use clear, visible alerts and notifications
     - Provide captions and transcripts
     - Support customization of sound and display
+---

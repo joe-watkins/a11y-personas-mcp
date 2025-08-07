@@ -1,4 +1,5 @@
 ---
+id: blindness-low-vision-progressive 
 title: Blindness (Low Vision, Progressive)
 profile:
   - Has progressive vision loss and uses a combination of magnification, screen readers, and high-contrast settings

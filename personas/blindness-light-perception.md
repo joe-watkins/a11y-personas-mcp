@@ -1,4 +1,5 @@
 ---
+id: blindness-light-perception 
 title: Blindness (Light Perception Only)
 profile:
   - Has no usable vision except for light perception (can detect light/dark but not shapes or details)

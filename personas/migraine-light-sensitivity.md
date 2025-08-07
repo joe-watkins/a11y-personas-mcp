@@ -1,4 +1,5 @@
 ---
+id: migraine-light-sensitivity 
 title: Migraine (Light/Sound Sensitivity)
 profile:
   - Experiences migraine episodes with extreme sensitivity to light and sound

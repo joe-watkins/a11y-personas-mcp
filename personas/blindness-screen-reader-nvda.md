@@ -1,4 +1,5 @@
 ---
+id: blindness-screen-reader-nvda 
 title: Blindness (Screen Reader - NVDA)
 profile:
   - Is blind and uses a screen reader (NVDA) on Windows devices for digital access

@@ -1,4 +1,5 @@
 ---
+id: blindness-braille-user 
 title: Blindness (Braille User)
 profile:
   - Is blind and relies primarily on braille displays or braille notetakers for digital access

@@ -1,4 +1,5 @@
 ---
+id: blindness-screen-reader-voiceover 
 title: Blindness (Screen Reader - VoiceOver)
 profile:
   - Is blind and uses a screen reader (VoiceOver) on Apple devices for digital access
