@@ -8,22 +8,6 @@ A Model Context Protocol (MCP) server providing 60+ accessibility personas for y
 
 These personas are more centered around the technical and functional aspects of accessibility, rather than personal narratives or lived experiences. They are designed to help teams understand the specific interaction styles, key needs, and cross-functional considerations for various disabilities, enabling more effective design and development practices.
 
-## Installation in VSCode / Github Copilot
-
-1. Clone this project
-2. Open the project in Visual Studio Code
-3. Run `npm install` to install dependencies
-4. Open VS Code Command Palette (`Cmd+Shift+P` on Mac, `Ctrl+Shift+P` on Windows/Linux)
-5. Search for "MCP install" and select it
-6. Choose "Command (stdio)" as the connection type
-7. Choose "Global or Workspace" for the installation scope
-8. Configure the MCP server:
-   - **Command**: `npm start --silent`
-   - **Name**: `A11y Personas MCP`
-   - **Type**: Local MCP
-
-The MCP server will now be available in your VS Code MCP clients list. Start the server by clicking on the gear icon and choosing "Start Server". Ensure you are in Agent mode and run the `#list-personas` tool in Copilot to start working with the personas.
-
 ## Tools
 
 ### `list-personas`
@@ -246,6 +230,22 @@ Show me the sighted deaf hard-of-hearing persona with low tech skills
 ```
 #get-personas "Low Vision User", "Deaf-Blind"
 ```
+
+## Installation in VSCode / Github Copilot
+
+1. Clone this project
+2. Open the project in Visual Studio Code
+3. Run `npm install` to install dependencies
+4. Open VS Code Command Palette (`Cmd+Shift+P` on Mac, `Ctrl+Shift+P` on Windows/Linux)
+5. Search for "MCP install" and select it
+6. Choose "Command (stdio)" as the connection type
+7. Choose "Global or Workspace" for the installation scope
+8. Configure the MCP server:
+   - **Command**: `npm start --silent`
+   - **Name**: `A11y Personas MCP`
+   - **Type**: Local MCP
+
+The MCP server will now be available in your VS Code MCP clients list. Start the server by clicking on the gear icon and choosing "Start Server". Ensure you are in Agent mode and run the `#list-personas` tool in Copilot to start working with the personas.
 
 ## HTTP API Server (Express)
 
