@@ -275,6 +275,13 @@ This project includes a lean Express.js server (`server.js`) that exposes the ac
 
 The project is pre-configured for Vercel deployment. Just connect your repo and deploy—no extra setup required. See `vercel.json` for build and routing config.
 
+## Note on Vercel Deployment
+
+The Vercel server is live and functional for demonstration purposes. You can test the API endpoints directly:
+
+- [List Personas](https://a11y-personas-mcp.vercel.app/list-personas)
+- [Get Personas](https://a11y-personas-mcp.vercel.app/get-personas?personas=low-vision,deaf-blind)
+
 ### Example Response
 ```json
 {
