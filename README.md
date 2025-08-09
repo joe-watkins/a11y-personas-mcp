@@ -290,6 +290,20 @@ The project is pre-configured for Vercel deployment. Just connect your repo and 
 }
 ```
 
+## Example API Endpoints
+
+### `list-personas`
+Retrieve all personas via API:
+```
+GET https://a11y-personas-mcp.vercel.app/list-personas
+```
+
+### `get-personas`
+Retrieve specific personas via API:
+```
+GET https://a11y-personas-mcp.vercel.app/get-personas?personas=low-vision,deaf-blind
+```
+
 ## Contributing
 
 We welcome contributions! Please open an issue or pull request with your proposed changes. For major changes, discuss them with the maintainers first.
