@@ -8,3 +8,5 @@ test-regex.js
 FEATURES.md
 .vscode/
 .claude/
+.DS_Store
+.cursor/
