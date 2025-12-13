@@ -4,6 +4,13 @@ MCP server providing accessibility personas for inclusive design and development
 
 A Model Context Protocol (MCP) server that works both locally (stdio) and remotely (Netlify Functions).
 
+
+## Important note about synthetic users with disabilities
+
+**These synthetic personas are educational tools and starting points for accessibility considerations—they do not replace the need to work directly with real people with disabilities.** Each person's experience with disability is unique, and these generalized personas may not accurately reflect the full spectrum of real-world impacts, adaptive strategies, or individual preferences. For meaningful accessibility improvements, always prioritize user research, usability testing, and direct feedback from people with disabilities in your target audience.
+
+These personas are more centered around the technical and functional aspects of accessibility, rather than personal narratives or lived experiences. They are designed to help teams understand the specific interaction styles, key needs, and cross-functional considerations for various disabilities, enabling more effective design and development practices.
+
 ## Available Tools
 
 | Tool | Description |
