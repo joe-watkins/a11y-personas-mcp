@@ -19,58 +19,44 @@ When generating content, code, or recommendations related to accessibility perso
    - Ensure recommendations and narratives are respectful, inclusive, and avoid perpetuating bias.
 
 These principles should be followed in all code, documentation, and persona-related outputs.
-personas/           # 60+ markdown files with YAML frontmatter
 
-# Copilot Instructions for Accessibility Personas MCP (Updated August 2025)
+# Copilot Instructions for Accessibility Personas MCP
 
 ## Project Overview
-This project provides a Model Context Protocol (MCP) server that exposes a large set of accessibility personas for inclusive design, analysis, and testing. The server is designed for integration with LLMs and developer tools, enabling context-aware accessibility guidance.
+This project provides a Model Context Protocol (MCP) server that exposes 69+ accessibility personas for inclusive design, analysis, and testing. The server works both locally (stdio) and remotely (Netlify Functions).
 
-## Current Architecture
-- **Entry Point:** `main.js` initializes the MCP server and registers all tools.
-- **Personas:** Markdown files in `personas/` directory, each with YAML frontmatter and narrative content. Filenames are kebab-case persona IDs.
-- **Tool Pattern:** Tools are registered with `server.tool(id, description, schema, handler)`, using Zod for validation. All handlers return MCP-compliant response objects.
-- **Transport:** Uses StdioServerTransport for integration with VS Code and other clients.
+## Architecture
+- **Entry Point:** `src/index.js` - MCP server with stdio transport
+- **Tools:** `src/tools.js` - Tool definitions and handlers
+- **Data Source:** Git submodule at `data/a11y-personas/` → built to `data/personas.json`
+- **Remote:** `netlify/functions/api.js` - Netlify Function for remote MCP access
+- **Build:** `scripts/build-data.js` - Pulls latest personas and builds JSON
 
-## Key Development Patterns
-- **Adding Personas:**
-  1. Copy `_template.md` in `personas/` and fill in all required YAML fields and biography.
-  2. Use kebab-case for filenames (e.g., `deaf-blind.md`).
-  3. For temporary/conditional personas, use `temp-` prefix.
-  4. Always include an `id` field in the YAML frontmatter matching the filename (e.g., `id: deaf-blind`).
-- **Tool Implementation:**
-  - Follow the pattern: `server.tool('tool-id', 'description', schema, handler)`.
-  - Always validate input and return `{ content: [{ type: 'text', text: 'result' }] }`.
-- **Error Handling:**
-  - Never throw; always return a valid MCP error response.
-- **File Naming:**
-  - Personas: `kebab-case.md`
-  - Temporary: `temp-*.md`
-  - Tool IDs: `kebab-case`
+## Data Flow
+1. Personas are authored as markdown files with YAML frontmatter in the [a11y-personas](https://github.com/joe-watkins/a11y-personas) repo
+2. Submodule is updated via `npm run update-personas`
+3. Build script generates `data/personas.json` from submodule
+4. MCP tools import and serve the JSON data
 
 ## Available Tools
-- `list-personas`: Returns all available personas with titles.
-- `get-persona`: Returns full persona(s) by ID or title.
+- `list-personas`: Returns all available personas with IDs and titles
+- `get-personas`: Returns full persona(s) by ID or title (supports single string or array)
 
-## HTTP API Endpoints
-- `/list-personas`: Returns all personas (JSON)
-- `/get-personas?personas=id1,id2`: Returns persona(s) by ID or title (JSON)
+## Key Development Patterns
+- **Tool Implementation:** Export tools array in `src/tools.js` with `name`, `description`, `inputSchema`, `handler`
+- **Response Format:** Always return `{ content: [{ type: 'text', text: 'result' }] }`
+- **Persona Lookup:** Supports exact ID match, case-insensitive ID match, and title match
 
-## Usage & Integration
-- **VS Code:**
-  - Install via Command Palette: "MCP install" → "Command (stdio)"
-  - Configure: `npm start --silent`
-  - Use: `#list-personas` or `#get-persona` in Copilot chat (Agent mode)
-- **Commands:**
-  - `npm start` – Run MCP server
-  - `npm run dev` – Development mode
-  - `tsx main.js` – Direct execution
+## Commands
+- `npm start` – Run MCP server locally
+- `npm run build` – Build personas.json from submodule
+- `npm run update-personas` – Pull latest submodule & rebuild
 
-## Example Usage
-1. Use `list-personas` to see all available personas.
-2. Use `get-persona` to retrieve details for one or more personas by ID or title.
-3. Use persona content to inform design reviews, code analysis, or accessibility testing scenarios.
+## Integration
+- **VS Code:** Configure in MCP settings with `node src/index.js`
+- **Remote:** Deploy to Netlify, use with `mcp-remote@next`
 
 ## Notes
-- The project is now focused on robust persona delivery, MCP tool integration, and HTTP API support. Legacy details and patterns have been removed.
-- For any new features or changes, follow the current tool, persona, and API patterns as described above.
+- Personas are maintained in a separate repo for reusability
+- The MCP server is intentionally minimal - just 2 tools, clean data import
+- No Zod dependency - uses JSON Schema for validation

@@ -1,3 +1,4 @@
 [submodule "data/a11y-personas"]
 	path = data/a11y-personas
 	url = https://github.com/joe-watkins/a11y-personas.git
+	ignore = dirty

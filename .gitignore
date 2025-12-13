@@ -2,7 +2,6 @@ node_modules/
 *.log
 .env
 dist/
-scripts/
 prompts.md
 test-regex.js
 FEATURES.md
@@ -10,3 +9,6 @@ FEATURES.md
 .claude/
 .DS_Store
 .cursor/
+
+# Built data (regenerated via npm run build)
+data/personas.json
