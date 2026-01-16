@@ -4,6 +4,22 @@ MCP server providing accessibility personas for inclusive design and development
 
 A Model Context Protocol (MCP) server that works both locally (stdio) and remotely (Netlify Functions).
 
+## Quick Start
+
+Add to your MCP client configuration:
+
+```json
+{
+  "mcpServers": {
+    "a11y-personas": {
+      "command": "npx",
+      "args": ["-y", "a11y-personas-mcp"]
+    }
+  }
+}
+```
+
+That's it! No cloning, no building - just add the config and start using accessibility personas.
 
 ## Important note about synthetic users with disabilities
 
